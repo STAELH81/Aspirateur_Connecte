@@ -4,7 +4,7 @@ const { pingReply } = require("../lib/personality");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ping")
-    .setDescription("L'Aspirateur repond (il est en vie ?)"),
+    .setDescription("Verifie si le bot repond"),
   async execute(interaction) {
     await interaction.reply(pingReply());
   },

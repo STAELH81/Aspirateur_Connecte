@@ -4,7 +4,7 @@ const { COLOR, chooseTitle } = require("../lib/personality");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("choose")
-    .setDescription("Le hasard tranche pour toi")
+    .setDescription("Tire une option au hasard")
     .addStringOption((opt) =>
       opt.setName("choix1").setDescription("Option 1").setRequired(true)
     )
