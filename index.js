@@ -36,6 +36,9 @@ client.once(Events.ClientReady, (c) => {
   if (loadRoleIds().length === 0) {
     console.log("Tip: data/auto-roles.json pour les roles a l'arrivee.");
   }
+  if (!process.env.GAMBLING_CHANNEL_ID) {
+    console.log("Tip: GAMBLING_CHANNEL_ID pour limiter /money et /casino a un salon.");
+  }
 });
 
 client.on(Events.GuildMemberAdd, (...args) => memberJoinEvent.execute(...args));

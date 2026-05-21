@@ -67,11 +67,13 @@ Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
 
 ---
 
-## Économie et casino
+## Économie et casino (salon **#gambling** uniquement)
 
-Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première utilisation de `/money`.
+Toutes les commandes **`/money`** et **`/casino`** ne fonctionnent que dans le salon dont l’ID est dans `GAMBLING_CHANNEL_ID`.
 
-### Gagner des coins (sans jouer)
+Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première utilisation de `/money` dans ce salon.
+
+### `/money`
 
 | Commande | Détail |
 |----------|--------|
@@ -81,7 +83,7 @@ Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première u
 | `/money balance` | Voir ton solde (ou celui de quelqu’un) |
 | `/money top` | Classement des plus riches |
 
-### Jouer
+### `/casino`
 
 | Commande | Détail |
 |----------|--------|
@@ -130,6 +132,9 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `DISCORD_GUILD_ID` | Oui | ID du serveur (pour enregistrer les `/`) |
 | `WELCOME_CHANNEL_ID` | Non | Salon bienvenue + départs par défaut |
 | `LEAVE_CHANNEL_ID` | Non | Salon départs uniquement (sinon = bienvenue) |
+| `GAMBLING_CHANNEL_ID` | Recommandé | Salon **#gambling** — `/money` et `/casino` uniquement ici |
+
+Sans cette variable, `/money` et `/casino` fonctionnent partout (déconseillé).
 
 ### Fichiers `data/`
 
@@ -183,9 +188,42 @@ Le repo contient `discloud.config` pour [Discloud](https://discloud.com).
 
 1. Push le code sur GitHub (sans `.env`, sans `node_modules/`)
 2. Créer l’app Discloud liée au repo
-3. Variables : `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID` (+ `LEAVE_CHANNEL_ID` si besoin)
+3. Variables d’environnement (voir [Ajouter des variables sur Discloud](#ajouter-des-variables-sur-discloud))  
+   `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID`, `GAMBLING_CHANNEL_ID` (+ `LEAVE_CHANNEL_ID` si besoin)
 4. Déploiement auto au push (selon ton réglage)
 5. **`npm run deploy`** en local après chaque **nouvelle commande slash** (Discord ne les découvre pas seul)
+
+### Ajouter des variables sur Discloud (important)
+
+**L’onglet Settings de ton app (RAM, Auto Restart, CMD Start…) ne contient pas les variables d’environnement.** C’est normal sur Discloud quand tu déploies via **GitHub**.
+
+Le `.env` de ton PC **n’est pas** envoyé :
+- il est dans `.gitignore` (pas sur GitHub)
+- il est dans `.discloudignore` (pas dans le zip Discloud)
+
+#### Méthode recommandée : redéployer via GitHub avec les variables
+
+1. Dashboard Discloud → bouton **+ Upload** (en haut à droite)  
+2. Choisis **GitHub** (pas le zip)  
+3. Sélectionne le repo **STAELH81/Aspirateur_Connecte**  
+4. **Avant de valider**, tu dois voir une section **Environment Variables** (clé / valeur)  
+5. Ajoute **chaque** ligne comme dans ton `.env` local :
+
+   | Name | Value |
+   |------|--------|
+   | `DISCORD_TOKEN` | token du bot |
+   | `DISCORD_GUILD_ID` | id du serveur |
+   | `WELCOME_CHANNEL_ID` | id salon bienvenue |
+   | `GAMBLING_CHANNEL_ID` | id salon #gambling |
+   | `LEAVE_CHANNEL_ID` | (optionnel) |
+
+6. Valide le déploiement → **Restart** l’app si besoin  
+
+Si tu ne vois toujours pas « Environment Variables », regarde l’onglet **Commit** (config du lien GitHub) ou le menu **GitHub Integration** dans la barre latérale du dashboard.
+
+#### Alternative (repo privé uniquement)
+
+Commiter un fichier `.env` à la racine du repo **privé** et retirer `.env` de `.discloudignore` — Discloud le lira au deploy. **Déconseillé** si le repo peut devenir public un jour.
 
 | Action | Auto sur Discloud ? |
 |--------|---------------------|

@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const casino = require("../lib/casino");
 const economy = require("../lib/economy");
+const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { COLOR, COLOR_SUCCESS } = require("../lib/personality");
 
 module.exports = {
@@ -42,6 +43,8 @@ module.exports = {
         )
     ),
   async execute(interaction) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+
     const sub = interaction.options.getSubcommand();
     const mise = interaction.options.getInteger("mise");
 

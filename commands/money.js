@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const economy = require("../lib/economy");
+const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { COLOR } = require("../lib/personality");
 
 module.exports = {
@@ -39,6 +40,8 @@ module.exports = {
       sub.setName("top").setDescription("Classement des plus riches")
     ),
   async execute(interaction) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+
     const sub = interaction.options.getSubcommand();
 
     if (sub === "balance") {
