@@ -1,0 +1,5 @@
+node_modules/
+.env
+.git/
+data/birthdays.json
+data/giveaways.json

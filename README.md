@@ -40,3 +40,10 @@ commands/   lib/   events/   data/   scripts/
 ```
 
 Ne commite jamais `.env`.
+
+## Hebergement Discloud
+
+1. Push sur GitHub (avec `discloud.config` a la racine)
+2. [Discloud](https://discloud.com) → deploy depuis le repo `STAELH81/Aspirateur_Connecte`
+3. Variables d'environnement : `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID`
+4. Apres le premier demarrage, lance une fois `npm run deploy` en local pour les slash commands (ou depuis le terminal Discloud)
