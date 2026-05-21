@@ -1,8 +1,15 @@
 require("dotenv").config({ quiet: true });
-const { Client, GatewayIntentBits, Events, Collection } = require("discord.js");
+const {
+  Client,
+  GatewayIntentBits,
+  Events,
+  Collection,
+  MessageFlags,
+} = require("discord.js");
 const commandModules = require("./commands");
 const welcomeEvent = require("./events/welcome");
 const { addEntrant, updateMessage, scheduleAll } = require("./lib/giveaways");
+const personality = require("./lib/personality");
 
 const client = new Client({
   intents: [
@@ -19,7 +26,7 @@ for (const cmd of commandModules) {
 }
 
 client.once(Events.ClientReady, (c) => {
-  console.log(`Connecte en tant que ${c.user.tag}`);
+  console.log(`Aspirateur en ligne : ${c.user.tag} — Les Girlsss`);
   scheduleAll(client);
   if (!process.env.WELCOME_CHANNEL_ID) {
     console.log("Tip: WELCOME_CHANNEL_ID dans .env pour les messages de bienvenue.");
@@ -35,23 +42,23 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
     if (result.reason === "ended") {
       await interaction.reply({
-        content: "Ce giveaway est termine.",
-        ephemeral: true,
+        content: personality.giveaway.enterEnded,
+        flags: MessageFlags.Ephemeral,
       });
       return;
     }
     if (result.reason === "already") {
       await interaction.reply({
-        content: "Tu es deja inscrit.",
-        ephemeral: true,
+        content: personality.giveaway.enterAlready,
+        flags: MessageFlags.Ephemeral,
       });
       return;
     }
 
     await updateMessage(interaction.client, messageId);
     await interaction.reply({
-      content: "Tu es inscrit au giveaway.",
-      ephemeral: true,
+      content: personality.giveaway.enterOk,
+      flags: MessageFlags.Ephemeral,
     });
     return;
   }
@@ -60,7 +67,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
     const roleId = interaction.customId.slice(5);
     const role = interaction.guild.roles.cache.get(roleId);
     if (!role) {
-      await interaction.reply({ content: "Role introuvable.", ephemeral: true });
+      await interaction.reply({
+        content: personality.roles.notFound,
+        flags: MessageFlags.Ephemeral,
+      });
       return;
     }
 
@@ -71,20 +81,20 @@ client.on(Events.InteractionCreate, async (interaction) => {
       if (has) {
         await member.roles.remove(role);
         await interaction.reply({
-          content: `Role **${role.name}** retire.`,
-          ephemeral: true,
+          content: personality.roles.removed(role.name),
+          flags: MessageFlags.Ephemeral,
         });
       } else {
         await member.roles.add(role);
         await interaction.reply({
-          content: `Role **${role.name}** ajoute.`,
-          ephemeral: true,
+          content: personality.roles.added(role.name),
+          flags: MessageFlags.Ephemeral,
         });
       }
     } catch {
       await interaction.reply({
-        content: "Impossible (role au-dessus du bot ?). Verifie la hierarchie des roles.",
-        ephemeral: true,
+        content: personality.roles.error,
+        flags: MessageFlags.Ephemeral,
       });
     }
     return;
@@ -99,9 +109,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
     await command.execute(interaction);
   } catch (err) {
     console.error(err);
-    const { MessageFlags } = require("discord.js");
     const msg = {
-      content: "Erreur lors de la commande.",
+      content: personality.errors.command,
       flags: MessageFlags.Ephemeral,
     };
     if (interaction.replied || interaction.deferred) {
@@ -115,7 +124,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
   if (message.mentions.has(client.user)) {
-    await message.reply(`Salut ${message.author}`);
+    await message.reply(personality.mentionReply(message.author));
   }
 });
 

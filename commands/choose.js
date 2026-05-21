@@ -1,9 +1,10 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { COLOR, chooseTitle } = require("../lib/personality");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("choose")
-    .setDescription("Choix au hasard entre plusieurs options")
+    .setDescription("Le hasard tranche pour toi")
     .addStringOption((opt) =>
       opt.setName("choix1").setDescription("Option 1").setRequired(true)
     )
@@ -27,11 +28,11 @@ module.exports = {
     const pick = options[Math.floor(Math.random() * options.length)];
 
     const embed = new EmbedBuilder()
-      .setTitle("Le hasard a parle")
+      .setTitle(chooseTitle())
       .setDescription(`**${pick}**`)
-      .setColor(0xeb459e)
+      .setColor(COLOR)
       .setFooter({
-        text: `${options.length} options • demande par ${interaction.user.username}`,
+        text: `${options.length} options • ${interaction.user.username}`,
       });
 
     await interaction.reply({ embeds: [embed] });
