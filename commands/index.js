@@ -6,6 +6,7 @@ module.exports = [
   require("./userinfo"),
   require("./poll"),
   require("./random"),
+  require("./choose"),
   require("./clear"),
   require("./anniv"),
   require("./roles"),

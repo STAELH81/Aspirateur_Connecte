@@ -15,6 +15,7 @@ module.exports = {
         "`/userinfo [membre]` — infos membre",
         "`/poll` — sondage (reactions)",
         "`/random` — phrase aleatoire",
+        "`/choose` — choix au hasard (2 a 5 options)",
         "`/anniv ajouter` — enregistre ton anniv",
         "`/anniv liste` — annivs a venir",
         "",
