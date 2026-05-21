@@ -10,6 +10,7 @@ const commandModules = require("./commands");
 const memberJoinEvent = require("./events/memberJoin");
 const memberLeaveEvent = require("./events/memberLeave");
 const { addEntrant, updateMessage, scheduleAll } = require("./lib/giveaways");
+const { scheduleBirthdayAnnounce } = require("./lib/birthdayAnnounce");
 const personality = require("./lib/personality");
 
 const client = new Client({
@@ -29,6 +30,7 @@ for (const cmd of commandModules) {
 client.once(Events.ClientReady, (c) => {
   console.log(`Aspirateur en ligne : ${c.user.tag} — Les Girlsss`);
   scheduleAll(client);
+  scheduleBirthdayAnnounce(client);
   if (!process.env.WELCOME_CHANNEL_ID) {
     console.log("Tip: WELCOME_CHANNEL_ID pour bienvenue + depart (ou LEAVE_CHANNEL_ID).");
   }
@@ -38,6 +40,9 @@ client.once(Events.ClientReady, (c) => {
   }
   if (!process.env.GAMBLING_CHANNEL_ID) {
     console.log("Tip: GAMBLING_CHANNEL_ID pour limiter /money et /casino a un salon.");
+  }
+  if (!process.env.GENERAL_CHANNEL_ID) {
+    console.log("Tip: GENERAL_CHANNEL_ID pour l'annonce anniversaire dans le general.");
   }
 });
 

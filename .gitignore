@@ -1,5 +1,7 @@
 node_modules/
 .env
+dev-bundle/
 data/birthdays.json
 data/giveaways.json
 data/economy.json
+data/birthday-announce-state.json

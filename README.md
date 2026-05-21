@@ -59,6 +59,8 @@ Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
 | `/anniv ajouter` | Enregistre ton jour et mois d’anniversaire |
 | `/anniv liste` | Anniversaires dans les 30 prochains jours |
 
+Le jour J, le bot poste dans `#general` : *Hey ! On souhaite tous l'anniv de … aujourd'hui !* (9h, + au démarrage si pas encore annoncé).
+
 ### Interaction sans slash
 
 - **@mentionner le bot** → il répond bonjour
@@ -133,8 +135,11 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `WELCOME_CHANNEL_ID` | Non | Salon bienvenue + départs par défaut |
 | `LEAVE_CHANNEL_ID` | Non | Salon départs uniquement (sinon = bienvenue) |
 | `GAMBLING_CHANNEL_ID` | Recommandé | Salon **#gambling** — `/money` et `/casino` uniquement ici |
+| `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — annonce auto le jour d’un anniversaire |
 
-Sans cette variable, `/money` et `/casino` fonctionnent partout (déconseillé).
+Sans `GAMBLING_CHANNEL_ID`, `/money` et `/casino` fonctionnent partout (déconseillé).
+
+Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
 
 ### Fichiers `data/`
 
@@ -197,33 +202,29 @@ Le repo contient `discloud.config` pour [Discloud](https://discloud.com).
 
 **L’onglet Settings de ton app (RAM, Auto Restart, CMD Start…) ne contient pas les variables d’environnement.** C’est normal sur Discloud quand tu déploies via **GitHub**.
 
-Le `.env` de ton PC **n’est pas** envoyé :
-- il est dans `.gitignore` (pas sur GitHub)
-- il est dans `.discloudignore` (pas dans le zip Discloud)
+Le `.env` de ton PC **n’est pas** sur GitHub tant qu’il est dans `.gitignore`.
 
-#### Méthode recommandée : redéployer via GitHub avec les variables
+Le formulaire visuel **Name / Value** n’apparaît que lors de la **création** (**+ Upload → GitHub**). **Ne refais pas ça** pour changer une variable : ça crée une **deuxième** app. Détails : [DISCLOUD_ENV.md](DISCLOUD_ENV.md).
 
-1. Dashboard Discloud → bouton **+ Upload** (en haut à droite)  
-2. Choisis **GitHub** (pas le zip)  
-3. Sélectionne le repo **STAELH81/Aspirateur_Connecte**  
-4. **Avant de valider**, tu dois voir une section **Environment Variables** (clé / valeur)  
-5. Ajoute **chaque** ligne comme dans ton `.env` local :
+#### Mettre à jour les variables sur l’app **déjà** en ligne
 
-   | Name | Value |
-   |------|--------|
-   | `DISCORD_TOKEN` | token du bot |
-   | `DISCORD_GUILD_ID` | id du serveur |
-   | `WELCOME_CHANNEL_ID` | id salon bienvenue |
-   | `GAMBLING_CHANNEL_ID` | id salon #gambling |
-   | `LEAVE_CHANNEL_ID` | (optionnel) |
+**Option A — `git push`** (repo **privé**, app déjà liée au repo) :
 
-6. Valide le déploiement → **Restart** l’app si besoin  
+```powershell
+git add -f .env
+git commit -m "Config Discloud: variables d'environnement"
+git push
+```
 
-Si tu ne vois toujours pas « Environment Variables », regarde l’onglet **Commit** (config du lien GitHub) ou le menu **GitHub Integration** dans la barre latérale du dashboard.
+**Option B — onglet Commit** : ouvre ton app → **Commit** → envoie un ZIP du projet **avec** `.env` à la racine (sans `node_modules/`) → **Restart**.
 
-#### Alternative (repo privé uniquement)
-
-Commiter un fichier `.env` à la racine du repo **privé** et retirer `.env` de `.discloudignore` — Discloud le lira au deploy. **Déconseillé** si le repo peut devenir public un jour.
+| Name | Value |
+|------|--------|
+| `DISCORD_TOKEN` | token du bot |
+| `DISCORD_GUILD_ID` | id du serveur |
+| `WELCOME_CHANNEL_ID` | id salon bienvenue |
+| `GAMBLING_CHANNEL_ID` | id salon #gambling |
+| `LEAVE_CHANNEL_ID` | (optionnel) |
 
 | Action | Auto sur Discloud ? |
 |--------|---------------------|

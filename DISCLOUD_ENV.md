@@ -1,56 +1,71 @@
-# Variables sur Discloud — mode simple
+# Variables sur Discloud (app **déjà** en ligne)
 
-**Il n’y a pas de menu “+ une variable” dans Settings** (RAM, Auto Restart, etc.).  
-C’est pour ça que tu ne trouvais rien.
+## Ce que tu as vu la première fois
 
-Discloud lit un fichier **`.env` à la racine** du projet qu’il reçoit (zip ou GitHub).
+Le formulaire **Name** / **Value** sur le site = étape **uniquement** quand tu **crées** l’app (**+ Upload → GitHub**).
 
----
-
-## Méthode 1 — ZIP (la plus simple)
-
-1. Ouvre le dossier `Aspirateur_Connecte` dans l’explorateur Windows.
-2. Vérifie que **`.env` est bien à la racine** (à côté de `index.js`, `discloud.config`).
-3. Sélectionne **tout** sauf `node_modules` → clic droit → **Compresser vers un fichier ZIP**.
-4. Discloud → **+ Upload** → choisis **fichier / ZIP** (pas GitHub).
-5. Envoie le zip → attends **Online** → **Restart**.
-
-Ton `.env` du PC part dans le zip. Pas besoin du dashboard “Environment Variables”.
+**Ne refais pas ça** pour modifier les variables : Discloud crée une **nouvelle** application (deux bots, deux factures, conflit de token).
 
 ---
 
-## Méthode 2 — GitHub (si tu déploies via GitHub)
+## Que faire avec la app en double ?
 
-Le `.env` sur ton PC **ne part pas** tant qu’il est dans `.gitignore`.
+1. Dashboard → ouvre la **nouvelle** app (celle créée à l’instant).
+2. **Stop** puis **Delete** / supprimer l’app.
+3. Garde **une seule** app : celle qui était déjà là avant (souvent la plus ancienne, avec l’historique de logs).
 
-**Une fois :**
+---
+
+## Modifier les variables sur l’app **originale** (sans formulaire)
+
+Discloud ne propose en général **pas** d’éditeur visuel dans **Settings** après coup. Deux façons qui **mettent à jour la même app** :
+
+### Option A — `git push` (si l’app est liée à GitHub)
+
+Ton `.env` local est déjà bon ? Envoie-le au deploy Discloud (repo **privé** obligatoire) :
 
 ```powershell
 cd "C:\Users\Sacha Zambiasi\Documents\Code\Aspirateur_Connecte"
 git add -f .env
-git add .discloudignore
-git commit -m "Env pour Discloud"
+git commit -m "Config Discloud: variables d'environnement"
 git push
 ```
 
-(`git add -f` force l’envoi du `.env` même s’il est ignoré en local.)
+Discloud redéploie **la même** app. Puis **Restart** sur le dashboard si le bot ne repart pas tout seul.
 
-Repo **privé** obligatoire si le token est dedans.
+### Option B — onglet **Commit** (ZIP sur l’app existante)
 
-Discloud redéploie → lit `.env` à la racine.
+1. Ouvre **l’ancienne** app (pas + Upload).
+2. Onglet **Commit**.
+3. ZIP du projet **avec** `.env` à la racine (à côté de `discloud.config`), **sans** `node_modules/`.
+4. Envoie le ZIP → **Restart**.
 
-Pour **ajouter une variable plus tard** : édite `.env` en local → refais `git add -f .env` → `git push` → restart Discloud.
+Le `.env` n’est pas dans GitHub (`.gitignore`), mais Discloud le lit s’il est **dans le zip** ou **forcé sur le repo** (option A).
 
 ---
 
-## Contenu de `.env` (exemple)
+## Contenu de ton `.env`
 
 ```env
 DISCORD_TOKEN=...
 DISCORD_GUILD_ID=...
 WELCOME_CHANNEL_ID=...
 GAMBLING_CHANNEL_ID=...
+GENERAL_CHANNEL_ID=...
 LEAVE_CHANNEL_ID=
 ```
 
-Pas d’espaces autour du `=`.
+Vérifie que `GAMBLING_CHANNEL_ID` est bien rempli si tu utilises `/money` et `/casino`.  
+`GENERAL_CHANNEL_ID` = salon #general pour l’annonce anniversaire du jour.
+
+---
+
+## Rappel
+
+| Action | Résultat |
+|--------|----------|
+| **+ Upload → GitHub** | Nouvelle app + formulaire visuel |
+| **Commit** (dans l’app) ou **git push** | Met à jour **l’app actuelle** |
+| **Settings** | RAM, restart… pas les secrets |
+
+Une seule instance du bot à la fois (pas `start.ps1` en local **et** Discloud avec le même token).
