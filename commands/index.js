@@ -11,4 +11,6 @@ module.exports = [
   require("./anniv"),
   require("./roles"),
   require("./giveaway"),
+  require("./money"),
+  require("./casino"),
 ];

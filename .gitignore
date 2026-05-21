@@ -2,3 +2,4 @@ node_modules/
 .env
 data/birthdays.json
 data/giveaways.json
+data/economy.json

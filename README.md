@@ -1,51 +1,272 @@
-# Aspirateur_Connecte
+# Aspirateur Connecte
 
-Bot Discord pour la commu **Les Girlsss**.
+Bot Discord fait maison pour le serveur **Les Girlsss**. Le nom est volontairement absurde : ce n’est pas un aspirateur, c’est un bot de modération légère, commu, giveaways, rôles et petite économie avec casino.
 
-## Demarrage rapide
+Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l’historique du serveur.
 
-1. [Discord Developer Portal](https://discord.com/developers/applications) — voir [TUTORIAL.md](./TUTORIAL.md)
-2. Intents a activer : **Message Content** + **Server Members** (bienvenue)
-3. `.env` : `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, optionnel `WELCOME_CHANNEL_ID`
+---
+
+## Sommaire
+
+1. [À quoi sert ce bot ?](#à-quoi-sert-ce-bot-)
+2. [Pour les membres du serveur](#pour-les-membres-du-serveur)
+3. [Économie et casino](#économie-et-casino)
+4. [Pour les admins / modo](#pour-les-admins--modo)
+5. [Fonctionnement automatique](#fonctionnement-automatique)
+6. [Installation (développeur)](#installation-développeur)
+7. [Hébergement 24/7 (Discloud)](#hébergement-247-discloud)
+8. [Structure du code](#structure-du-code)
+9. [Fichiers de configuration](#fichiers-de-configuration)
+10. [Mettre à jour le bot](#mettre-à-jour-le-bot)
+
+---
+
+## À quoi sert ce bot ?
+
+| Besoin | Solution dans le bot |
+|--------|----------------------|
+| Accueillir / dire au revoir | Messages auto arrivée & départ |
+| Rôles jeux & notifs | Panels boutons (`/roles`) + rôles auto à l’arrivée |
+| Tirages au sort, VIP, etc. | `/giveaway` avec attribution de rôle possible |
+| Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
+| Anniversaires de la commu | `/anniv` |
+| Coins & mini-jeux | `/money`, `/casino` |
+| Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
+
+Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
+
+---
+
+## Pour les membres du serveur
+
+### Commu & fun
+
+| Commande | Description |
+|----------|-------------|
+| `/ping` | Vérifie que le bot répond |
+| `/girlsss [texte]` | Envoie un message (défaut : « Les Girlsss ») |
+| `/random` | Phrase aléatoire |
+| `/choose` | Choisit au hasard entre 2 à 5 options |
+| `/avatar [membre]` | Affiche une photo de profil |
+| `/userinfo [membre]` | Infos compte + rôles sur le serveur |
+| `/poll` | Crée un sondage avec réactions |
+| `/help` | **Liste complète** (2 embeds) |
+
+### Anniversaires
+
+| Commande | Description |
+|----------|-------------|
+| `/anniv ajouter` | Enregistre ton jour et mois d’anniversaire |
+| `/anniv liste` | Anniversaires dans les 30 prochains jours |
+
+### Interaction sans slash
+
+- **@mentionner le bot** → il répond bonjour
+- **Arrivée sur le serveur** → message de bienvenue + rôles de base (silencieux)
+- **Départ** → message dans le salon configuré
+
+---
+
+## Économie et casino
+
+Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première utilisation de `/money`.
+
+### Gagner des coins (sans jouer)
+
+| Commande | Détail |
+|----------|--------|
+| `/money daily` | **80–150 coins**, une fois toutes les **24 h** |
+| `/money work` | **15–45 coins**, cooldown **45 min** |
+| `/money pay` | Envoyer des coins à un autre membre |
+| `/money balance` | Voir ton solde (ou celui de quelqu’un) |
+| `/money top` | Classement des plus riches |
+
+### Jouer
+
+| Commande | Détail |
+|----------|--------|
+| `/casino coinflip` | Pile ou face — gain **×1,9** si tu gagnes |
+| `/casino slots` | Machine à sous — symboles rares (💎, 7️⃣) paient plus |
+
+**Limites anti-abus :**
+
+- Mise minimum : **10 coins**
+- Mise maximum : **25 %** de ton solde, plafonnée à **500 coins**
+- L’économie est faite pour être fun, pas pour devenir riche infiniment : farm avec `daily` / `work`, gamble avec modération.
+
+Les soldes sont stockés dans `data/economy.json` sur la machine qui fait tourner le bot (voir hébergement).
+
+---
+
+## Pour les admins / modo
+
+| Commande | Qui | Description |
+|----------|-----|-------------|
+| `/clear` | Modo | Supprime 1–100 messages dans le salon |
+| `/roles menu:jeux` | Admin | Poste le panel rôles jeux (Valorant, MC, etc.) |
+| `/roles menu:notifs` | Admin | Poste le panel events / sorties |
+| `/giveaway start` | Admin | Lance un giveaway (durée : `30s`, `10m`, `1h`, `2d`…) |
+| `/giveaway end` | Admin | Termine avant la fin (ID du message) |
+| `/giveaway reroll` | Admin | Nouveau tirage sur un giveaway fini |
+| `/giveaway liste` | Admin | Giveaways actifs + leurs IDs |
+
+**Giveaway avec rôle en lot :**
+
+```
+/giveaway start lot:VIP role:@RoleVIP duree:1h gagnants:1
+```
+
+Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est **au-dessus** du rôle à donner dans les paramètres du serveur.
+
+---
+
+## Fonctionnement automatique
+
+### Variables d’environnement (`.env`)
+
+| Variable | Obligatoire | Rôle |
+|----------|-------------|------|
+| `DISCORD_TOKEN` | Oui | Token du bot (portail développeur) |
+| `DISCORD_GUILD_ID` | Oui | ID du serveur (pour enregistrer les `/`) |
+| `WELCOME_CHANNEL_ID` | Non | Salon bienvenue + départs par défaut |
+| `LEAVE_CHANNEL_ID` | Non | Salon départs uniquement (sinon = bienvenue) |
+
+### Fichiers `data/`
+
+| Fichier | Rôle |
+|---------|------|
+| `auto-roles.json` | IDs des rôles donnés **à chaque arrivée** (ex. Membre) |
+| `self-roles.json` | Rôles des panels `/roles` (jeux, notifs) |
+| `quotes.json` | Citations pour `/random` |
+| `birthdays.json` | Anniversaires enregistrés |
+| `giveaways.json` | Giveaways en cours (interne) |
+| `economy.json` | Soldes des membres (interne) |
+
+Exemples : `*.example.json` dans `data/`.
+
+### Intents Discord (portail → Bot)
+
+- **Message Content** — lire les @mentions
+- **Server Members Intent** — arrivées, départs, rôles auto
+
+---
+
+## Installation (développeur)
+
+**Prérequis :** [Node.js](https://nodejs.org/) 20 ou 22, compte Discord, droits admin sur le serveur de test.
 
 ```powershell
+git clone https://github.com/STAELH81/Aspirateur_Connecte.git
+cd Aspirateur_Connecte
+copy .env.example .env
+# Remplir DISCORD_TOKEN, DISCORD_GUILD_ID, WELCOME_CHANNEL_ID
+npm install
+npm run deploy
+npm start
+```
+
+Ou sous Windows :
+
+```powershell
+.\scripts\setup.ps1
 .\scripts\deploy.ps1
 .\scripts\start.ps1
 ```
 
-## Commandes
+**Important :** un seul processus par token. Si le bot tourne sur Discloud, ne lance pas `npm start` en local en même temps.
 
-| Commande | Qui |
-|----------|-----|
-| `/ping`, `/girlsss`, `/random`, `/help` | Tous |
-| `/avatar`, `/userinfo`, `/poll` | Tous |
-| `/anniv ajouter`, `/anniv liste` | Tous |
-| `/giveaway start/end/reroll/liste` | Admin — remplace GiveawayBot |
-| `/clear` | Admin / modo (Gerer les messages) |
-| `/roles` | Admin (poste le panel de roles) |
-| @bot | Salut personnalise |
+---
 
-## Roles auto (remplace YAGPDB)
+## Hébergement 24/7 (Discloud)
 
-Comme tes anciens menus YAGPDB : `/roles menu:jeux` et `/roles menu:notifs`. Edite `data/self-roles.json` (remplace `REMPLACER_*` par les vrais IDs de roles), role du bot **au-dessus** des roles qu'il donne.
+Le repo contient `discloud.config` pour [Discloud](https://discloud.com).
 
-## Arrivee / depart
+1. Push le code sur GitHub (sans `.env`, sans `node_modules/`)
+2. Créer l’app Discloud liée au repo
+3. Variables : `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID` (+ `LEAVE_CHANNEL_ID` si besoin)
+4. Déploiement auto au push (selon ton réglage)
+5. **`npm run deploy`** en local après chaque **nouvelle commande slash** (Discord ne les découvre pas seul)
 
-- `.env` : `WELCOME_CHANNEL_ID` (salon bienvenue + depart par defaut)
-- Optionnel : `LEAVE_CHANNEL_ID` (autre salon pour les departs)
-- `data/auto-roles.json` : IDs des roles donnes **automatiquement** a l'arrivee (ex. Membre). Voir `auto-roles.example.json`. Role du bot **au-dessus** de ces roles.
+| Action | Auto sur Discloud ? |
+|--------|---------------------|
+| Changement de code (`git push`) | Souvent oui (redéploi) |
+| Nouvelle commande `/` | **Non** → `npm run deploy` |
+| Changement `.env` sur Discloud | Redémarrer l’app |
 
-## Structure
+---
+
+## Structure du code
 
 ```
-commands/   lib/   events/   data/   scripts/
+Aspirateur_Connecte/
+├── index.js              # Connexion Discord, events, boutons
+├── deploy-commands.js    # Enregistre les slash commands sur le serveur
+├── commands/             # Une fichier = une commande / groupe de sous-commandes
+├── events/               # Arrivée / départ membres
+├── lib/                  # Logique partagée (economie, casino, giveaways…)
+├── data/                 # JSON config + donnees runtime
+├── scripts/              # setup.ps1, deploy.ps1, start.ps1 (Windows)
+├── discloud.config       # Config hebergeur
+└── TUTORIAL.md           # Guide pas a pas (premiere install)
 ```
 
-Ne commite jamais `.env`.
+**Ajouter une commande :**
 
-## Hebergement Discloud
+1. Créer `commands/macmd.js`
+2. L’ajouter dans `commands/index.js`
+3. Mettre à jour **`lib/personality.js` → `helpEmbeds()`** (obligatoire pour `/help`)
+4. `npm run deploy` puis push / redémarrage
 
-1. Push sur GitHub (avec `discloud.config` a la racine)
-2. [Discloud](https://discloud.com) → deploy depuis le repo `STAELH81/Aspirateur_Connecte`
-3. Variables d'environnement : `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID`
-4. Apres le premier demarrage, lance une fois `npm run deploy` en local pour les slash commands (ou depuis le terminal Discloud)
+---
+
+## Fichiers de configuration
+
+### `data/auto-roles.json`
+
+```json
+{
+  "roles": ["ID_ROLE_MEMBRE", "ID_ROLE_AUTRE"]
+}
+```
+
+Mode développeur → clic droit sur un rôle → Copier l’identifiant du rôle.
+
+### `data/self-roles.json`
+
+Menus affichés par `/roles menu:jeux` et `menu:notifs`. Même principe d’IDs.
+
+### `lib/economyConfig.js`
+
+Tous les réglages économie : gains daily/work, limites de mise, multiplicateurs slots/coinflip. Modifier ici pour équilibrer le serveur.
+
+---
+
+## Mettre à jour le bot
+
+```powershell
+# 1. Code
+git add .
+git commit -m "Description du changement"
+git push
+
+# 2. Slash commands (si nouvelle commande ou sous-commande)
+npm run deploy
+
+# 3. Discloud : attendre Online, ou Play si arrêté
+```
+
+**Checklist `/help` :** à chaque nouvelle feature, éditer `helpEmbeds()` dans `lib/personality.js`.
+
+---
+
+## Liens
+
+- [discord.js](https://discord.js.org/)
+- [Discord Developer Portal](https://discord.com/developers/applications)
+- [TUTORIAL.md](./TUTORIAL.md) — première installation détaillée
+
+---
+
+## Licence
+
+ISC — projet perso commu Les Girlsss.

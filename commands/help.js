@@ -1,11 +1,11 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { helpEmbed } = require("../lib/personality");
+const { helpEmbeds } = require("../lib/personality");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
-    .setDescription("Liste des commandes"),
+    .setDescription("Liste complete des commandes du bot"),
   async execute(interaction) {
-    await interaction.reply({ embeds: [helpEmbed()], ephemeral: true });
+    await interaction.reply({ embeds: helpEmbeds(), ephemeral: true });
   },
 };
