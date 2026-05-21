@@ -25,6 +25,6 @@ foreach ($rel in $files) {
 }
 
 Write-Host ""
-Write-Host "OK — $copied fichier(s) dans dev-bundle/"
-Write-Host "Copie le dossier dev-bundle/ (USB, Drive, zip) sur le nouveau PC."
-Write-Host "Puis : .\scripts\import-dev.ps1"
+Write-Host "OK - $copied fichier(s) dans dev-bundle/"
+Write-Host 'Copie le dossier dev-bundle/ sur USB, Drive ou zip, puis sur le nouveau PC.'
+Write-Host 'Puis sur le nouveau PC : .\scripts\import-dev.ps1'

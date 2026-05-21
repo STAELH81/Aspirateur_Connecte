@@ -17,4 +17,4 @@ Get-ChildItem -Path $bundle -Recurse -File | ForEach-Object {
 }
 
 Write-Host ""
-Write-Host "OK — npm install puis .\scripts\start.ps1"
+Write-Host 'OK - npm install puis .\scripts\start.ps1'
