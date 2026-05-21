@@ -29,9 +29,11 @@ Bot Discord pour la commu **Les Girlsss**.
 
 Comme tes anciens menus YAGPDB : `/roles menu:jeux` et `/roles menu:notifs`. Edite `data/self-roles.json` (remplace `REMPLACER_*` par les vrais IDs de roles), role du bot **au-dessus** des roles qu'il donne.
 
-## Bienvenue
+## Arrivee / depart
 
-Dans `.env`, `WELCOME_CHANNEL_ID` = ID du salon #bienvenue (clic droit → copier l'identifiant du salon).
+- `.env` : `WELCOME_CHANNEL_ID` (salon bienvenue + depart par defaut)
+- Optionnel : `LEAVE_CHANNEL_ID` (autre salon pour les departs)
+- `data/auto-roles.json` : IDs des roles donnes **automatiquement** a l'arrivee (ex. Membre). Voir `auto-roles.example.json`. Role du bot **au-dessus** de ces roles.
 
 ## Structure
 

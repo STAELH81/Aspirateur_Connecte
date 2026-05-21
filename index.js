@@ -7,7 +7,8 @@ const {
   MessageFlags,
 } = require("discord.js");
 const commandModules = require("./commands");
-const welcomeEvent = require("./events/welcome");
+const memberJoinEvent = require("./events/memberJoin");
+const memberLeaveEvent = require("./events/memberLeave");
 const { addEntrant, updateMessage, scheduleAll } = require("./lib/giveaways");
 const personality = require("./lib/personality");
 
@@ -29,11 +30,16 @@ client.once(Events.ClientReady, (c) => {
   console.log(`Aspirateur en ligne : ${c.user.tag} — Les Girlsss`);
   scheduleAll(client);
   if (!process.env.WELCOME_CHANNEL_ID) {
-    console.log("Tip: WELCOME_CHANNEL_ID dans .env pour les messages de bienvenue.");
+    console.log("Tip: WELCOME_CHANNEL_ID pour bienvenue + depart (ou LEAVE_CHANNEL_ID).");
+  }
+  const { loadRoleIds } = require("./lib/autoRoles");
+  if (loadRoleIds().length === 0) {
+    console.log("Tip: data/auto-roles.json pour les roles a l'arrivee.");
   }
 });
 
-client.on(Events.GuildMemberAdd, (...args) => welcomeEvent.execute(...args));
+client.on(Events.GuildMemberAdd, (...args) => memberJoinEvent.execute(...args));
+client.on(Events.GuildMemberRemove, (...args) => memberLeaveEvent.execute(...args));
 
 client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isButton() && interaction.customId.startsWith("giveaway:enter:")) {
