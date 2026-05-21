@@ -1,0 +1,24 @@
+{
+  "menus": [
+    {
+      "id": "jeux",
+      "title": "Role Menu: Jeux",
+      "description": "Clique pour t'attribuer un role jeu (ajouter ou retirer).",
+      "roles": [
+        { "id": "1335202569768931345", "label": "Valorant", "emoji": "🔫" },
+        { "id": "1335202569768931343", "label": "Minecraft", "emoji": "⛏️" },
+        { "id": "1335202569768931344", "label": "CS", "emoji": "💣" },
+        { "id": "1335202569768931339", "label": "League of Legends", "emoji": "🗡️" }
+      ]
+    },
+    {
+      "id": "notifs",
+      "title": "Role Menu: Notifs",
+      "description": "Clique pour t'attribuer le role events (ajouter ou retirer).",
+      "roles": [
+        { "id": "1350174049753628713", "label": "Events", "emoji": "🎮" },
+        { "id": "1405962987629711370", "label": "Sorties", "emoji": "🧥" }
+      ]
+    }
+  ]
+}
