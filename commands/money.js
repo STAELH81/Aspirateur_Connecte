@@ -209,9 +209,11 @@ module.exports = {
           return `**${i.label}** — ${i.price} coins · 1 jour de streak sauve si tu rates un daily`;
         }
         if (type === "coin_pack") {
-          return `**${i.label}** — ${i.price} coins → **+${i.coins}** coins (meme, absurde)`;
+          return `**${i.label}** — ${i.price} coins → **+${i.coins}** coins`;
         }
-        return `**${i.label}** — ${i.price} coins · ${i.durationDays || 1} jour(s)`;
+        const days = i.durationDays || 1;
+        const dLabel = days === 1 ? "1 jour" : `${days} jours`;
+        return `**${i.label}** — ${i.price} coins · ${dLabel}`;
       });
       await interaction.reply({
         embeds: [
@@ -236,7 +238,10 @@ module.exports = {
       }
       let detail = "";
       if (result.kind === "role") {
-        detail = `Role actif **${result.days}** jour(s).`;
+        detail =
+          result.days === 1
+            ? "Role actif **1 jour**."
+            : `Role actif **${result.days} jours**.`;
       } else if (result.kind === "daily_boost") {
         detail = `Prochain \`/money daily\` : gains x**${result.multiplier}**.`;
       } else if (result.kind === "work_reset") {
@@ -246,7 +251,7 @@ module.exports = {
       } else if (result.kind === "streak_shield") {
         detail = "Si tu rates un jour de daily, ta streak ne repart pas a 1 (une fois).";
       } else if (result.kind === "coin_pack") {
-        detail = `Tu recois **+${result.coinsGranted}** coins. Oui, c'etait une mauvaise idee.`;
+        detail = `Tu recois **+${result.coinsGranted}** coins.`;
       }
       await interaction.reply({
         content: [
