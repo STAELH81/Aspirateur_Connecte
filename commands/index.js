@@ -17,4 +17,6 @@ module.exports = [
   require("./quote"),
   require("./ticket"),
   require("./level"),
+  require("./warn"),
+  require("./suggest"),
 ];

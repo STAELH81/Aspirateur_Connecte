@@ -1,11 +1,18 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require("discord.js");
 const xp = require("../lib/xp");
 const { COLOR } = require("../lib/personality");
+
+const MEDALS = ["🥇", "🥈", "🥉"];
+
+async function displayName(guild, userId) {
+  const member = await guild.members.fetch(userId).catch(() => null);
+  return member?.displayName || member?.user?.username || "Inconnu";
+}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("level")
-    .setDescription("XP et niveaux (style MEE6)")
+    .setDescription("XP et niveaux")
     .addSubcommand((sub) =>
       sub
         .setName("voir")
@@ -44,19 +51,28 @@ module.exports = {
     }
 
     if (sub === "top") {
-      const top = xp.getLeaderboard(10);
+      const top = xp.getLeaderboard(15);
       if (top.length === 0) {
-        await interaction.reply({ content: "Pas encore d'XP.", ephemeral: true });
+        await interaction.reply({
+          content: "Pas encore d'XP.",
+          flags: MessageFlags.Ephemeral,
+        });
         return;
       }
-      const lines = top.map(
-        (e, i) => `${i + 1}. <@${e.id}> — niv. **${e.level}** (${e.totalXp} XP)`
-      );
+
+      const lines = [];
+      for (let i = 0; i < top.length; i++) {
+        const e = top[i];
+        const prefix = i < 3 ? MEDALS[i] : `**${i + 1}.**`;
+        const name = await displayName(interaction.guild, e.id);
+        lines.push(`${prefix} **${name}** — niv. **${e.level}** · ${e.totalXp} XP`);
+      }
+
       await interaction.reply({
         embeds: [
           new EmbedBuilder()
             .setColor(COLOR)
-            .setTitle("Top XP")
+            .setTitle("Classement XP — Les Girlsss")
             .setDescription(lines.join("\n")),
         ],
       });

@@ -22,6 +22,7 @@ const { refreshPollMessage } = require("./lib/pollDisplay");
 const tickets = require("./lib/tickets");
 const afk = require("./lib/afk");
 const xp = require("./lib/xp");
+const suggestions = require("./lib/suggestions");
 const { createStore } = require("./lib/jsonStore");
 const path = require("path");
 
@@ -92,6 +93,9 @@ client.once(Events.ClientReady, (c) => {
   }
   if (!process.env.BIRTHDAY_VIP_ROLE_ID) {
     console.log("Tip: BIRTHDAY_VIP_ROLE_ID pour VIP 5 jours le jour d'anniv.");
+  }
+  if (!process.env.SUGGESTIONS_CHANNEL_ID) {
+    console.log("Tip: SUGGESTIONS_CHANNEL_ID pour /suggest et reactions auto.");
   }
 });
 
@@ -283,6 +287,8 @@ client.on(Events.MessageCreate, async (message) => {
     );
     await message.reply(lines.join("\n")).catch(() => {});
   }
+
+  await suggestions.onSuggestionMessage(message).catch(() => {});
 
   const xpResult = xp.tryMessageXp(message.author.id);
   if (xpResult?.leveledUp) {

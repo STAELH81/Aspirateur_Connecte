@@ -16,6 +16,8 @@ $files = @(
   "data\quotes-pending.json",
   "data\shop-roles.json",
   "data\birthday-vip.json",
+  "data\birthday-remind-state.json",
+  "data\warns.json",
   "data\poll-votes.json",
   "data\tickets-open.json"
 )

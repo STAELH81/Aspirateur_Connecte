@@ -6,3 +6,5 @@ data/giveaways.json
 data/economy.json
 data/birthday-announce-state.json
 data/birthday-vip.json
+data/birthday-remind-state.json
+data/warns.json
