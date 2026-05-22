@@ -27,9 +27,12 @@ module.exports = {
 
       if (sub === "donner") {
         const result = economy.adminGrant(target.id, amount);
-        await economyLog.log(interaction.client, {
-          title: "Admin — coins donnes",
-          description: `<@${interaction.user.id}> → <@${target.id}> : **+${result.amount}**`,
+        await economyLog.logTx(interaction.client, {
+          userId: target.id,
+          action: "Admin — coins donnes",
+          balanceBefore: result.balanceBefore,
+          balanceAfter: result.balanceAfter,
+          details: `Par <@${interaction.user.id}> · **+${result.amount}**`,
         });
         await interaction.reply({
           content: `**+${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
@@ -44,6 +47,13 @@ module.exports = {
           await interaction.reply({ content: result.reason, ephemeral: true });
           return;
         }
+        await economyLog.logTx(interaction.client, {
+          userId: target.id,
+          action: "Admin — coins retires",
+          balanceBefore: result.balanceBefore,
+          balanceAfter: result.balanceAfter,
+          details: `Par <@${interaction.user.id}> · **-${result.amount}**`,
+        });
         await interaction.reply({
           content: `**-${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
           ephemeral: true,
@@ -76,6 +86,19 @@ module.exports = {
         });
         return;
       }
+      await economyLog.logTx(interaction.client, {
+        userId: interaction.user.id,
+        action: "Daily",
+        balanceBefore: result.balanceBefore,
+        balanceAfter: result.balanceAfter,
+        details: [
+          `Gain : **+${result.gain}** coins`,
+          `Streak : **${result.streak}** (+${result.bonus} bonus)`,
+          result.boostUsed ? `Boost x${result.boostMult}` : null,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      });
       await interaction.reply({
         embeds: [
           new EmbedBuilder()
@@ -101,6 +124,18 @@ module.exports = {
         });
         return;
       }
+      await economyLog.logTx(interaction.client, {
+        userId: interaction.user.id,
+        action: "Work",
+        balanceBefore: result.balanceBefore,
+        balanceAfter: result.balanceAfter,
+        details: [
+          `Gain : **+${result.gain}** coins`,
+          result.workBoostUsed ? `Boost x${result.workMult}` : null,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      });
       await interaction.reply({
         embeds: [
           new EmbedBuilder()
@@ -125,6 +160,16 @@ module.exports = {
         await interaction.reply({ content: result.reason, ephemeral: true });
         return;
       }
+      await economyLog.logPay(
+        interaction.client,
+        interaction.user.id,
+        to.id,
+        result.amount,
+        result.fromBefore,
+        result.fromAfter,
+        result.toBefore,
+        result.toAfter
+      );
       await interaction.reply(
         `Tu envoies **${result.amount}** coins a ${to}.\nTon solde : ${economy.formatCoins(result.fromBalance)}`
       );
