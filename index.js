@@ -183,13 +183,20 @@ client.on(Events.InteractionCreate, async (interaction) => {
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
     try {
       const result = await tickets.openTicket(interaction);
+      if (!result.ok) {
+        await interaction.editReply({ content: result.reason });
+        return;
+      }
+      const link = result.channelId ? `<#${result.channelId}>` : `${result.channel}`;
       await interaction.editReply({
-        content: result.ok ? `Ticket cree : ${result.channel}` : result.reason,
+        content: result.warn || `Ticket cree : ${link}`,
       });
     } catch (err) {
-      console.error(err);
+      console.error("[ticket:open]", err);
       await interaction
-        .editReply({ content: personality.errors.command })
+        .editReply({
+          content: `Erreur apres creation du ticket : ${err.message || "inconnue"}`,
+        })
         .catch(() => {});
     }
     return;
