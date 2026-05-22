@@ -4,9 +4,9 @@ Ne mets **pas** le `.env` ni les `data/*.json` sur une branche Git, même privé
 
 ## Avant de quitter l’ancien PC
 
-```powershell
-cd "C:\Users\Sacha Zambiasi\Documents\Code\Aspirateur_Connecte"
-.\scripts\export-dev.ps1
+```bat
+cd "C:\chemin\vers\Aspirateur_Connecte"
+scripts\export-dev.cmd
 ```
 
 Ça remplit `dev-bundle/` avec :
@@ -20,13 +20,14 @@ Le code continue sur GitHub comme d’habitude (`git push`).
 
 ## Sur le nouveau PC
 
-```powershell
+```bat
 git clone https://github.com/STAELH81/Aspirateur_Connecte.git
 cd Aspirateur_Connecte
-npm install
-# Colle dev-bundle/ a la racine du projet
-.\scripts\import-dev.ps1
-.\scripts\start.ps1
+scripts\setup.cmd
+rem Colle dev-bundle/ a la racine du projet
+scripts\import-dev.cmd
+scripts\deploy.cmd
+scripts\start.cmd
 ```
 
 `dev-bundle/` est dans `.gitignore` — il ne part jamais sur GitHub.

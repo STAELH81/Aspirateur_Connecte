@@ -139,7 +139,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 
 Sans `GAMBLING_CHANNEL_ID`, `/money` et `/casino` fonctionnent partout (déconseillé).
 
-Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
+Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.cmd` / `import-dev.cmd`).
 
 ### Fichiers `data/`
 
@@ -177,11 +177,13 @@ npm start
 
 Ou sous Windows :
 
-```powershell
-.\scripts\setup.ps1
-.\scripts\deploy.ps1
-.\scripts\start.ps1
+```bat
+scripts\setup.cmd
+scripts\deploy.cmd
+scripts\start.cmd
 ```
+
+(Equivalent npm : `npm install`, `npm run deploy`, `npm start`)
 
 **Important :** un seul processus par token. Si le bot tourne sur Discloud, ne lance pas `npm start` en local en même temps.
 
@@ -244,7 +246,7 @@ Aspirateur_Connecte/
 ├── events/               # Arrivée / départ membres
 ├── lib/                  # Logique partagée (economie, casino, giveaways…)
 ├── data/                 # JSON config + donnees runtime
-├── scripts/              # setup.ps1, deploy.ps1, start.ps1 (Windows)
+├── scripts/              # setup.cmd, deploy.cmd, start.cmd (Windows)
 ├── discloud.config       # Config hebergeur
 └── TUTORIAL.md           # Guide pas a pas (premiere install)
 ```

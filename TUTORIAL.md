@@ -39,7 +39,7 @@ Le code du bot est **deja dans ce repo**. Ce guide sert surtout a configurer Dis
 
 ```powershell
 cd "C:\Users\Sacha Zambiasi\Documents\Code\Aspirateur_Connecte"
-.\scripts\setup.ps1
+scripts\setup.cmd
 ```
 
 Cree `.env` a la **racine** (pas dans `node_modules/`) :
@@ -54,13 +54,15 @@ WELCOME_CHANNEL_ID=id_du_salon_bienvenue
 
 ### Scripts PowerShell
 
-Ne double-clique pas les `.ps1`. Lance depuis le terminal :
+Lance depuis le terminal (CMD ou PowerShell) :
 
-```powershell
-.\scripts\setup.ps1   # npm install (+ .env depuis .env.example si absent)
-.\scripts\deploy.ps1  # enregistre /ping, /girlsss, /help sur le serveur
-.\scripts\start.ps1   # lance le bot
+```bat
+scripts\setup.cmd   rem npm install + .env depuis .env.example si absent
+scripts\deploy.cmd    rem enregistre les slash commands sur le serveur
+scripts\start.cmd     rem lance le bot
 ```
+
+Ou avec npm : `npm install` puis `npm run deploy` puis `npm start`.
 
 Si *running scripts is disabled* :
 
@@ -80,14 +82,14 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 | `commands/girlsss.js` | `/girlsss` |
 | `commands/help.js` | `/help` |
 
-Apres chaque **nouvelle** commande ou modification de description : `.\scripts\deploy.ps1` puis relance le bot.
+Apres chaque **nouvelle** commande ou modification de description : `scripts\deploy.cmd` puis relance le bot.
 
 ---
 
 ## Etape 5 — Tester
 
-1. `.\scripts\deploy.ps1` — tu dois voir la liste des commandes
-2. `.\scripts\start.ps1` — `Connecte en tant que ...` + bot vert sur Discord
+1. `scripts\deploy.cmd` — tu dois voir la liste des commandes
+2. `scripts\start.cmd` — bot en ligne sur Discord
 3. Sur le serveur : `/ping`, `/girlsss`, `/help`, ou @mention du bot
 
 Arret : `Ctrl+C`.
@@ -120,10 +122,10 @@ Tant que `node index.js` tourne sur ton PC, le bot est en ligne. Sinon : Railway
 | `Used disallowed intents` | Active Message Content Intent (etape 1) |
 | `TokenInvalid` | Token dans `.env` a la racine, pas dans `node_modules/` |
 | `DISCORD_GUILD_ID manquant` | Ajoute l'ID serveur dans `.env` |
-| Slash invisibles | `.\scripts\deploy.ps1`, verifie `DISCORD_GUILD_ID` |
+| Slash invisibles | `scripts\deploy.cmd`, verifie `DISCORD_GUILD_ID` |
 | `Missing Access` | Reinvite le bot (etape 2) |
 | Token fuite | Reset Token portail + maj `.env` |
-| `.ps1` ne marche pas | Terminal PowerShell, pas double-clic |
+| Script bloque | Utilise les `.cmd` dans `scripts\`, pas les `.ps1` |
 
 ---
 

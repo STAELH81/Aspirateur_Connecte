@@ -68,4 +68,4 @@ Vérifie que `GAMBLING_CHANNEL_ID` est bien rempli si tu utilises `/money` et `/
 | **Commit** (dans l’app) ou **git push** | Met à jour **l’app actuelle** |
 | **Settings** | RAM, restart… pas les secrets |
 
-Une seule instance du bot à la fois (pas `start.ps1` en local **et** Discloud avec le même token).
+Une seule instance du bot à la fois (pas `start.cmd` en local **et** Discloud avec le même token).
