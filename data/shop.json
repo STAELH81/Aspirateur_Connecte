@@ -13,6 +13,19 @@
       "roleId": "1335202569793966179",
       "price": 2000,
       "durationDays": 3
+    },
+    {
+      "id": "boost_daily",
+      "type": "daily_boost",
+      "label": "Boost Daily (+50%)",
+      "price": 450,
+      "multiplier": 1.5
+    },
+    {
+      "id": "reset_work",
+      "type": "work_reset",
+      "label": "Reset Work",
+      "price": 300
     }
   ]
 }

@@ -82,7 +82,7 @@ module.exports = {
             .setColor(COLOR)
             .setDescription(
               [
-                `Daily : **+${result.gain}** coins`,
+                `Daily : **+${result.gain}** coins${result.boostUsed ? ` (boost x${result.boostMult})` : ""}`,
                 `Streak : **${result.streak}** jour(s) (+${result.bonus} bonus)`,
                 `Solde : ${economy.formatCoins(result.balance)}`,
               ].join("\n")
@@ -147,9 +147,17 @@ module.exports = {
         await interaction.reply({ content: hint, ephemeral: true });
         return;
       }
-      const lines = items.map(
-        (i) => `**${i.label}** — ${i.price} coins · ${i.durationDays || 1} jour(s)`
-      );
+      const lines = items.map((i) => {
+        const type = i.type || "role";
+        if (type === "daily_boost") {
+          const mult = i.multiplier || 1.5;
+          return `**${i.label}** — ${i.price} coins · prochain \`/money daily\` x${mult}`;
+        }
+        if (type === "work_reset") {
+          return `**${i.label}** — ${i.price} coins · reset cooldown \`/money work\``;
+        }
+        return `**${i.label}** — ${i.price} coins · ${i.durationDays || 1} jour(s)`;
+      });
       await interaction.reply({
         embeds: [
           new EmbedBuilder()
@@ -171,10 +179,18 @@ module.exports = {
         await interaction.reply({ content: result.reason, ephemeral: true });
         return;
       }
+      let detail = "";
+      if (result.kind === "role") {
+        detail = `Role actif **${result.days}** jour(s).`;
+      } else if (result.kind === "daily_boost") {
+        detail = `Prochain \`/money daily\` : gains x**${result.multiplier}**.`;
+      } else if (result.kind === "work_reset") {
+        detail = "Tu peux refaire `/money work` tout de suite.";
+      }
       await interaction.reply({
         content: [
           `Achat : **${result.item.label}** pour **${result.price}** coins`,
-          `Role actif **${result.days}** jour(s).`,
+          detail,
           `Solde : ${economy.formatCoins(result.balance)}`,
         ].join("\n"),
       });
