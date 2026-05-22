@@ -36,6 +36,26 @@
       "type": "work_reset",
       "label": "Reset Work",
       "price": 300
+    },
+    {
+      "id": "boost_work",
+      "type": "work_boost",
+      "label": "Double Work",
+      "price": 380,
+      "multiplier": 2
+    },
+    {
+      "id": "streak_shield",
+      "type": "streak_shield",
+      "label": "Bouclier Streak",
+      "price": 550
+    },
+    {
+      "id": "achat_inutile",
+      "type": "coin_pack",
+      "label": "Achat inutile",
+      "price": 500,
+      "coins": 20
     }
   ]
 }

@@ -106,7 +106,7 @@ module.exports = {
           new EmbedBuilder()
             .setColor(COLOR)
             .setDescription(
-              `Travail : **+${result.gain}** coins\nSolde : ${economy.formatCoins(result.balance)}`
+              `Travail : **+${result.gain}** coins${result.workBoostUsed ? ` (boost x${result.workMult})` : ""}\nSolde : ${economy.formatCoins(result.balance)}`
             ),
         ],
       });
@@ -156,6 +156,16 @@ module.exports = {
         if (type === "work_reset") {
           return `**${i.label}** — ${i.price} coins · reset cooldown \`/money work\``;
         }
+        if (type === "work_boost") {
+          const mult = i.multiplier || 2;
+          return `**${i.label}** — ${i.price} coins · prochain \`/money work\` x${mult}`;
+        }
+        if (type === "streak_shield") {
+          return `**${i.label}** — ${i.price} coins · 1 jour de streak sauve si tu rates un daily`;
+        }
+        if (type === "coin_pack") {
+          return `**${i.label}** — ${i.price} coins → **+${i.coins}** coins (meme, absurde)`;
+        }
         return `**${i.label}** — ${i.price} coins · ${i.durationDays || 1} jour(s)`;
       });
       await interaction.reply({
@@ -186,6 +196,12 @@ module.exports = {
         detail = `Prochain \`/money daily\` : gains x**${result.multiplier}**.`;
       } else if (result.kind === "work_reset") {
         detail = "Tu peux refaire `/money work` tout de suite.";
+      } else if (result.kind === "work_boost") {
+        detail = `Prochain \`/money work\` : gains x**${result.multiplier}**.`;
+      } else if (result.kind === "streak_shield") {
+        detail = "Si tu rates un jour de daily, ta streak ne repart pas a 1 (une fois).";
+      } else if (result.kind === "coin_pack") {
+        detail = `Tu recois **+${result.coinsGranted}** coins. Oui, c'etait une mauvaise idee.`;
       }
       await interaction.reply({
         content: [

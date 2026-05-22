@@ -5,6 +5,7 @@ const {
   Events,
   Collection,
   MessageFlags,
+  ChannelType,
 } = require("discord.js");
 const commandModules = require("./commands");
 const memberJoinEvent = require("./events/memberJoin");
@@ -67,8 +68,24 @@ client.once(Events.ClientReady, (c) => {
   if (!process.env.ECONOMY_LOG_CHANNEL_ID) {
     console.log("Tip: ECONOMY_LOG_CHANNEL_ID pour les logs casino.");
   }
-  if (!process.env.TICKET_CATEGORY_ID) {
-    console.log("Tip: TICKET_CATEGORY_ID (ID categorie Discord) pour les tickets.");
+  const ticketCat = process.env.TICKET_CATEGORY_ID?.match(/\d{17,20}/)?.[0];
+  if (ticketCat && process.env.DISCORD_GUILD_ID) {
+    client.guilds
+      .fetch(process.env.DISCORD_GUILD_ID)
+      .then((g) => g.channels.fetch(ticketCat))
+      .then((ch) => {
+        if (!ch) {
+          console.log(`Tickets: ID ${ticketCat} introuvable sur le serveur.`);
+          return;
+        }
+        const ok = ch.type === ChannelType.GuildCategory;
+        console.log(
+          `Tickets: TICKET_CATEGORY_ID → #${ch.name} (type ${ch.type}${ok ? ", OK" : " — PAS une categorie, corrige .env Discloud"})`
+        );
+      })
+      .catch(() => {});
+  } else if (!process.env.TICKET_CATEGORY_ID) {
+    console.log("Tip: TICKET_CATEGORY_ID ou panel dans un salon sous la categorie Tickets.");
   }
   if (!process.env.TICKET_STAFF_ROLE_IDS) {
     console.log("Tip: TICKET_STAFF_ROLE_IDS (IDs roles modo, separes par virgule) pour voir les tickets.");
