@@ -16,9 +16,15 @@ Le formulaire **Name** / **Value** sur le site = étape **uniquement** quand tu 
 
 ---
 
-## Modifier les variables sur l’app **originale** (sans formulaire)
+## Modifier sur l’app **déjà** en ligne
 
-Discloud ne propose en général **pas** d’éditeur visuel dans **Settings** après coup. Deux façons qui **mettent à jour la même app** :
+### Éditeur de fichiers sur le dashboard Discloud
+
+Sur certaines apps, tu peux ouvrir l’app → **fichiers** (ou éditeur intégré) → modifier **`.env`** directement sur le serveur, puis **Restart**.
+
+Pratique pour ajouter une variable vite en prod. Attention : un **`git push`** qui redéploie peut **écraser** ce `.env` si le repo n’a pas les mêmes valeurs — garde ton `.env` local et `.env.example` à jour.
+
+### Autres méthodes (si pas d’éditeur)
 
 ### Option A — `git push` (si l’app est liée à GitHub)
 
@@ -68,4 +74,13 @@ Vérifie que `GAMBLING_CHANNEL_ID` est bien rempli si tu utilises `/money` et `/
 | **Commit** (dans l’app) ou **git push** | Met à jour **l’app actuelle** |
 | **Settings** | RAM, restart… pas les secrets |
 
-Une seule instance du bot à la fois (pas `start.cmd` en local **et** Discloud avec le même token).
+Une seule instance du bot à la fois (pas `start.ps1` en local **et** Discloud avec le même token).
+
+## Workflow actuel
+
+1. **Coder** sur ton PC (pas besoin de lancer le bot).
+2. **`git push`** → Discloud met a jour le code et redemarre.
+3. **Nouvelle commande `/`** → `.\scripts\deploy.ps1` sur ton PC (obligatoire).
+4. **Nouvelle variable** → editeur `.env` sur le dashboard Discloud + **Restart**.
+
+`.\scripts\start.ps1` = test local seulement (Discloud en **Stop** avant).

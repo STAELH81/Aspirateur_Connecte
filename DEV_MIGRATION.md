@@ -4,34 +4,33 @@ Ne mets **pas** le `.env` ni les `data/*.json` sur une branche Git, même privé
 
 ## Avant de quitter l’ancien PC
 
-```bat
+```powershell
 cd "C:\chemin\vers\Aspirateur_Connecte"
-scripts\export-dev.cmd
+.\scripts\export-dev.ps1
 ```
 
-Ça remplit `dev-bundle/` avec :
-
-- `.env`
-- `data/birthdays.json`, `economy.json`, `giveaways.json`, etc.
+Ça remplit `dev-bundle/` avec `.env` + les fichiers `data/` locaux.
 
 Copie **`dev-bundle/`** (ou un zip) sur clé USB, Google Drive, etc.
 
-Le code continue sur GitHub comme d’habitude (`git push`).
+Le code : `git push` sur GitHub comme d’habitude.
 
 ## Sur le nouveau PC
 
-```bat
+```powershell
 git clone https://github.com/STAELH81/Aspirateur_Connecte.git
 cd Aspirateur_Connecte
-scripts\setup.cmd
-rem Colle dev-bundle/ a la racine du projet
-scripts\import-dev.cmd
-scripts\deploy.cmd
-scripts\start.cmd
+.\scripts\setup.ps1
+# Colle dev-bundle/ a la racine du projet
+.\scripts\import-dev.ps1
+.\scripts\deploy.ps1
+.\scripts\start.ps1
 ```
 
 `dev-bundle/` est dans `.gitignore` — il ne part jamais sur GitHub.
 
-## Prod Discloud (plus tard)
+PowerShell bloque les scripts ? → [scripts/WINDOWS.md](scripts/WINDOWS.md)
 
-Une app prod propre : variables au formulaire de création ou `.env` au deploy. Les données prod sur Discloud ne suivent pas automatiquement ton PC dev.
+## Discloud (prod)
+
+Le bot tourne sur Discloud. Sur le nouveau PC tu codes et tu `git push` — pas besoin de `start.ps1` au quotidien.

@@ -139,7 +139,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 
 Sans `GAMBLING_CHANNEL_ID`, `/money` et `/casino` fonctionnent partout (déconseillé).
 
-Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.cmd` / `import-dev.cmd`).
+Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
 
 ### Fichiers `data/`
 
@@ -161,44 +161,46 @@ Exemples : `*.example.json` dans `data/`.
 
 ---
 
-## Installation (développeur)
+## Workflow au quotidien
 
-**Prérequis :** [Node.js](https://nodejs.org/) 20 ou 22, compte Discord, droits admin sur le serveur de test.
+Tu **codes sur ton PC**, le bot **tourne sur Discloud** (24/7). Pas besoin de le lancer en local sauf pour tester.
+
+| Étape | Quoi faire |
+|--------|------------|
+| 1. Modifier le code | Cursor / VS Code, fichiers `commands/`, `lib/`, etc. |
+| 2. Publier sur le serveur | `git add` → `git commit` → `git push` → Discloud redéploie |
+| 3. Nouvelle commande `/` | `.\scripts\deploy.ps1` (en local, une fois) — Discord n’update pas les `/` tout seul |
+| 4. Nouvelle variable d’env | Éditeur `.env` sur le dashboard Discloud + **Restart** |
+| 5. Tester en local *(optionnel)* | Discloud **Stop**, puis `.\scripts\start.ps1` — remets **Start** sur Discloud après |
+
+Le `.env` de ton PC sert surtout à `deploy.ps1` et aux tests locaux ; la prod lit le `.env` **sur Discloud**.
+
+---
+
+## Installation (première fois sur un PC)
+
+**Prérequis :** [Node.js](https://nodejs.org/) 20 ou 22.
 
 ```powershell
 git clone https://github.com/STAELH81/Aspirateur_Connecte.git
 cd Aspirateur_Connecte
+.\scripts\setup.ps1
 copy .env.example .env
-# Remplir DISCORD_TOKEN, DISCORD_GUILD_ID, WELCOME_CHANNEL_ID
-npm install
-npm run deploy
-npm start
+# Remplir au moins DISCORD_TOKEN et DISCORD_GUILD_ID (pour deploy.ps1)
+.\scripts\deploy.ps1
 ```
 
-Ou sous Windows :
-
-```bat
-bot.cmd setup
-bot.cmd deploy
-bot.cmd start
-```
-
-**PowerShell bloque `npm` ?** (politique `Restricted`) — utilise `bot.cmd` ci-dessus, ou une fois : `scripts\fix-powershell.cmd`. Sinon dans PowerShell : `npm.cmd install` (pas `npm install`).
-
-**Important :** un seul processus par token. Si le bot tourne sur Discloud, ne lance pas `npm start` en local en même temps.
+**PowerShell bloque les scripts ?** → [scripts/WINDOWS.md](scripts/WINDOWS.md)
 
 ---
 
-## Hébergement 24/7 (Discloud)
+## Hébergement (Discloud)
 
-Le repo contient `discloud.config` pour [Discloud](https://discloud.com).
+Le bot en prod tourne sur [Discloud](https://discloud.com) — une app déjà créée, liée au repo GitHub.
 
-1. Push le code sur GitHub (sans `.env`, sans `node_modules/`)
-2. Créer l’app Discloud liée au repo
-3. Variables d’environnement (voir [Ajouter des variables sur Discloud](#ajouter-des-variables-sur-discloud))  
-   `DISCORD_TOKEN`, `DISCORD_GUILD_ID`, `WELCOME_CHANNEL_ID`, `GAMBLING_CHANNEL_ID` (+ `LEAVE_CHANNEL_ID` si besoin)
-4. Déploiement auto au push (selon ton réglage)
-5. **`npm run deploy`** en local après chaque **nouvelle commande slash** (Discord ne les découvre pas seul)
+- **Code** : `git push`
+- **Variables** : `.env` sur le dashboard ([DISCLOUD_ENV.md](DISCLOUD_ENV.md))
+- **Slash commands** : `.\scripts\deploy.ps1` depuis ton PC après chaque ajout de commande
 
 ### Ajouter des variables sur Discloud (important)
 
@@ -246,7 +248,7 @@ Aspirateur_Connecte/
 ├── events/               # Arrivée / départ membres
 ├── lib/                  # Logique partagée (economie, casino, giveaways…)
 ├── data/                 # JSON config + donnees runtime
-├── scripts/              # setup.cmd, deploy.cmd, start.cmd (Windows)
+├── scripts/              # setup.ps1, deploy.ps1, start.ps1 — voir WINDOWS.md
 ├── discloud.config       # Config hebergeur
 └── TUTORIAL.md           # Guide pas a pas (premiere install)
 ```

@@ -39,10 +39,10 @@ Le code du bot est **deja dans ce repo**. Ce guide sert surtout a configurer Dis
 
 ```powershell
 cd "C:\Users\Sacha Zambiasi\Documents\Code\Aspirateur_Connecte"
-scripts\setup.cmd
+.\scripts\setup.ps1
 ```
 
-Cree `.env` a la **racine** (pas dans `node_modules/`) :
+Cree `.env` a la **racine** (ou copie depuis `.env.example`) :
 
 ```env
 DISCORD_TOKEN=ton_token_ici
@@ -52,25 +52,20 @@ WELCOME_CHANNEL_ID=id_du_salon_bienvenue
 
 **ID du serveur** : Parametres Discord → Avance → Mode developpeur ON → clic droit sur l'icone du serveur → Copier l'identifiant du serveur.
 
-### Scripts PowerShell
+### PowerShell bloque les scripts ?
 
-Lance depuis le dossier du projet :
-
-```bat
-bot.cmd setup
-bot.cmd deploy
-bot.cmd start
-```
-
-**Si PowerShell affiche** *« l'exécution de scripts est désactivée »* pour `npm` :
-- utilise **`bot.cmd`** (recommandé), ou
-- `scripts\fix-powershell.cmd` (une fois, sans admin), ou
-- dans PowerShell : `npm.cmd install` puis `node deploy-commands.js`
-
-Si *running scripts is disabled* :
+Voir **[scripts/WINDOWS.md](scripts/WINDOWS.md)** — en resume, une fois :
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Puis :
+
+```powershell
+.\scripts\setup.ps1
+.\scripts\deploy.ps1
+.\scripts\start.ps1
 ```
 
 ---
@@ -79,42 +74,27 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
 | Fichier | Role |
 |---------|------|
-| `index.js` | Connexion, slash commands, reponse @mention |
-| `deploy-commands.js` | Publie les `/` sur ton serveur (lit `DISCORD_GUILD_ID`) |
-| `commands/ping.js` | `/ping` |
-| `commands/girlsss.js` | `/girlsss` |
-| `commands/help.js` | `/help` |
+| `index.js` | Connexion, slash commands, boutons |
+| `deploy-commands.js` | Publie les `/` sur ton serveur |
+| `commands/` | Toutes les commandes slash |
 
-Apres chaque **nouvelle** commande ou modification de description : `scripts\deploy.cmd` puis relance le bot.
+Apres chaque **nouvelle** commande : `.\scripts\deploy.ps1` puis relance le bot.
 
 ---
 
-## Etape 5 — Tester
+## Etape 5 — Mettre en ligne (Discloud)
 
-1. `scripts\deploy.cmd` — tu dois voir la liste des commandes
-2. `scripts\start.cmd` — bot en ligne sur Discord
-3. Sur le serveur : `/ping`, `/girlsss`, `/help`, ou @mention du bot
+1. `git push` — le code part sur GitHub, Discloud redéploie
+2. Variables : `.env` sur le dashboard Discloud ([DISCLOUD_ENV.md](DISCLOUD_ENV.md))
+3. Nouvelle commande `/` : `.\scripts\deploy.ps1` sur ton PC
 
-Arret : `Ctrl+C`.
-
----
-
-## Etape 6 — Idees pour plus tard
-
-| Idee | Difficulte |
-|------|------------|
-| Message de bienvenue (`GuildMemberAdd`) | Moyen |
-| Roles par reaction / boutons | Moyen |
-| Blagues en JSON local | Facile |
-| Bot 24/7 (Railway, Render, Raspberry) | Optionnel |
-
-Ajoute un fichier dans `commands/`, enregistre-le dans `commands/index.js`, puis `npm run deploy`.
+Le bot tourne sur Discloud. Tu n’as pas besoin de `start.ps1` sauf pour tester (Discloud **Stop** avant).
 
 ---
 
-## Etape 7 — Hebergement 24/7 (optionnel)
+## Tester en local (optionnel)
 
-Tant que `node index.js` tourne sur ton PC, le bot est en ligne. Sinon : Railway, Render, Fly.io — variable `DISCORD_TOKEN` + `DISCORD_GUILD_ID` cote hebergeur, commande `node index.js`.
+`.\scripts\start.ps1` puis `/ping` sur Discord. `Ctrl+C` pour arreter, **Start** sur Discloud apres.
 
 ---
 
@@ -123,12 +103,11 @@ Tant que `node index.js` tourne sur ton PC, le bot est en ligne. Sinon : Railway
 | Probleme | Solution |
 |----------|----------|
 | `Used disallowed intents` | Active Message Content Intent (etape 1) |
-| `TokenInvalid` | Token dans `.env` a la racine, pas dans `node_modules/` |
-| `DISCORD_GUILD_ID manquant` | Ajoute l'ID serveur dans `.env` |
-| Slash invisibles | `scripts\deploy.cmd`, verifie `DISCORD_GUILD_ID` |
-| `Missing Access` | Reinvite le bot (etape 2) |
+| `TokenInvalid` | Token dans `.env` a la racine |
+| `DISCORD_GUILD_ID manquant` | ID serveur dans `.env` |
+| Slash invisibles | `.\scripts\deploy.ps1` |
+| `npm` / `.ps1` bloques | [scripts/WINDOWS.md](scripts/WINDOWS.md) |
 | Token fuite | Reset Token portail + maj `.env` |
-| `npm` / `.ps1` bloques | `bot.cmd deploy` ou `scripts\fix-powershell.cmd` |
 
 ---
 

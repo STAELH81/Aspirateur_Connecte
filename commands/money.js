@@ -143,7 +143,7 @@ module.exports = {
       if (items.length === 0) {
         const hint = shopFileExists()
           ? "Aucun article valide dans `data/shop.json` (verifie les **roleId** en chiffres Discord)."
-          : "Cree `data/shop.json` depuis `data/shop.json.example`, puis `bot.cmd deploy`.";
+          : "Cree `data/shop.json` depuis `data/shop.json.example`, puis `npm run deploy`.";
         await interaction.reply({ content: hint, ephemeral: true });
         return;
       }
