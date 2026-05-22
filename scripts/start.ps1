@@ -7,12 +7,12 @@ if (-not (Test-Path "index.js")) {
 }
 
 if (-not (Test-Path ".env")) {
-  Write-Host ".env introuvable — ajoute DISCORD_TOKEN."
+  Write-Host '.env introuvable - ajoute DISCORD_TOKEN.'
   exit 1
 }
 
 if (-not (Test-Path "node_modules\discord.js")) {
-  Write-Host "node_modules manquant. Lance d'abord : .\scripts\setup.ps1"
+  Write-Host 'node_modules manquant - lance avant : .\scripts\setup.ps1'
   exit 1
 }
 

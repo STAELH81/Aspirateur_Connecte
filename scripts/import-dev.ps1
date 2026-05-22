@@ -2,7 +2,7 @@ $root = Split-Path -Parent $PSScriptRoot
 $bundle = Join-Path $root "dev-bundle"
 
 if (-not (Test-Path $bundle)) {
-  Write-Host "dev-bundle/ introuvable. Lance export-dev.ps1 sur l'ancien PC d'abord."
+  Write-Host 'dev-bundle/ introuvable - lance export-dev.ps1 sur l ancien PC avant.'
   exit 1
 }
 
