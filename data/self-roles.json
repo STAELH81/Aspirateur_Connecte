@@ -17,7 +17,8 @@
       "description": "Clique pour ajouter ou retirer un role notif.",
       "roles": [
         { "id": "1350174049753628713", "label": "Events", "emoji": "🎮" },
-        { "id": "1405962987629711370", "label": "Sorties", "emoji": "🧥" }
+        { "id": "1405962987629711370", "label": "Sorties", "emoji": "🧥" },
+        { "id": "1507316030291312680", "label": "Updates Bot", "emoji": "🤖" }
       ]
     }
   ]

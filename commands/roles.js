@@ -17,7 +17,7 @@ module.exports = {
         .setRequired(true)
         .addChoices(
           { name: "Jeux (Valorant, MC, CS, LoL)", value: "jeux" },
-          { name: "Notifs (Events, Sorties)", value: "notifs" }
+          { name: "Notifs (Events, Sorties, Updates Bot)", value: "notifs" }
         )
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),

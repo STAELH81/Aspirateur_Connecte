@@ -13,4 +13,8 @@ module.exports = [
   require("./giveaway"),
   require("./money"),
   require("./casino"),
+  require("./afk"),
+  require("./quote"),
+  require("./ticket"),
+  require("./level"),
 ];

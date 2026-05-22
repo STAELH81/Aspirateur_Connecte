@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "vip_3j",
+      "label": "VIP 3 jours (exemple)",
+      "roleId": "ID_DU_ROLE_VIP",
+      "price": 1500,
+      "durationDays": 3
+    }
+  ]
+}
