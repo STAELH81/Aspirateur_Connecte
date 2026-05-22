@@ -95,7 +95,7 @@ Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première u
 **Limites anti-abus :**
 
 - Mise minimum : **10 coins**
-- Mise maximum : **25 %** de ton solde, plafonnée à **500 coins**
+- Mise maximum : **75 %** de ton solde, plafonnée à **2000 coins**
 - L’économie est faite pour être fun, pas pour devenir riche infiniment : farm avec `daily` / `work`, gamble avec modération.
 
 Les soldes sont stockés dans `data/economy.json` sur la machine qui fait tourner le bot (voir hébergement).
