@@ -13,13 +13,6 @@
       "roleId": "1335202569793966179",
       "price": 2000,
       "durationDays": 3
-    },
-    {
-      "id": "updates_7j",
-      "label": "Updates Bot 7 jours",
-      "roleId": "1507316030291312680",
-      "price": 400,
-      "durationDays": 7
     }
   ]
 }
