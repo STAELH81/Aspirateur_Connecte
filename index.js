@@ -68,7 +68,10 @@ client.once(Events.ClientReady, (c) => {
     console.log("Tip: ECONOMY_LOG_CHANNEL_ID pour les logs casino.");
   }
   if (!process.env.TICKET_CATEGORY_ID) {
-    console.log("Tip: TICKET_CATEGORY_ID pour /ticket panel.");
+    console.log("Tip: TICKET_CATEGORY_ID (ID categorie Discord) pour les tickets.");
+  }
+  if (!process.env.TICKET_STAFF_ROLE_IDS) {
+    console.log("Tip: TICKET_STAFF_ROLE_IDS (IDs roles modo, separes par virgule) pour voir les tickets.");
   }
   if (!process.env.BIRTHDAY_VIP_ROLE_ID) {
     console.log("Tip: BIRTHDAY_VIP_ROLE_ID pour VIP 5 jours le jour d'anniv.");
@@ -156,18 +159,34 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 
   if (interaction.isButton() && interaction.customId === "ticket:open") {
-    const result = await tickets.openTicket(interaction);
-    await interaction.reply({
-      content: result.ok ? `Ticket : ${result.channel}` : result.reason,
-      flags: MessageFlags.Ephemeral,
-    });
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+    try {
+      const result = await tickets.openTicket(interaction);
+      await interaction.editReply({
+        content: result.ok ? `Ticket cree : ${result.channel}` : result.reason,
+      });
+    } catch (err) {
+      console.error(err);
+      await interaction
+        .editReply({ content: personality.errors.command })
+        .catch(() => {});
+    }
     return;
   }
 
   if (interaction.isButton() && interaction.customId === "ticket:close") {
-    const result = await tickets.closeTicket(interaction);
-    if (!result.ok) {
-      await interaction.reply({ content: result.reason, flags: MessageFlags.Ephemeral });
+    try {
+      const result = await tickets.closeTicket(interaction);
+      if (!result.ok) {
+        await interaction.reply({ content: result.reason, flags: MessageFlags.Ephemeral });
+      }
+    } catch (err) {
+      console.error(err);
+      if (!interaction.replied && !interaction.deferred) {
+        await interaction
+          .reply({ content: personality.errors.command, flags: MessageFlags.Ephemeral })
+          .catch(() => {});
+      }
     }
     return;
   }
