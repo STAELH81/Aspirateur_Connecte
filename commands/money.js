@@ -1,107 +1,17 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const economy = require("../lib/economy");
 const jackpot = require("../lib/jackpot");
 const shop = require("../lib/shopPurchase");
+const { loadConfig, shopFileExists } = require("../lib/shop");
 const economyLog = require("../lib/economyLog");
 const { isModerator } = require("../lib/permissions");
 const { replyIfWrongChannel } = require("../lib/gamblingChannel");
+const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const { COLOR } = require("../lib/personality");
 
 module.exports = {
-  data: new SlashCommandBuilder()
-    .setName("money")
-    .setDescription("Economie du serveur (coins)")
-    .addSubcommand((sub) =>
-      sub
-        .setName("balance")
-        .setDescription("Voir ton solde ou celui de quelqu'un")
-        .addUserOption((opt) =>
-          opt.setName("membre").setDescription("Autre membre").setRequired(false)
-        )
-    )
-    .addSubcommand((sub) =>
-      sub.setName("daily").setDescription("Bonus quotidien (24h) + streak")
-    )
-    .addSubcommand((sub) =>
-      sub.setName("work").setDescription("Petit job (cooldown 45 min)")
-    )
-    .addSubcommand((sub) =>
-      sub
-        .setName("pay")
-        .setDescription("Envoyer des coins")
-        .addUserOption((opt) =>
-          opt.setName("membre").setDescription("Destinataire").setRequired(true)
-        )
-        .addIntegerOption((opt) =>
-          opt
-            .setName("montant")
-            .setDescription("Nombre de coins")
-            .setRequired(true)
-            .setMinValue(1)
-        )
-    )
-    .addSubcommand((sub) =>
-      sub.setName("top").setDescription("Classement des plus riches")
-    )
-    .addSubcommand((sub) =>
-      sub.setName("jackpot").setDescription("Voir la cagnotte casino")
-    )
-    .addSubcommand((sub) =>
-      sub
-        .setName("shop")
-        .setDescription("Boutique de roles (data/shop.json)")
-        .addStringOption((opt) =>
-          opt
-            .setName("article")
-            .setDescription("ID de l'article")
-            .setRequired(true)
-            .setAutocomplete(true)
-        )
-    )
-    .addSubcommandGroup((group) =>
-      group
-        .setName("admin")
-        .setDescription("Staff — gerer les coins")
-        .addSubcommand((sub) =>
-          sub
-            .setName("donner")
-            .setDescription("Donner des coins")
-            .addUserOption((opt) =>
-              opt.setName("membre").setDescription("Joueur").setRequired(true)
-            )
-            .addIntegerOption((opt) =>
-              opt.setName("montant").setDescription("Coins").setRequired(true).setMinValue(1)
-            )
-        )
-        .addSubcommand((sub) =>
-          sub
-            .setName("retirer")
-            .setDescription("Retirer des coins")
-            .addUserOption((opt) =>
-              opt.setName("membre").setDescription("Joueur").setRequired(true)
-            )
-            .addIntegerOption((opt) =>
-              opt.setName("montant").setDescription("Coins").setRequired(true).setMinValue(1)
-            )
-        )
-    ),
-  async autocomplete(interaction) {
-    if (interaction.options.getSubcommand() !== "shop") return;
-    const items = shop.listItems();
-    if (items.length === 0) {
-      await interaction.respond([]);
-      return;
-    }
-    const focused = interaction.options.getFocused().toLowerCase();
-    const choices = items
-      .filter(
-        (i) =>
-          i.id.toLowerCase().includes(focused) ||
-          (i.label || "").toLowerCase().includes(focused)
-      )
-      .slice(0, 25)
-      .map((i) => ({ name: `${i.label} (${i.price}c)`, value: i.id }));
-    await interaction.respond(choices);
+  get data() {
+    return buildMoneyCommandData();
   },
   async execute(interaction) {
     const group = interaction.options.getSubcommandGroup(false);
@@ -228,15 +138,33 @@ module.exports = {
       return;
     }
 
-    if (sub === "shop") {
-      const items = shop.listItems();
+    if (sub === "shop-list") {
+      const items = loadConfig();
       if (items.length === 0) {
-        await interaction.reply({
-          content: "Boutique vide. Copie `data/shop.json.example` vers `data/shop.json`.",
-          ephemeral: true,
-        });
+        const hint = shopFileExists()
+          ? "Aucun article valide dans `data/shop.json` (verifie les **roleId** en chiffres Discord)."
+          : "Cree `data/shop.json` depuis `data/shop.json.example`, puis `bot.cmd deploy`.";
+        await interaction.reply({ content: hint, ephemeral: true });
         return;
       }
+      const lines = items.map(
+        (i) => `**${i.label}** — ${i.price} coins · ${i.durationDays || 1} jour(s)`
+      );
+      await interaction.reply({
+        embeds: [
+          new EmbedBuilder()
+            .setColor(COLOR)
+            .setTitle("Boutique")
+            .setDescription(
+              lines.join("\n") +
+                "\n\nAchat : `/money shop` → menu deroulant **article**."
+            ),
+        ],
+      });
+      return;
+    }
+
+    if (sub === "shop") {
       const itemId = interaction.options.getString("article");
       const result = await shop.buy(interaction, itemId);
       if (!result.ok) {

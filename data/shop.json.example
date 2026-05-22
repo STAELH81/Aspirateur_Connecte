@@ -2,9 +2,9 @@
   "items": [
     {
       "id": "vip_3j",
-      "label": "VIP 3 jours (exemple)",
-      "roleId": "ID_DU_ROLE_VIP",
-      "price": 1500,
+      "label": "VIP 3 jours",
+      "roleId": "1234567890123456789",
+      "price": 2000,
       "durationDays": 3
     }
   ]
