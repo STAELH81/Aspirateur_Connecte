@@ -6,6 +6,6 @@ module.exports = {
     .setName("help")
     .setDescription("Liste complete des commandes du bot"),
   async execute(interaction) {
-    await interaction.reply({ embeds: helpEmbeds(), ephemeral: true });
+    await interaction.reply({ embeds: helpEmbeds() });
   },
 };

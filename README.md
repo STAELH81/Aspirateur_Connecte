@@ -178,12 +178,12 @@ npm start
 Ou sous Windows :
 
 ```bat
-scripts\setup.cmd
-scripts\deploy.cmd
-scripts\start.cmd
+bot.cmd setup
+bot.cmd deploy
+bot.cmd start
 ```
 
-(Equivalent npm : `npm install`, `npm run deploy`, `npm start`)
+**PowerShell bloque `npm` ?** (politique `Restricted`) — utilise `bot.cmd` ci-dessus, ou une fois : `scripts\fix-powershell.cmd`. Sinon dans PowerShell : `npm.cmd install` (pas `npm install`).
 
 **Important :** un seul processus par token. Si le bot tourne sur Discloud, ne lance pas `npm start` en local en même temps.
 

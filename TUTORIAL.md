@@ -54,15 +54,18 @@ WELCOME_CHANNEL_ID=id_du_salon_bienvenue
 
 ### Scripts PowerShell
 
-Lance depuis le terminal (CMD ou PowerShell) :
+Lance depuis le dossier du projet :
 
 ```bat
-scripts\setup.cmd   rem npm install + .env depuis .env.example si absent
-scripts\deploy.cmd    rem enregistre les slash commands sur le serveur
-scripts\start.cmd     rem lance le bot
+bot.cmd setup
+bot.cmd deploy
+bot.cmd start
 ```
 
-Ou avec npm : `npm install` puis `npm run deploy` puis `npm start`.
+**Si PowerShell affiche** *« l'exécution de scripts est désactivée »* pour `npm` :
+- utilise **`bot.cmd`** (recommandé), ou
+- `scripts\fix-powershell.cmd` (une fois, sans admin), ou
+- dans PowerShell : `npm.cmd install` puis `node deploy-commands.js`
 
 Si *running scripts is disabled* :
 
@@ -125,7 +128,7 @@ Tant que `node index.js` tourne sur ton PC, le bot est en ligne. Sinon : Railway
 | Slash invisibles | `scripts\deploy.cmd`, verifie `DISCORD_GUILD_ID` |
 | `Missing Access` | Reinvite le bot (etape 2) |
 | Token fuite | Reset Token portail + maj `.env` |
-| Script bloque | Utilise les `.cmd` dans `scripts\`, pas les `.ps1` |
+| `npm` / `.ps1` bloques | `bot.cmd deploy` ou `scripts\fix-powershell.cmd` |
 
 ---
 

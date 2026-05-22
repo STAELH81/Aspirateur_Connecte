@@ -7,5 +7,10 @@ if not exist ".env" (
   exit /b 1
 )
 
+if not exist "node_modules\discord.js" (
+  echo node_modules manquant. Lance d'abord : bot.cmd setup
+  exit /b 1
+)
+
 node deploy-commands.js
 endlocal
