@@ -8,8 +8,6 @@ const {
   registerMoneyPanelMessage,
   shopPanelEmbed,
   shopPanelRows,
-  payPanelEmbed,
-  payPanelRows,
   casinoPanelEmbed,
   casinoPanelRows,
   infosPanelEmbed,
@@ -46,15 +44,6 @@ module.exports = {
       });
       registerMoneyPanelMessage(panel);
       await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
-      return;
-    }
-
-    if (sub === "pay-panel") {
-      await interaction.channel.send({
-        embeds: [payPanelEmbed()],
-        components: payPanelRows(),
-      });
-      await interaction.reply({ content: "Panneau pay poste.", ephemeral: true });
       return;
     }
 
