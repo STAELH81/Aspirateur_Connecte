@@ -32,7 +32,8 @@ const {
   handleCasinoConfigChoice,
   handleCasinoConfigPlay,
   handleCasinoConfigCancel,
-  handleCasinoRedo,
+  handleCasinoSameBet,
+  handleCasinoReplay,
   handleCasinoOtherGame,
   handleCasinoPanelButton,
   handleCasinoModalSubmit,
@@ -43,6 +44,7 @@ const {
   handlePayFormSubmit,
   handlePayConfirm,
   buildCasinoResultRows,
+  rememberCasinoPlay,
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
 const { startCasinoResultCleanup, scheduleCasinoResultDeletion } = require("./lib/casinoResultCleanup");
@@ -257,6 +259,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
     if (result.done) {
       await economyLog.logCasino(interaction.client, interaction.user.id, "blackjack", result);
+      rememberCasinoPlay(interaction.user.id, {
+        game: "blackjack",
+        choice: "none",
+        number: null,
+        bet: result.bet,
+      });
       await interaction.update({
         embeds: [result.embed],
         components: buildCasinoResultRows(),
@@ -303,9 +311,14 @@ client.on(Events.InteractionCreate, async (interaction) => {
     await handleCasinoConfigPlay(interaction);
     return;
   }
-  if (interaction.isButton() && interaction.customId === "casino:redo") {
+  if (interaction.isButton() && interaction.customId === "casino:samebet") {
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoRedo(interaction);
+    await handleCasinoSameBet(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "casino:replay") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoReplay(interaction);
     return;
   }
   if (interaction.isButton() && interaction.customId === "casino:other") {
