@@ -28,7 +28,9 @@ const { replyIfWrongChannel } = require("./lib/gamblingChannel");
 const {
   handleMoneyPanelButton,
   handleCasinoPanelSelect,
-  handleCasinoQuickButton,
+  handleCasinoConfigChoice,
+  handleCasinoConfigPlay,
+  handleCasinoRedo,
   handleCasinoPanelButton,
   handleCasinoModalSubmit,
   handleShopBuyButton,
@@ -271,15 +273,24 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
-  if (interaction.isButton() && interaction.customId.startsWith("casino:quick:")) {
-    if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoQuickButton(interaction);
-    return;
-  }
-
   if (interaction.isStringSelectMenu() && interaction.customId === "casino:panel:select") {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handleCasinoPanelSelect(interaction);
+    return;
+  }
+  if (interaction.isStringSelectMenu() && interaction.customId === "casino:config:choice") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoConfigChoice(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "casino:config:play") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoConfigPlay(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "casino:redo") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoRedo(interaction);
     return;
   }
 
