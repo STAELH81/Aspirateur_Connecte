@@ -30,6 +30,7 @@ const {
   handleCasinoPanelSelect,
   handleCasinoPanelButton,
   handleCasinoModalSubmit,
+  startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
 const path = require("path");
 
@@ -53,6 +54,7 @@ client.once(Events.ClientReady, (c) => {
   scheduleBirthdayAnnounce(client);
   scheduleBirthdayVip(client);
   scheduleShopRoleCleanup(client);
+  startMoneyPanelsAutoRefresh(client);
 
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),

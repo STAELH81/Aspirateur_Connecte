@@ -8,7 +8,12 @@ const { isModerator } = require("../lib/permissions");
 const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const { COLOR } = require("../lib/personality");
-const { moneyPanelEmbed, moneyPanelRows } = require("../lib/economyPanels");
+const {
+  moneyPanelEmbed,
+  moneyPanelRows,
+  buildTopEmbeds,
+  registerMoneyPanelMessage,
+} = require("../lib/economyPanels");
 
 module.exports = {
   get data() {
@@ -27,10 +32,11 @@ module.exports = {
       const amount = interaction.options.getInteger("montant");
 
       if (sub === "panel") {
-        await interaction.channel.send({
+        const panel = await interaction.channel.send({
           embeds: [moneyPanelEmbed()],
           components: moneyPanelRows(),
         });
+        registerMoneyPanelMessage(panel);
         await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
         return;
       }
@@ -274,21 +280,8 @@ module.exports = {
     }
 
     if (sub === "top") {
-      const top = economy.getLeaderboard(10);
-      if (top.length === 0) {
-        await interaction.reply({ content: "Personne n'a encore de coins.", ephemeral: true });
-        return;
-      }
-      const lines = top.map(
-        (e, i) => `${i + 1}. <@${e.id}> — **${e.balance}** coins`
-      );
       await interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setColor(COLOR)
-            .setTitle("Top coins")
-            .setDescription(lines.join("\n")),
-        ],
+        embeds: buildTopEmbeds(),
       });
     }
   },
