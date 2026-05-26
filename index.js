@@ -28,15 +28,24 @@ const { replyIfWrongChannel } = require("./lib/gamblingChannel");
 const {
   handleMoneyPanelButton,
   handleCasinoPanelSelect,
+  handleCasinoPickSelect,
   handleCasinoConfigChoice,
   handleCasinoConfigPlay,
+  handleCasinoConfigCancel,
   handleCasinoRedo,
+  handleCasinoOtherGame,
   handleCasinoPanelButton,
   handleCasinoModalSubmit,
   handleShopBuyButton,
   handleShopConfirmButton,
+  handlePayRecipient,
+  handlePayOpenModal,
+  handlePayFormSubmit,
+  handlePayConfirm,
+  buildCasinoResultRows,
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
+const { startCasinoResultCleanup, scheduleCasinoResultDeletion } = require("./lib/casinoResultCleanup");
 const path = require("path");
 
 const client = new Client({
@@ -60,6 +69,7 @@ client.once(Events.ClientReady, (c) => {
   scheduleBirthdayVip(client);
   scheduleShopRoleCleanup(client);
   startMoneyPanelsAutoRefresh(client);
+  startCasinoResultCleanup(client);
 
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),
@@ -249,8 +259,13 @@ client.on(Events.InteractionCreate, async (interaction) => {
       await economyLog.logCasino(interaction.client, interaction.user.id, "blackjack", result);
       await interaction.update({
         embeds: [result.embed],
-        components: [blackjack.buildButtons(gameId, true)],
+        components: buildCasinoResultRows(),
       });
+      scheduleCasinoResultDeletion(
+        interaction.client,
+        interaction.channelId,
+        interaction.message.id
+      );
       return;
     }
 
@@ -291,6 +306,46 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isButton() && interaction.customId === "casino:redo") {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handleCasinoRedo(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "casino:other") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoOtherGame(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "casino:config:cancel") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoConfigCancel(interaction);
+    return;
+  }
+  if (interaction.isStringSelectMenu() && interaction.customId === "casino:pick:select") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoPickSelect(interaction);
+    return;
+  }
+
+  if (interaction.isUserSelectMenu() && interaction.customId === "pay:recipient") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handlePayRecipient(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId === "pay:open-modal") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handlePayOpenModal(interaction);
+    return;
+  }
+  if (interaction.isModalSubmit() && interaction.customId === "pay:form") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handlePayFormSubmit(interaction);
+    return;
+  }
+  if (
+    interaction.isButton() &&
+    (interaction.customId.startsWith("pay:confirm:") ||
+      interaction.customId.startsWith("pay:cancel:"))
+  ) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handlePayConfirm(interaction);
     return;
   }
 

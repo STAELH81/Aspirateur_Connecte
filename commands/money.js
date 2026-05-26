@@ -1,21 +1,17 @@
-const { EmbedBuilder } = require("discord.js");
 const economy = require("../lib/economy");
-const jackpot = require("../lib/jackpot");
-const shop = require("../lib/shopPurchase");
-const { loadConfig, shopFileExists } = require("../lib/shop");
 const economyLog = require("../lib/economyLog");
 const { isModerator } = require("../lib/permissions");
-const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
-const { COLOR } = require("../lib/personality");
-const { replaceUserActionMessage } = require("../lib/moneyChannelMessages");
 const {
   moneyPanelEmbed,
   moneyPanelRows,
-  buildTopEmbeds,
   registerMoneyPanelMessage,
   shopPanelEmbed,
   shopPanelRows,
+  payPanelEmbed,
+  payPanelRows,
+  casinoPanelEmbed,
+  casinoPanelRows,
   infosPanelEmbed,
 } = require("../lib/economyPanels");
 
@@ -27,324 +23,99 @@ module.exports = {
     const group = interaction.options.getSubcommandGroup(false);
     const sub = interaction.options.getSubcommand();
 
-    if (group === "admin") {
-      if (!isModerator(interaction.member)) {
-        await interaction.reply({ content: "Reserve au staff.", ephemeral: true });
-        return;
-      }
-      const target = interaction.options.getUser("membre");
-      const amount = interaction.options.getInteger("montant");
-
-      if (sub === "panel") {
-        const panel = await interaction.channel.send({
-          embeds: [moneyPanelEmbed()],
-          components: moneyPanelRows(),
-        });
-        registerMoneyPanelMessage(panel);
-        await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
-        return;
-      }
-      if (sub === "shop-panel") {
-        await interaction.channel.send({
-          embeds: [shopPanelEmbed()],
-          components: shopPanelRows(),
-        });
-        await interaction.reply({ content: "Panneau shop poste.", ephemeral: true });
-        return;
-      }
-      if (sub === "infos-panel") {
-        await interaction.channel.send({
-          embeds: [infosPanelEmbed()],
-        });
-        await interaction.reply({ content: "Panneau infos poste.", ephemeral: true });
-        return;
-      }
-
-      if (sub === "donner") {
-        const result = economy.adminGrant(target.id, amount);
-        await economyLog.logTx(interaction.client, {
-          userId: target.id,
-          action: "Admin — coins donnes",
-          balanceBefore: result.balanceBefore,
-          balanceAfter: result.balanceAfter,
-          details: `Par <@${interaction.user.id}> · **+${result.amount}**`,
-        });
-        await interaction.reply({
-          content: `**+${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
-          ephemeral: true,
-        });
-        return;
-      }
-
-      if (sub === "retirer") {
-        const result = economy.adminRemove(target.id, amount);
-        if (!result.ok) {
-          await interaction.reply({ content: result.reason, ephemeral: true });
-          return;
-        }
-        await economyLog.logTx(interaction.client, {
-          userId: target.id,
-          action: "Admin — coins retires",
-          balanceBefore: result.balanceBefore,
-          balanceAfter: result.balanceAfter,
-          details: `Par <@${interaction.user.id}> · **-${result.amount}**`,
-        });
-        await interaction.reply({
-          content: `**-${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
-          ephemeral: true,
-        });
-      }
+    if (group !== "admin") {
+      await interaction.reply({
+        content: "Utilise les panneaux dans les salons **money**, **shop** et **casino**.",
+        ephemeral: true,
+      });
       return;
     }
 
-    if (!(await replyIfWrongChannel(interaction))) return;
-
-    if (sub === "balance") {
-      const target = interaction.options.getUser("membre") ?? interaction.user;
-      const bal = economy.getBalance(target.id);
-      const actionKey = target.id === interaction.user.id ? "balance" : null;
-      const payload = {
-        embeds: [
-          new EmbedBuilder()
-            .setColor(COLOR)
-            .setDescription(`${target} : ${economy.formatCoins(bal)}`),
-        ],
-      };
-      if (actionKey) {
-        await replaceUserActionMessage(
-          interaction.client,
-          interaction.channelId,
-          interaction.user.id,
-          actionKey,
-          () => interaction.reply({ ...payload, fetchReply: true })
-        );
-      } else {
-        await interaction.reply(payload);
-      }
+    if (!isModerator(interaction.member)) {
+      await interaction.reply({ content: "Reserve au staff.", ephemeral: true });
       return;
     }
 
-    if (sub === "daily") {
-      const result = economy.tryDaily(interaction.user.id);
-      if (!result.ok) {
-        const ts = Math.floor((Date.now() + result.waitMs) / 1000);
-        await replaceUserActionMessage(
-          interaction.client,
-          interaction.channelId,
-          interaction.user.id,
-          "daily",
-          () =>
-            interaction.reply({
-              content: `${interaction.user} — Daily deja pris. Reviens <t:${ts}:R>.`,
-              fetchReply: true,
-            })
-        );
-        return;
-      }
+    const target = interaction.options.getUser("membre");
+    const amount = interaction.options.getInteger("montant");
+
+    if (sub === "panel") {
+      const panel = await interaction.channel.send({
+        embeds: [moneyPanelEmbed()],
+        components: moneyPanelRows(),
+      });
+      registerMoneyPanelMessage(panel);
+      await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "pay-panel") {
+      await interaction.channel.send({
+        embeds: [payPanelEmbed()],
+        components: payPanelRows(),
+      });
+      await interaction.reply({ content: "Panneau pay poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "shop-panel") {
+      await interaction.channel.send({
+        embeds: [shopPanelEmbed()],
+        components: shopPanelRows(),
+      });
+      await interaction.reply({ content: "Panneau shop poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "infos-panel") {
+      await interaction.channel.send({
+        embeds: [infosPanelEmbed()],
+      });
+      await interaction.reply({ content: "Panneau infos poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "casino-panel") {
+      await interaction.channel.send({
+        embeds: [casinoPanelEmbed()],
+        components: casinoPanelRows(),
+      });
+      await interaction.reply({ content: "Panneau casino fixe poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "donner") {
+      const result = economy.adminGrant(target.id, amount);
       await economyLog.logTx(interaction.client, {
-        userId: interaction.user.id,
-        action: "Daily",
+        userId: target.id,
+        action: "Admin — coins donnes",
         balanceBefore: result.balanceBefore,
         balanceAfter: result.balanceAfter,
-        details: [
-          `Gain : **+${result.gain}** coins`,
-          `Streak : **${result.streak}** (+${result.bonus} bonus)`,
-          result.boostUsed ? `Boost x${result.boostMult}` : null,
-        ]
-          .filter(Boolean)
-          .join("\n"),
+        details: `Par <@${interaction.user.id}> · **+${result.amount}**`,
       });
-      await replaceUserActionMessage(
-        interaction.client,
-        interaction.channelId,
-        interaction.user.id,
-        "daily",
-        () =>
-          interaction.reply({
-            embeds: [
-              new EmbedBuilder()
-                .setColor(COLOR)
-                .setDescription(
-                  [
-                    `${interaction.user} — Daily : **+${result.gain}** coins${result.boostUsed ? ` (boost x${result.boostMult})` : ""}`,
-                    `Streak : **${result.streak}** jour(s) (+${result.bonus} bonus)`,
-                    `Solde : ${economy.formatCoins(result.balance)}`,
-                  ].join("\n")
-                ),
-            ],
-            fetchReply: true,
-          })
-      );
+      await interaction.reply({
+        content: `**+${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
+        ephemeral: true,
+      });
       return;
     }
 
-    if (sub === "work") {
-      const result = economy.tryWork(interaction.user.id);
-      if (!result.ok) {
-        const ts = Math.floor((Date.now() + result.waitMs) / 1000);
-        await replaceUserActionMessage(
-          interaction.client,
-          interaction.channelId,
-          interaction.user.id,
-          "work",
-          () =>
-            interaction.reply({
-              content: `${interaction.user} — Repos. Retente <t:${ts}:R>.`,
-              fetchReply: true,
-            })
-        );
-        return;
-      }
-      await economyLog.logTx(interaction.client, {
-        userId: interaction.user.id,
-        action: "Work",
-        balanceBefore: result.balanceBefore,
-        balanceAfter: result.balanceAfter,
-        details: [
-          `Gain : **+${result.gain}** coins`,
-          result.workBoostUsed ? `Boost x${result.workMult}` : null,
-        ]
-          .filter(Boolean)
-          .join("\n"),
-      });
-      await replaceUserActionMessage(
-        interaction.client,
-        interaction.channelId,
-        interaction.user.id,
-        "work",
-        () =>
-          interaction.reply({
-            embeds: [
-              new EmbedBuilder()
-                .setColor(COLOR)
-                .setDescription(
-                  `${interaction.user} — Travail : **+${result.gain}** coins${result.workBoostUsed ? ` (boost x${result.workMult})` : ""}\nSolde : ${economy.formatCoins(result.balance)}`
-                ),
-            ],
-            fetchReply: true,
-          })
-      );
-      return;
-    }
-
-    if (sub === "pay") {
-      const to = interaction.options.getUser("membre");
-      const amount = interaction.options.getInteger("montant");
-      if (to.bot) {
-        await interaction.reply({ content: "Pas aux bots.", ephemeral: true });
-        return;
-      }
-      const result = economy.pay(interaction.user.id, to.id, amount);
+    if (sub === "retirer") {
+      const result = economy.adminRemove(target.id, amount);
       if (!result.ok) {
         await interaction.reply({ content: result.reason, ephemeral: true });
         return;
       }
-      await economyLog.logPay(
-        interaction.client,
-        interaction.user.id,
-        to.id,
-        result.amount,
-        result.fromBefore,
-        result.fromAfter,
-        result.toBefore,
-        result.toAfter
-      );
-      await interaction.reply(
-        `Tu envoies **${result.amount}** coins a ${to}.\nTon solde : ${economy.formatCoins(result.fromBalance)}`
-      );
-      return;
-    }
-
-    if (sub === "jackpot") {
-      await interaction.reply({
-        content: `Cagnotte casino : **${jackpot.getPool()}** coins. Details : \`/casino jackpot\``,
-      });
-      return;
-    }
-
-    if (sub === "shop-list") {
-      const items = loadConfig();
-      if (items.length === 0) {
-        const hint = shopFileExists()
-          ? "Aucun article valide dans `data/shop.json` (verifie les **roleId** en chiffres Discord)."
-          : "Cree `data/shop.json` depuis `data/shop.json.example`, puis `npm run deploy`.";
-        await interaction.reply({ content: hint, ephemeral: true });
-        return;
-      }
-      const lines = items.map((i) => {
-        const type = i.type || "role";
-        if (type === "daily_boost") {
-          const mult = i.multiplier || 1.5;
-          return `**${i.label}** — ${i.price} coins · prochain \`/money daily\` x${mult}`;
-        }
-        if (type === "work_reset") {
-          return `**${i.label}** — ${i.price} coins · reset cooldown \`/money work\``;
-        }
-        if (type === "work_boost") {
-          const mult = i.multiplier || 2;
-          return `**${i.label}** — ${i.price} coins · prochain \`/money work\` x${mult}`;
-        }
-        if (type === "streak_shield") {
-          return `**${i.label}** — ${i.price} coins · 1 jour de streak sauve si tu rates un daily`;
-        }
-        if (type === "coin_pack") {
-          return `**${i.label}** — ${i.price} coins → **+${i.coins}** coins`;
-        }
-        const days = i.durationDays || 1;
-        const dLabel = days === 1 ? "1 jour" : `${days} jours`;
-        return `**${i.label}** — ${i.price} coins · ${dLabel}`;
+      await economyLog.logTx(interaction.client, {
+        userId: target.id,
+        action: "Admin — coins retires",
+        balanceBefore: result.balanceBefore,
+        balanceAfter: result.balanceAfter,
+        details: `Par <@${interaction.user.id}> · **-${result.amount}**`,
       });
       await interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setColor(COLOR)
-            .setTitle("Boutique")
-            .setDescription(
-              lines.join("\n") +
-                "\n\nAchat : `/money shop` → menu deroulant **article**."
-            ),
-        ],
-      });
-      return;
-    }
-
-    if (sub === "shop") {
-      const itemId = interaction.options.getString("article");
-      const result = await shop.buy(interaction, itemId);
-      if (!result.ok) {
-        await interaction.reply({ content: result.reason, ephemeral: true });
-        return;
-      }
-      let detail = "";
-      if (result.kind === "role") {
-        detail =
-          result.days === 1
-            ? "Role actif **1 jour**."
-            : `Role actif **${result.days} jours**.`;
-      } else if (result.kind === "daily_boost") {
-        detail = `Prochain \`/money daily\` : gains x**${result.multiplier}**.`;
-      } else if (result.kind === "work_reset") {
-        detail = "Tu peux refaire `/money work` tout de suite.";
-      } else if (result.kind === "work_boost") {
-        detail = `Prochain \`/money work\` : gains x**${result.multiplier}**.`;
-      } else if (result.kind === "streak_shield") {
-        detail = "Si tu rates un jour de daily, ta streak ne repart pas a 1 (une fois).";
-      } else if (result.kind === "coin_pack") {
-        detail = `Tu recois **+${result.coinsGranted}** coins.`;
-      }
-      await interaction.reply({
-        content: [
-          `Achat : **${result.item.label}** pour **${result.price}** coins`,
-          detail,
-          `Solde : ${economy.formatCoins(result.balance)}`,
-        ].join("\n"),
-      });
-      return;
-    }
-
-    if (sub === "top") {
-      await interaction.reply({
-        embeds: buildTopEmbeds(),
+        content: `**-${result.amount}** a ${target}. Solde : ${economy.formatCoins(result.balance)}`,
+        ephemeral: true,
       });
     }
   },
