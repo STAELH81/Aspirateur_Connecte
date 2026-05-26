@@ -28,8 +28,11 @@ const { replyIfWrongChannel } = require("./lib/gamblingChannel");
 const {
   handleMoneyPanelButton,
   handleCasinoPanelSelect,
+  handleCasinoQuickButton,
   handleCasinoPanelButton,
   handleCasinoModalSubmit,
+  handleShopBuyButton,
+  handleShopConfirmButton,
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
 const path = require("path");
@@ -268,6 +271,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
+  if (interaction.isButton() && interaction.customId.startsWith("casino:quick:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoQuickButton(interaction);
+    return;
+  }
+
   if (interaction.isStringSelectMenu() && interaction.customId === "casino:panel:select") {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handleCasinoPanelSelect(interaction);
@@ -277,6 +286,21 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isModalSubmit() && interaction.customId.startsWith("casino:play:")) {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handleCasinoModalSubmit(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("shop:buy:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleShopBuyButton(interaction);
+    return;
+  }
+  if (
+    interaction.isButton() &&
+    (interaction.customId.startsWith("shop:confirm:") ||
+      interaction.customId.startsWith("shop:cancel:"))
+  ) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleShopConfirmButton(interaction);
     return;
   }
 

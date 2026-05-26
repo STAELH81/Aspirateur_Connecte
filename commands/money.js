@@ -13,6 +13,9 @@ const {
   moneyPanelRows,
   buildTopEmbeds,
   registerMoneyPanelMessage,
+  shopPanelEmbed,
+  shopPanelRows,
+  infosPanelEmbed,
 } = require("../lib/economyPanels");
 
 module.exports = {
@@ -38,6 +41,21 @@ module.exports = {
         });
         registerMoneyPanelMessage(panel);
         await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
+        return;
+      }
+      if (sub === "shop-panel") {
+        await interaction.channel.send({
+          embeds: [shopPanelEmbed()],
+          components: shopPanelRows(),
+        });
+        await interaction.reply({ content: "Panneau shop poste.", ephemeral: true });
+        return;
+      }
+      if (sub === "infos-panel") {
+        await interaction.channel.send({
+          embeds: [infosPanelEmbed()],
+        });
+        await interaction.reply({ content: "Panneau infos poste.", ephemeral: true });
         return;
       }
 
