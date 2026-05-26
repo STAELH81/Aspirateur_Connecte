@@ -8,6 +8,7 @@ const { isModerator } = require("../lib/permissions");
 const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const { COLOR } = require("../lib/personality");
+const { moneyPanelEmbed, moneyPanelRows } = require("../lib/economyPanels");
 
 module.exports = {
   get data() {
@@ -24,6 +25,15 @@ module.exports = {
       }
       const target = interaction.options.getUser("membre");
       const amount = interaction.options.getInteger("montant");
+
+      if (sub === "panel") {
+        await interaction.channel.send({
+          embeds: [moneyPanelEmbed()],
+          components: moneyPanelRows(),
+        });
+        await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
+        return;
+      }
 
       if (sub === "donner") {
         const result = economy.adminGrant(target.id, amount);

@@ -24,6 +24,13 @@ const afk = require("./lib/afk");
 const xp = require("./lib/xp");
 const suggestions = require("./lib/suggestions");
 const { createStore } = require("./lib/jsonStore");
+const { replyIfWrongChannel } = require("./lib/gamblingChannel");
+const {
+  handleMoneyPanelButton,
+  handleCasinoPanelSelect,
+  handleCasinoPanelButton,
+  handleCasinoModalSubmit,
+} = require("./lib/economyPanels");
 const path = require("path");
 
 const client = new Client({
@@ -244,6 +251,30 @@ client.on(Events.InteractionCreate, async (interaction) => {
       embeds: [result.embed],
       components: [result.row],
     });
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("money:panel:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleMoneyPanelButton(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "casino:panel:jackpot") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoPanelButton(interaction);
+    return;
+  }
+
+  if (interaction.isStringSelectMenu() && interaction.customId === "casino:panel:select") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoPanelSelect(interaction);
+    return;
+  }
+
+  if (interaction.isModalSubmit() && interaction.customId.startsWith("casino:play:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleCasinoModalSubmit(interaction);
     return;
   }
 

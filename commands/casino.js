@@ -6,6 +6,8 @@ const jackpot = require("../lib/jackpot");
 const economyLog = require("../lib/economyLog");
 const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { COLOR, COLOR_SUCCESS } = require("../lib/personality");
+const { isModerator } = require("../lib/permissions");
+const { casinoPanelEmbed, casinoPanelRows } = require("../lib/economyPanels");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -81,11 +83,27 @@ module.exports = {
     )
     .addSubcommand((sub) =>
       sub.setName("jackpot").setDescription("Cagnotte commune du casino")
+    )
+    .addSubcommand((sub) =>
+      sub.setName("panel").setDescription("Staff — poster le panneau casino")
     ),
   async execute(interaction) {
     if (!(await replyIfWrongChannel(interaction))) return;
 
     const sub = interaction.options.getSubcommand();
+
+    if (sub === "panel") {
+      if (!isModerator(interaction.member)) {
+        await interaction.reply({ content: "Reserve au staff.", ephemeral: true });
+        return;
+      }
+      await interaction.channel.send({
+        embeds: [casinoPanelEmbed()],
+        components: casinoPanelRows(),
+      });
+      await interaction.reply({ content: "Panneau casino poste.", ephemeral: true });
+      return;
+    }
 
     if (sub === "jackpot") {
       const pool = jackpot.getPool();
