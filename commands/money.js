@@ -8,6 +8,7 @@ const { isModerator } = require("../lib/permissions");
 const { replyIfWrongChannel } = require("../lib/gamblingChannel");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const { COLOR } = require("../lib/personality");
+const { replaceUserActionMessage } = require("../lib/moneyChannelMessages");
 const {
   moneyPanelEmbed,
   moneyPanelRows,
@@ -101,23 +102,43 @@ module.exports = {
     if (sub === "balance") {
       const target = interaction.options.getUser("membre") ?? interaction.user;
       const bal = economy.getBalance(target.id);
-      await interaction.reply({
+      const actionKey = target.id === interaction.user.id ? "balance" : null;
+      const payload = {
         embeds: [
           new EmbedBuilder()
             .setColor(COLOR)
             .setDescription(`${target} : ${economy.formatCoins(bal)}`),
         ],
-      });
+      };
+      if (actionKey) {
+        await replaceUserActionMessage(
+          interaction.client,
+          interaction.channelId,
+          interaction.user.id,
+          actionKey,
+          () => interaction.reply({ ...payload, fetchReply: true })
+        );
+      } else {
+        await interaction.reply(payload);
+      }
       return;
     }
 
     if (sub === "daily") {
       const result = economy.tryDaily(interaction.user.id);
       if (!result.ok) {
-        await interaction.reply({
-          content: `Daily deja pris. Reviens dans **${economy.formatCooldown(result.waitMs)}**.`,
-          ephemeral: true,
-        });
+        const ts = Math.floor((Date.now() + result.waitMs) / 1000);
+        await replaceUserActionMessage(
+          interaction.client,
+          interaction.channelId,
+          interaction.user.id,
+          "daily",
+          () =>
+            interaction.reply({
+              content: `${interaction.user} — Daily deja pris. Reviens <t:${ts}:R>.`,
+              fetchReply: true,
+            })
+        );
         return;
       }
       await economyLog.logTx(interaction.client, {
@@ -133,29 +154,45 @@ module.exports = {
           .filter(Boolean)
           .join("\n"),
       });
-      await interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setColor(COLOR)
-            .setDescription(
-              [
-                `Daily : **+${result.gain}** coins${result.boostUsed ? ` (boost x${result.boostMult})` : ""}`,
-                `Streak : **${result.streak}** jour(s) (+${result.bonus} bonus)`,
-                `Solde : ${economy.formatCoins(result.balance)}`,
-              ].join("\n")
-            ),
-        ],
-      });
+      await replaceUserActionMessage(
+        interaction.client,
+        interaction.channelId,
+        interaction.user.id,
+        "daily",
+        () =>
+          interaction.reply({
+            embeds: [
+              new EmbedBuilder()
+                .setColor(COLOR)
+                .setDescription(
+                  [
+                    `${interaction.user} — Daily : **+${result.gain}** coins${result.boostUsed ? ` (boost x${result.boostMult})` : ""}`,
+                    `Streak : **${result.streak}** jour(s) (+${result.bonus} bonus)`,
+                    `Solde : ${economy.formatCoins(result.balance)}`,
+                  ].join("\n")
+                ),
+            ],
+            fetchReply: true,
+          })
+      );
       return;
     }
 
     if (sub === "work") {
       const result = economy.tryWork(interaction.user.id);
       if (!result.ok) {
-        await interaction.reply({
-          content: `Repos. Retente dans **${economy.formatCooldown(result.waitMs)}**.`,
-          ephemeral: true,
-        });
+        const ts = Math.floor((Date.now() + result.waitMs) / 1000);
+        await replaceUserActionMessage(
+          interaction.client,
+          interaction.channelId,
+          interaction.user.id,
+          "work",
+          () =>
+            interaction.reply({
+              content: `${interaction.user} — Repos. Retente <t:${ts}:R>.`,
+              fetchReply: true,
+            })
+        );
         return;
       }
       await economyLog.logTx(interaction.client, {
@@ -170,15 +207,23 @@ module.exports = {
           .filter(Boolean)
           .join("\n"),
       });
-      await interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setColor(COLOR)
-            .setDescription(
-              `Travail : **+${result.gain}** coins${result.workBoostUsed ? ` (boost x${result.workMult})` : ""}\nSolde : ${economy.formatCoins(result.balance)}`
-            ),
-        ],
-      });
+      await replaceUserActionMessage(
+        interaction.client,
+        interaction.channelId,
+        interaction.user.id,
+        "work",
+        () =>
+          interaction.reply({
+            embeds: [
+              new EmbedBuilder()
+                .setColor(COLOR)
+                .setDescription(
+                  `${interaction.user} — Travail : **+${result.gain}** coins${result.workBoostUsed ? ` (boost x${result.workMult})` : ""}\nSolde : ${economy.formatCoins(result.balance)}`
+                ),
+            ],
+            fetchReply: true,
+          })
+      );
       return;
     }
 
