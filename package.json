@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "deploy": "node deploy-commands.js",
-    "setup": "npm install"
+    "setup": "npm install",
+    "backfill:stats": "node scripts/backfill-gambling-stats.js"
   },
   "repository": {
     "type": "git",
