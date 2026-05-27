@@ -249,13 +249,14 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton() && interaction.customId.startsWith("bj:")) {
     const [, action, gameId] = interaction.customId.split(":");
+    await interaction.deferUpdate().catch(() => {});
     const result =
       action === "hit"
         ? blackjack.hit(gameId, interaction.user.id)
         : blackjack.stand(gameId, interaction.user.id);
 
     if (!result.ok) {
-      await interaction.reply({ content: result.reason, flags: MessageFlags.Ephemeral });
+      await interaction.followUp({ content: result.reason, flags: MessageFlags.Ephemeral }).catch(() => {});
       return;
     }
 
@@ -272,10 +273,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
         number: null,
         bet: result.bet,
       });
-      await interaction.update({
-        embeds: [result.embed],
-        components: buildCasinoResultRows(),
-      });
+      await interaction.message
+        .edit({
+          embeds: [result.embed],
+          components: buildCasinoResultRows(),
+        })
+        .catch(() => {});
       if (interaction.channel?.isTextBased()) {
         await interaction.channel
           .send({
@@ -287,10 +290,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
       return;
     }
 
-    await interaction.update({
-      embeds: [result.embed],
-      components: [result.row],
-    });
+    await interaction.message
+      .edit({
+        embeds: [result.embed],
+        components: [result.row],
+      })
+      .catch(() => {});
     return;
   }
 
@@ -323,17 +328,29 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
   if (interaction.isButton() && interaction.customId === "casino:samebet") {
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoSameBet(interaction);
+    try {
+      await handleCasinoSameBet(interaction);
+    } catch (err) {
+      console.error("[casino:samebet]", err);
+    }
     return;
   }
   if (interaction.isButton() && interaction.customId === "casino:replay") {
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoReplay(interaction);
+    try {
+      await handleCasinoReplay(interaction);
+    } catch (err) {
+      console.error("[casino:replay]", err);
+    }
     return;
   }
   if (interaction.isButton() && interaction.customId === "casino:other") {
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoOtherGame(interaction);
+    try {
+      await handleCasinoOtherGame(interaction);
+    } catch (err) {
+      console.error("[casino:other]", err);
+    }
     return;
   }
   if (interaction.isButton() && interaction.customId === "casino:config:cancel") {
@@ -374,7 +391,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isModalSubmit() && interaction.customId.startsWith("casino:play:")) {
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleCasinoModalSubmit(interaction);
+    try {
+      await handleCasinoModalSubmit(interaction);
+    } catch (err) {
+      console.error("[casino:modal]", err);
+    }
     return;
   }
 
