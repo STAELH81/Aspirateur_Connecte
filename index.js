@@ -273,12 +273,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
         number: null,
         bet: result.bet,
       });
-      await interaction.message
-        .edit({
-          embeds: [result.embed],
-          components: buildCasinoResultRows(),
-        })
-        .catch(() => {});
+      await interaction.editReply({
+        embeds: [result.embed],
+        components: buildCasinoResultRows(),
+      });
       if (interaction.channel?.isTextBased()) {
         await interaction.channel
           .send({
@@ -290,12 +288,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
       return;
     }
 
-    await interaction.message
-      .edit({
-        embeds: [result.embed],
-        components: [result.row],
-      })
-      .catch(() => {});
+    await interaction.editReply({
+      embeds: [result.embed],
+      components: [result.row],
+    });
     return;
   }
 
