@@ -30,7 +30,7 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Tirages au sort, VIP, etc. | `/giveaway` avec attribution de rôle possible |
 | Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
 | Anniversaires de la commu | `/anniv` |
-| Coins & mini-jeux | `/money`, `/casino` |
+| Coins & mini-jeux | Panneaux `money/casino/shop/infos` + `/casino` |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
 Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
@@ -50,7 +50,7 @@ Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
 | `/avatar [membre]` | Affiche une photo de profil |
 | `/userinfo [membre]` | Infos compte + rôles sur le serveur |
 | `/poll` | Crée un sondage avec réactions |
-| `/help` | **Liste complète** (2 embeds) |
+| `/help` | **Liste complète** (3 embeds) |
 
 ### Anniversaires
 
@@ -69,36 +69,57 @@ Le jour J, le bot poste dans `#general` : *Hey ! On souhaite tous l'anniv de …
 
 ---
 
-## Économie et casino (salon **#gambling** uniquement)
+## Économie et casino (salons `money/casino/shop/infos`)
 
-Toutes les commandes **`/money`** et **`/casino`** ne fonctionnent que dans le salon dont l’ID est dans `GAMBLING_CHANNEL_ID`.
+Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, `GAMBLING_TEST_CHANNEL_ID`, `GAMBLING_CHANNEL_IDS`) ou dans un salon nommé `money`, `casino`, `shop`, `infos` ou `gambling`.
 
-Monnaie : **coins**. Chaque membre commence avec **100 coins** à la première utilisation de `/money` dans ce salon.
+Monnaie : **coins**. Solde de départ : **100**.
 
-### `/money`
+### Panneaux membres
 
-| Commande | Détail |
-|----------|--------|
-| `/money daily` | **80–150 coins**, une fois toutes les **24 h** |
-| `/money work` | **15–45 coins**, cooldown **45 min** |
-| `/money pay` | Envoyer des coins à un autre membre |
-| `/money balance` | Voir ton solde (ou celui de quelqu’un) |
-| `/money top` | Classement des plus riches |
+| Panneau | Actions |
+|---------|---------|
+| Money | `Daily`, `Work`, `Balance`, `Pay`, `Refresh` + top 25 live |
+| Casino | Choix du jeu, config, lancer, puis `Meme mise`, `Rejouer`, `Changer de jeux` |
+| Shop | Achats par boutons avec confirmation |
+| Infos | Guide complet des règles et cotes |
 
-### `/casino`
+### Commandes slash
 
-| Commande | Détail |
-|----------|--------|
-| `/casino coinflip` | Pile ou face — gain **×1,9** si tu gagnes |
-| `/casino slots` | Machine à sous — symboles rares (💎, 7️⃣) paient plus |
+| Commande | Qui | Détail |
+|----------|-----|--------|
+| `/casino` | Tout le monde | Ouvre le flow casino interactif |
+| `/money admin panel` | Staff | Poste le panneau money |
+| `/money admin shop-panel` | Staff | Poste le panneau shop |
+| `/money admin infos-panel` | Staff | Poste le panneau infos |
+| `/money admin casino-panel` | Staff | Poste le panneau casino |
+| `/money admin donner` / `retirer` | Staff | Gestion manuelle des coins |
 
-**Limites anti-abus :**
+### Gains et limites
 
-- Mise minimum : **10 coins**
-- Mise maximum : **75 %** de ton solde, plafonnée à **2000 coins**
-- L’économie est faite pour être fun, pas pour devenir riche infiniment : farm avec `daily` / `work`, gamble avec modération.
+- Daily : **80-150** coins, cooldown **24 h**
+- Bonus de streak daily : **+12/jour**, cap **+120**
+- Work : **15-45** coins, cooldown **45 min**
+- Mise min : **10** coins
+- Mise max : **75%** du solde, cap **2000**
 
-Les soldes sont stockés dans `data/economy.json` sur la machine qui fait tourner le bot (voir hébergement).
+### Jeux disponibles
+
+- Coinflip : gain **x1.9** en cas de win
+- Slots : gains variables selon symboles/paires/triples
+- Dice : gain **x5** si le nombre est correct
+- Roulette : rouge/noir/vert/numero (multiplicateurs dédiés)
+- Blackjack : BJ x2.5, win x2, push = mise rendue
+
+### Principe du jackpot
+
+Le jackpot est une cagnotte commune :
+
+1. A chaque bet casino, une taxe de **3%** est prise et ajoutée à la cagnotte.
+2. A chaque partie, il existe une petite chance de toucher le jackpot (environ **1/180**).
+3. Si un joueur le touche, il récupère toute la cagnotte, puis elle repart de zéro et se re-remplit avec les mises suivantes.
+
+Les soldes sont stockés dans `data/economy.json`.
 
 ---
 
@@ -134,10 +155,12 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `DISCORD_GUILD_ID` | Oui | ID du serveur (pour enregistrer les `/`) |
 | `WELCOME_CHANNEL_ID` | Non | Salon bienvenue + départs par défaut |
 | `LEAVE_CHANNEL_ID` | Non | Salon départs uniquement (sinon = bienvenue) |
-| `GAMBLING_CHANNEL_ID` | Recommandé | Salon **#gambling** — `/money` et `/casino` uniquement ici |
+| `GAMBLING_CHANNEL_ID` | Recommandé | Un salon gambling autorisé |
+| `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
+| `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
 | `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — annonce auto le jour d’un anniversaire |
 
-Sans `GAMBLING_CHANNEL_ID`, `/money` et `/casino` fonctionnent partout (déconseillé).
+Sans variable gambling, fallback par nom de salon (`money/casino/shop/infos/gambling`).
 
 Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
 
@@ -168,12 +191,30 @@ Tu **codes sur ton PC**, le bot **tourne sur Discloud** (24/7). Pas besoin de le
 | Étape | Quoi faire |
 |--------|------------|
 | 1. Modifier le code | Cursor / VS Code, fichiers `commands/`, `lib/`, etc. |
-| 2. Publier sur le serveur | `git add` → `git commit` → `git push` → Discloud redéploie |
+| 2. Publier sur le serveur | `git add` → `git commit` → `git push` |
 | 3. Nouvelle commande `/` | `.\scripts\deploy.ps1` (en local, une fois) — Discord n’update pas les `/` tout seul |
 | 4. Nouvelle variable d’env | Éditeur `.env` sur le dashboard Discloud + **Restart** |
 | 5. Tester en local *(optionnel)* | Discloud **Stop**, puis `.\scripts\start.ps1` — remets **Start** sur Discloud après |
 
 Le `.env` de ton PC sert surtout à `deploy.ps1` et aux tests locaux ; la prod lit le `.env` **sur Discloud**.
+
+### Routine conseillée (copier/coller)
+
+```powershell
+# Les 3 "g" (toujours)
+git add .
+git commit -m "Gambling: <resume court>"
+git push
+
+# Si tu as modifie des slash commands (/ ou sous-commandes)
+npm run deploy
+```
+
+Exemples de messages de commit :
+
+- `Gambling: ajouter mise max et solde dans la config casino`
+- `Casino: corriger le flow UI sur un seul message ephemere`
+- `Shop: enrichir les descriptions des items`
 
 ---
 
@@ -287,12 +328,12 @@ Tous les réglages économie : gains daily/work, limites de mise, multiplicateur
 ## Mettre à jour le bot
 
 ```powershell
-# 1. Code
+# 1. Les 3 g
 git add .
-git commit -m "Description du changement"
+git commit -m "Message clair du changement"
 git push
 
-# 2. Slash commands (si nouvelle commande ou sous-commande)
+# 2. Slash commands (si nouvelle commande/sous-commande/modification de schema)
 npm run deploy
 
 # 3. Discloud : attendre Online, ou Play si arrêté

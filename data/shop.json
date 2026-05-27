@@ -5,14 +5,16 @@
       "label": "VIP 1 jour",
       "roleId": "1335202569793966179",
       "price": 800,
-      "durationDays": 1
+      "durationDays": 1,
+      "stock": 20
     },
     {
       "id": "vip_3j",
       "label": "VIP 3 jours",
       "roleId": "1335202569793966179",
       "price": 2000,
-      "durationDays": 3
+      "durationDays": 3,
+      "stock": 8
     },
     {
       "id": "boost_daily",

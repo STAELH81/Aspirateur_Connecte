@@ -23,6 +23,7 @@ const tickets = require("./lib/tickets");
 const afk = require("./lib/afk");
 const xp = require("./lib/xp");
 const suggestions = require("./lib/suggestions");
+const gamblingProgress = require("./lib/gamblingProgress");
 const { createStore } = require("./lib/jsonStore");
 const { replyIfWrongChannel } = require("./lib/gamblingChannel");
 const {
@@ -47,7 +48,7 @@ const {
   rememberCasinoPlay,
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
-const { startCasinoResultCleanup, scheduleCasinoResultDeletion } = require("./lib/casinoResultCleanup");
+const { startCasinoResultCleanup } = require("./lib/casinoResultCleanup");
 const path = require("path");
 
 const client = new Client({
@@ -259,6 +260,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
     if (result.done) {
       await economyLog.logCasino(interaction.client, interaction.user.id, "blackjack", result);
+      gamblingProgress.recordCasinoRound(interaction.user.id, "blackjack", {
+        bet: result.bet,
+        net: (result.win || 0) - result.bet,
+        won: Boolean(result.win && result.win > result.bet),
+      });
       rememberCasinoPlay(interaction.user.id, {
         game: "blackjack",
         choice: "none",
@@ -269,11 +275,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
         embeds: [result.embed],
         components: buildCasinoResultRows(),
       });
-      scheduleCasinoResultDeletion(
-        interaction.client,
-        interaction.channelId,
-        interaction.message.id
-      );
+      if (interaction.channel?.isTextBased()) {
+        await interaction.channel.send({ embeds: [result.embed], components: [] }).catch(() => {});
+      }
       return;
     }
 

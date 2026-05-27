@@ -1,5 +1,6 @@
 const economy = require("../lib/economy");
 const economyLog = require("../lib/economyLog");
+const shopPurchase = require("../lib/shopPurchase");
 const { isModerator } = require("../lib/permissions");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const {
@@ -70,6 +71,16 @@ module.exports = {
         components: casinoPanelRows(),
       });
       await interaction.reply({ content: "Panneau casino fixe poste.", ephemeral: true });
+      return;
+    }
+
+    if (sub === "shop-stock-reset") {
+      const stock = shopPurchase.resetPersistentStock();
+      const lines = Object.entries(stock).map(([id, n]) => `- ${id} : ${n}`);
+      await interaction.reply({
+        content: `Stock shop reset.\n${lines.length ? lines.join("\n") : "Aucun item avec stock."}`,
+        ephemeral: true,
+      });
       return;
     }
 
