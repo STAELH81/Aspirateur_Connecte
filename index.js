@@ -45,6 +45,7 @@ const {
   handlePayFormSubmit,
   handlePayConfirm,
   buildCasinoResultRows,
+  embedsWithPlayerName,
   rememberCasinoPlay,
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
@@ -276,7 +277,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
         components: buildCasinoResultRows(),
       });
       if (interaction.channel?.isTextBased()) {
-        await interaction.channel.send({ embeds: [result.embed], components: [] }).catch(() => {});
+        await interaction.channel
+          .send({
+            embeds: embedsWithPlayerName(interaction.user, [result.embed]),
+            components: [],
+          })
+          .catch(() => {});
       }
       return;
     }
