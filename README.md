@@ -102,13 +102,14 @@ Monnaie : **coins**. Solde de départ : **100**.
 - Work : **15-45** coins, cooldown **45 min**
 - Mise min : **10** coins
 - Mise max : **75%** du solde, cap **2000**
+- **Banque** (panneau Money) : pret **100–1500** coins (+**20%**), pour jouer au casino. Echeance **7 j**. **Ban casino** si pret en retard jusqu'au remboursement total. Cooldown **48 h** apres solde.
 
 ### Jeux disponibles
 
 - Coinflip : gain **x1.9** en cas de win
 - Slots : gains variables selon symboles/paires/triples
 - Dice : gain **x5** si le nombre est correct
-- Roulette : rouge/noir/vert/numero (multiplicateurs dédiés)
+- Roulette 0–9 : rouge/noir **x2** (50 %), vert (0) / numéro précis **x9** (10 % chacun)
 - Blackjack : BJ x2.5, win x2, push = mise rendue
 
 ### Principe du jackpot

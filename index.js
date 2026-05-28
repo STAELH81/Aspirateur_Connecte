@@ -44,6 +44,9 @@ const {
   handlePayOpenModal,
   handlePayFormSubmit,
   handlePayConfirm,
+  handleBankOpenModal,
+  handleBankBorrowModal,
+  handleBankRepayModal,
   buildCasinoResultRows,
   embedsWithPlayerName,
   rememberCasinoPlay,
@@ -373,6 +376,21 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isModalSubmit() && interaction.customId === "pay:form") {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handlePayFormSubmit(interaction);
+    return;
+  }
+  if (interaction.isButton() && interaction.customId.startsWith("money:bank:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleBankOpenModal(interaction);
+    return;
+  }
+  if (interaction.isModalSubmit() && interaction.customId === "money:bank:modal:borrow") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleBankBorrowModal(interaction);
+    return;
+  }
+  if (interaction.isModalSubmit() && interaction.customId === "money:bank:modal:repay") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await handleBankRepayModal(interaction);
     return;
   }
   if (
