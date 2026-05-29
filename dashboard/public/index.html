@@ -3,75 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aspirateur Connecte — Dashboard</title>
+  <title>Aspirateur Connecte — Les Girlsss</title>
   <style>
-    :root { --bg: #1e1f22; --card: #2b2d31; --text: #f2f3f5; --muted: #b5bac1; --accent: #eb459e; }
+    :root { --bg: #1e1f22; --card: #2b2d31; --text: #f2f3f5; --muted: #b5bac1; --accent: #eb459e; --green: #57f287; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 24px; }
-    h1 { color: var(--accent); margin-top: 0; }
-    .card { background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-    input, button { padding: 10px 12px; border-radius: 8px; border: none; }
-    input { background: #111; color: var(--text); width: 100%; max-width: 320px; }
-    button { background: var(--accent); color: #fff; cursor: pointer; font-weight: 600; }
-    table { width: 100%; border-collapse: collapse; }
-    td, th { text-align: left; padding: 8px; border-bottom: 1px solid #3f4147; }
+    body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 24px; max-width: 960px; margin-inline: auto; }
+    h1 { color: var(--accent); margin: 0 0 4px; font-size: 1.6rem; }
+    h2 { font-size: 1.1rem; margin-top: 0; }
+    .card { background: var(--card); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid #3f4147; }
+    th { color: var(--muted); font-weight: 600; }
     .muted { color: var(--muted); font-size: 14px; }
-    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .pill { display: inline-block; background: #111; padding: 4px 10px; border-radius: 999px; font-size: 13px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .stat { background: #111; border-radius: 10px; padding: 12px; }
+    .stat b { display: block; font-size: 1.4rem; color: var(--green); }
+    input { padding: 10px 12px; border-radius: 8px; border: none; background: #111; color: var(--text); width: 100%; max-width: 280px; }
+    button { padding: 10px 14px; border-radius: 8px; border: none; background: var(--accent); color: #fff; cursor: pointer; font-weight: 600; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+    pre { white-space: pre-wrap; font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
   <h1>Aspirateur Connecte</h1>
-  <p class="muted">Dashboard local — lecture seule des stats economie / casino / XP.</p>
+  <p class="muted">Dashboard Les Girlsss — mis a jour via <code>/dashboard sync</code> sur Discord.</p>
+  <p class="muted" id="updated">Chargement…</p>
 
   <div class="card">
-    <div class="row">
-      <input id="token" type="password" placeholder="DASHBOARD_SECRET (.env)" />
-      <button id="load">Charger</button>
-    </div>
-    <div class="row">
-      <input id="userId" placeholder="Ton ID Discord (optionnel)" />
-      <button id="profile">Mon profil</button>
-    </div>
+    <h2>Casino aujourd'hui</h2>
+    <div class="stat-grid" id="casinoStats"></div>
   </div>
 
   <div class="card">
     <h2>Top coins</h2>
-    <div id="leaderboard" class="muted">Connecte-toi avec le secret.</div>
+    <div id="leaderboard" class="muted">—</div>
   </div>
 
   <div class="card">
-    <h2>Profil</h2>
-    <pre id="profileOut" class="muted">—</pre>
+    <h2>Top XP</h2>
+    <div id="xpTop" class="muted">—</div>
+  </div>
+
+  <div class="card">
+    <h2>Profil (par ID Discord)</h2>
+    <div class="row">
+      <input id="userId" placeholder="123456789012345678" />
+      <button id="profileBtn">Chercher</button>
+    </div>
+    <pre id="profileOut">Entre un ID present dans le snapshot.</pre>
   </div>
 
   <script>
-    const params = () => new URLSearchParams({ token: document.getElementById("token").value });
-    async function api(path) {
-      const res = await fetch(path + "?" + params());
-      if (!res.ok) throw new Error(await res.text());
-      return res.json();
+    let data = null;
+
+    function table(rows, cols) {
+      if (!rows?.length) return "<p class='muted'>Aucune donnee — lance /dashboard sync sur le bot.</p>";
+      return "<table><tr>" + cols.map((c) => `<th>${c.label}</th>`).join("") + "</tr>" +
+        rows.map((r) => "<tr>" + cols.map((c) => `<td>${c.render(r)}</td>`).join("") + "</tr>").join("") +
+        "</table>";
     }
-    document.getElementById("load").onclick = async () => {
-      try {
-        const data = await api("/api/leaderboard");
-        document.getElementById("leaderboard").innerHTML =
-          "<table><tr><th>#</th><th>ID</th><th>Solde</th></tr>" +
-          data.map((r, i) => `<tr><td>${i + 1}</td><td>${r.id}</td><td>${r.balance}</td></tr>`).join("") +
-          "</table>";
-      } catch (e) {
-        document.getElementById("leaderboard").textContent = e.message;
-      }
-    };
-    document.getElementById("profile").onclick = async () => {
+
+    function render(data) {
+      document.getElementById("updated").textContent = data.updatedAt
+        ? "Derniere sync : " + new Date(data.updatedAt).toLocaleString("fr-FR")
+        : "Pas encore synchronise";
+
+      const c = data.todayCasino || {};
+      document.getElementById("casinoStats").innerHTML = [
+        ["Parties", c.totalGames || 0],
+        ["Mises", c.totalBet || 0],
+        ["Jour", c.dayKey || "—"],
+      ].map(([k, v]) => `<div class="stat"><span class="muted">${k}</span><b>${v}</b></div>`).join("");
+
+      document.getElementById("leaderboard").innerHTML = table(data.leaderboard, [
+        { label: "#", render: (r) => r.rank },
+        { label: "ID", render: (r) => `<code>${r.id}</code>` },
+        { label: "Coins", render: (r) => r.balance },
+      ]);
+
+      document.getElementById("xpTop").innerHTML = table(data.xpTop, [
+        { label: "#", render: (r) => r.rank },
+        { label: "ID", render: (r) => `<code>${r.id}</code>` },
+        { label: "Niveau", render: (r) => r.level },
+        { label: "XP", render: (r) => r.totalXp },
+      ]);
+    }
+
+    async function load() {
+      const res = await fetch("/stats.json?" + Date.now());
+      data = await res.json();
+      render(data);
+    }
+
+    document.getElementById("profileBtn").onclick = () => {
       const id = document.getElementById("userId").value.trim();
-      if (!id) return;
-      try {
-        const data = await api("/api/user/" + id);
-        document.getElementById("profileOut").textContent = JSON.stringify(data, null, 2);
-      } catch (e) {
-        document.getElementById("profileOut").textContent = e.message;
+      if (!id || !data) return;
+      const row = data.leaderboard?.find((r) => r.id === id);
+      const xp = data.xpTop?.find((r) => r.id === id);
+      if (!row && !xp) {
+        document.getElementById("profileOut").textContent = "ID absent du snapshot (top 25 / top 15 XP).";
+        return;
       }
+      document.getElementById("profileOut").textContent = JSON.stringify({ coins: row, xp }, null, 2);
     };
+
+    load().catch(() => {
+      document.getElementById("updated").textContent = "Impossible de charger stats.json";
+    });
   </script>
 </body>
 </html>

@@ -20,4 +20,7 @@ module.exports = [
   require("./warn"),
   require("./suggest"),
   require("./botstatus"),
+  require("./gazette"),
+  require("./dashboard"),
+  require("./coop"),
 ];

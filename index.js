@@ -55,7 +55,21 @@ const {
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
 const { startCasinoResultCleanup } = require("./lib/casinoResultCleanup");
+const { syncDashboard } = require("./lib/dashboardSnapshot");
 const path = require("path");
+
+function scheduleDashboardSync() {
+  if (!process.env.GITHUB_TOKEN?.trim()) return;
+  const tick = () => {
+    syncDashboard({ pushGitHub: true })
+      .then((r) => {
+        if (r.github && !r.github.ok) console.warn("[dashboard]", r.github.reason);
+      })
+      .catch((err) => console.error("[dashboard]", err));
+    setTimeout(tick, 6 * 60 * 60 * 1000);
+  };
+  setTimeout(tick, 2 * 60 * 1000);
+}
 
 const client = new Client({
   intents: [
@@ -81,6 +95,7 @@ client.once(Events.ClientReady, (c) => {
   tickets.scheduleInactiveTicketSweep(client);
   startMoneyPanelsAutoRefresh(client);
   startCasinoResultCleanup(client);
+  scheduleDashboardSync();
 
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),
