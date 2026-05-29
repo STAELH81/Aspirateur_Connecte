@@ -5,60 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aspirateur Connecte — Les Girlsss</title>
   <style>
-    :root { --bg: #1e1f22; --card: #2b2d31; --text: #f2f3f5; --muted: #b5bac1; --accent: #eb459e; --green: #57f287; }
+    :root { --bg: #1e1f22; --card: #2b2d31; --text: #f2f3f5; --muted: #b5bac1; --accent: #eb459e; --green: #57f287; --red: #ed4245; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 24px; max-width: 960px; margin-inline: auto; }
-    h1 { color: var(--accent); margin: 0 0 4px; font-size: 1.6rem; }
-    h2 { font-size: 1.1rem; margin-top: 0; }
-    .card { background: var(--card); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
+    body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; max-width: 980px; margin-inline: auto; }
+    header { margin-bottom: 20px; }
+    h1 { color: var(--accent); margin: 0; font-size: 1.75rem; }
+    .sub { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    h2 { font-size: 1rem; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .card { background: var(--card); border-radius: 14px; padding: 18px 20px; margin-bottom: 16px; border: 1px solid #3f4147; }
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid #3f4147; }
-    th { color: var(--muted); font-weight: 600; }
-    .muted { color: var(--muted); font-size: 14px; }
-    .pill { display: inline-block; background: #111; padding: 4px 10px; border-radius: 999px; font-size: 13px; }
-    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-    .stat { background: #111; border-radius: 10px; padding: 12px; }
-    .stat b { display: block; font-size: 1.4rem; color: var(--green); }
-    input { padding: 10px 12px; border-radius: 8px; border: none; background: #111; color: var(--text); width: 100%; max-width: 280px; }
-    button { padding: 10px 14px; border-radius: 8px; border: none; background: var(--accent); color: #fff; cursor: pointer; font-weight: 600; }
-    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
-    pre { white-space: pre-wrap; font-size: 13px; color: var(--muted); }
+    td, th { text-align: left; padding: 10px 8px; border-bottom: 1px solid #3f4147; }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; }
+    tr:last-child td { border-bottom: none; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+    .stat { background: #111; border-radius: 10px; padding: 14px; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+    .stat b { font-size: 1.5rem; color: var(--green); }
+    .highlights { display: grid; gap: 8px; margin-top: 14px; }
+    .hl { background: #111; border-radius: 10px; padding: 10px 14px; font-size: 14px; }
+    .hl.win b { color: var(--green); }
+    .hl.loss b { color: var(--red); }
+    .bar-wrap { background: #111; border-radius: 999px; height: 10px; overflow: hidden; margin: 10px 0; }
+    .bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); transition: width 0.4s; }
+    .medal-1 { color: #fee75c; }
+    .medal-2 { color: #b5bac1; }
+    .medal-3 { color: #cd7f32; }
+    .refresh { font-size: 12px; color: var(--muted); }
   </style>
 </head>
 <body>
-  <h1>Aspirateur Connecte</h1>
-  <p class="muted">Dashboard Les Girlsss — mis a jour via <code>/dashboard sync</code> sur Discord.</p>
-  <p class="muted" id="updated">Chargement…</p>
+  <header>
+    <h1>Aspirateur Connecte</h1>
+    <p class="sub">Les Girlsss — stats gambling &amp; economie</p>
+    <p class="sub" id="updated">Chargement…</p>
+    <p class="refresh">Page rafraichie auto toutes les 5 min</p>
+  </header>
 
   <div class="card">
     <h2>Casino aujourd'hui</h2>
     <div class="stat-grid" id="casinoStats"></div>
+    <div class="highlights" id="highlights"></div>
+  </div>
+
+  <div class="card">
+    <h2>Objectif commu (/coop)</h2>
+    <p id="coopText" class="sub"></p>
+    <div class="bar-wrap"><div class="bar" id="coopBar"></div></div>
   </div>
 
   <div class="card">
     <h2>Top coins</h2>
-    <div id="leaderboard" class="muted">—</div>
+    <div id="leaderboard"></div>
   </div>
 
   <div class="card">
     <h2>Top XP</h2>
-    <div id="xpTop" class="muted">—</div>
-  </div>
-
-  <div class="card">
-    <h2>Profil (par ID Discord)</h2>
-    <div class="row">
-      <input id="userId" placeholder="123456789012345678" />
-      <button id="profileBtn">Chercher</button>
-    </div>
-    <pre id="profileOut">Entre un ID present dans le snapshot.</pre>
+    <div id="xpTop"></div>
   </div>
 
   <script>
-    let data = null;
+    const REFRESH_MS = 5 * 60 * 1000;
+
+    function medal(rank) {
+      if (rank === 1) return '<span class="medal-1">#1</span>';
+      if (rank === 2) return '<span class="medal-2">#2</span>';
+      if (rank === 3) return '<span class="medal-3">#3</span>';
+      return rank;
+    }
 
     function table(rows, cols) {
-      if (!rows?.length) return "<p class='muted'>Aucune donnee — lance /dashboard sync sur le bot.</p>";
+      if (!rows?.length) return "<p class='sub'>Aucune donnee.</p>";
       return "<table><tr>" + cols.map((c) => `<th>${c.label}</th>`).join("") + "</tr>" +
         rows.map((r) => "<tr>" + cols.map((c) => `<td>${c.render(r)}</td>`).join("") + "</tr>").join("") +
         "</table>";
@@ -66,51 +82,57 @@
 
     function render(data) {
       document.getElementById("updated").textContent = data.updatedAt
-        ? "Derniere sync : " + new Date(data.updatedAt).toLocaleString("fr-FR")
-        : "Pas encore synchronise";
+        ? "Derniere sync bot : " + new Date(data.updatedAt).toLocaleString("fr-FR")
+        : "Pas encore synchronise — /dashboard sync sur Discord";
 
       const c = data.todayCasino || {};
       document.getElementById("casinoStats").innerHTML = [
         ["Parties", c.totalGames || 0],
         ["Mises", c.totalBet || 0],
         ["Jour", c.dayKey || "—"],
-      ].map(([k, v]) => `<div class="stat"><span class="muted">${k}</span><b>${v}</b></div>`).join("");
+      ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join("");
+
+      const hl = [];
+      if (c.topWinner?.net > 0) {
+        hl.push(`<div class="hl win">Plus gros gain : <b>${c.topWinner.name || c.topWinner.id}</b> (+${c.topWinner.net} coins)</div>`);
+      }
+      if (c.topLoser?.net < 0) {
+        hl.push(`<div class="hl loss">Plus grosse perte : <b>${c.topLoser.name || c.topLoser.id}</b> (${c.topLoser.net} coins)</div>`);
+      }
+      if (c.mostActive?.games > 0) {
+        hl.push(`<div class="hl">Plus actif : <b>${c.mostActive.name || c.mostActive.id}</b> (${c.mostActive.games} parties)</div>`);
+      }
+      document.getElementById("highlights").innerHTML = hl.join("") || "<p class='sub'>Pas de highlight aujourd'hui.</p>";
+
+      const coop = data.coopGoal || { target: 30, progress: 0, reward: 25 };
+      const pct = Math.min(100, Math.round((coop.progress / coop.target) * 100)) || 0;
+      document.getElementById("coopBar").style.width = pct + "%";
+      document.getElementById("coopText").textContent =
+        `${coop.progress} / ${coop.target} parties casino sur le serveur — bonus ${coop.reward} coins si objectif atteint`;
 
       document.getElementById("leaderboard").innerHTML = table(data.leaderboard, [
-        { label: "#", render: (r) => r.rank },
-        { label: "ID", render: (r) => `<code>${r.id}</code>` },
-        { label: "Coins", render: (r) => r.balance },
+        { label: "#", render: (r) => medal(r.rank) },
+        { label: "Joueur", render: (r) => r.name || r.id },
+        { label: "Coins", render: (r) => r.balance.toLocaleString("fr-FR") },
       ]);
 
       document.getElementById("xpTop").innerHTML = table(data.xpTop, [
-        { label: "#", render: (r) => r.rank },
-        { label: "ID", render: (r) => `<code>${r.id}</code>` },
+        { label: "#", render: (r) => medal(r.rank) },
+        { label: "Joueur", render: (r) => r.name || r.id },
         { label: "Niveau", render: (r) => r.level },
-        { label: "XP", render: (r) => r.totalXp },
+        { label: "XP", render: (r) => r.totalXp.toLocaleString("fr-FR") },
       ]);
     }
 
     async function load() {
       const res = await fetch("/stats.json?" + Date.now());
-      data = await res.json();
-      render(data);
+      render(await res.json());
     }
-
-    document.getElementById("profileBtn").onclick = () => {
-      const id = document.getElementById("userId").value.trim();
-      if (!id || !data) return;
-      const row = data.leaderboard?.find((r) => r.id === id);
-      const xp = data.xpTop?.find((r) => r.id === id);
-      if (!row && !xp) {
-        document.getElementById("profileOut").textContent = "ID absent du snapshot (top 25 / top 15 XP).";
-        return;
-      }
-      document.getElementById("profileOut").textContent = JSON.stringify({ coins: row, xp }, null, 2);
-    };
 
     load().catch(() => {
       document.getElementById("updated").textContent = "Impossible de charger stats.json";
     });
+    setInterval(load, REFRESH_MS);
   </script>
 </body>
 </html>
