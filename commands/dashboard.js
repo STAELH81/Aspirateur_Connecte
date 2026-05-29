@@ -24,7 +24,10 @@ module.exports = {
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     const pushGitHub = Boolean(process.env.GITHUB_TOKEN?.trim());
-    const result = await syncDashboard({ pushGitHub });
+    const result = await syncDashboard({
+      pushGitHub,
+      client: interaction.client,
+    });
 
     const lines = [
       "Snapshot genere.",
