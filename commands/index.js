@@ -19,4 +19,5 @@ module.exports = [
   require("./level"),
   require("./warn"),
   require("./suggest"),
+  require("./botstatus"),
 ];

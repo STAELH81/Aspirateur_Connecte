@@ -14,6 +14,7 @@ const { addEntrant, updateMessage, scheduleAll } = require("./lib/giveaways");
 const { scheduleBirthdayAnnounce } = require("./lib/birthdayAnnounce");
 const { scheduleBirthdayVip } = require("./lib/birthdayVip");
 const { scheduleShopRoleCleanup } = require("./lib/shopPurchase");
+const { scheduleGamblingGazette } = require("./lib/gamblingGazette");
 const personality = require("./lib/personality");
 const blackjack = require("./lib/blackjack");
 const economyLog = require("./lib/economyLog");
@@ -76,6 +77,8 @@ client.once(Events.ClientReady, (c) => {
   scheduleBirthdayAnnounce(client);
   scheduleBirthdayVip(client);
   scheduleShopRoleCleanup(client);
+  scheduleGamblingGazette(client);
+  tickets.scheduleInactiveTicketSweep(client);
   startMoneyPanelsAutoRefresh(client);
   startCasinoResultCleanup(client);
 
@@ -478,6 +481,8 @@ client.on(Events.MessageCreate, async (message) => {
   }
 
   await suggestions.onSuggestionMessage(message).catch(() => {});
+
+  tickets.trackTicketMessage(message);
 
   const levelUpBanterReply = await levelUpBanter
     .onLevelUpReply(message, client)
