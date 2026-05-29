@@ -35,12 +35,12 @@ module.exports = {
     if (pushGitHub) {
       lines.push(
         result.github?.ok
-          ? "GitHub mis a jour — Netlify va redeployer si lie au repo."
+          ? `Branche **${result.github.branch}** mise a jour (${result.github.files?.join(", ")}). Netlify redeploie si branche \`site\` configuree.`
           : `GitHub : ${result.github?.reason || "erreur"}`
       );
     } else {
       lines.push(
-        "Tip : ajoute `GITHUB_TOKEN`, `GITHUB_REPO_OWNER`, `GITHUB_REPO` dans .env pour pousser vers Netlify auto."
+        "Tip : branche **site** + `GITHUB_SITE_BRANCH=site` — voir docs/NETLIFY.md"
       );
     }
 
