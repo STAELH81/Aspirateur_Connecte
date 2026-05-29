@@ -23,6 +23,7 @@ const tickets = require("./lib/tickets");
 const afk = require("./lib/afk");
 const xp = require("./lib/xp");
 const suggestions = require("./lib/suggestions");
+const levelUpBanter = require("./lib/levelUpBanter");
 const gamblingProgress = require("./lib/gamblingProgress");
 const { createStore } = require("./lib/jsonStore");
 const { replyIfWrongChannel } = require("./lib/gamblingChannel");
@@ -478,14 +479,23 @@ client.on(Events.MessageCreate, async (message) => {
 
   await suggestions.onSuggestionMessage(message).catch(() => {});
 
+  const levelUpBanterReply = await levelUpBanter
+    .onLevelUpReply(message, client)
+    .catch(() => false);
+
   const xpResult = xp.tryMessageXp(message.author.id);
   if (xpResult?.leveledUp) {
     await message
-      .reply(`GG ${message.author} — niveau **${xpResult.after.level}** !`)
+      .reply(
+        levelUpBanter.buildLevelUpMessage(
+          message.author,
+          xpResult.after.level
+        )
+      )
       .catch(() => {});
   }
 
-  if (message.mentions.has(client.user)) {
+  if (message.mentions.has(client.user) && !levelUpBanterReply) {
     await message.reply(personality.mentionReply(message.author));
   }
 });
