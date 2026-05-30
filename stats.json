@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-05-30T10:09:57.293Z",
+  "updatedAt": "2026-05-30T10:41:48.676Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 5365,
+      "balance": 5459,
       "name": "MOMMY"
     },
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 4053,
+      "balance": 4096,
       "name": "Viktor"
     },
     {
@@ -122,7 +122,7 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 6,
-      "totalXp": 1901,
+      "totalXp": 1919,
       "name": "MOMMY"
     },
     {
@@ -143,7 +143,7 @@
       "rank": 4,
       "id": "790479407449636885",
       "level": 3,
-      "totalXp": 573,
+      "totalXp": 594,
       "name": "Lolaa"
     },
     {
@@ -226,20 +226,21 @@
   ],
   "coopGoal": {
     "target": 30,
-    "progress": 31,
-    "reward": 25
+    "progress": 32,
+    "reward": 25,
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-05-30",
-    "totalGames": 31,
-    "totalBet": 930,
+    "totalGames": 32,
+    "totalBet": 940,
     "topWinner": {
-      "id": "561500178759024640",
-      "games": 31,
-      "net": -180,
-      "bet": 930,
-      "wins": 11,
-      "name": "Lucyy"
+      "id": "476295168950009856",
+      "games": 1,
+      "net": -10,
+      "bet": 10,
+      "wins": 0,
+      "name": "MOMMY"
     },
     "topLoser": {
       "id": "561500178759024640",
