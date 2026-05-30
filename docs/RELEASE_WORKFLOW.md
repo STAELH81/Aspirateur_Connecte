@@ -59,7 +59,7 @@ Les fixes techniques → une ligne « stabilité » ou rien.
 | v1.2.0 | `annonce-v1.2.0-discord.md` | Module Gambling (référence ton) |
 | v1.2.6 | `annonce-v1.2.6-discord.md` | Petite MAJ (OK si drop ciblé) |
 | v1.2.7 | `annonce-v1.2.7-discord.md` | Plutôt récap — **ne pas reprendre ce format** |
-| **v1.2.8** | `release-v1.2.8-WIP.md` → **`annonce-v1.2.8-discord.md` le jour J** | **En cours, pas push** |
+| **v1.2.8** | `annonce-v1.2.8-discord.md` | Hub Quêtes & Commu — **prêt, pas push** |
 
 ---
 

@@ -30,7 +30,8 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Tirages au sort, VIP, etc. | `/giveaway` avec attribution de rôle possible |
 | Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
 | Anniversaires de la commu | `/anniv` |
-| Coins & mini-jeux | Panneaux `money/casino/shop/infos/quetes` + `/casino` |
+| Coins & mini-jeux | Panneaux **money / casino / shop / infos / quetes** + `/casino` |
+| Quêtes & commu (v1.2.8) | Panneau **Quêtes Center** — série, coop, site stats |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
 Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
@@ -69,33 +70,41 @@ Le jour J, le bot poste dans `#general` : *Hey ! On souhaite tous l'anniv de …
 
 ---
 
-## Économie et casino (salons `money/casino/shop/infos/quetes`)
+## Économie et casino (salons `money` · `casino` · `shop` · `infos` · `quetes`)
 
-Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, `GAMBLING_TEST_CHANNEL_ID`, `GAMBLING_CHANNEL_IDS`) ou dans un salon nommé `money`, `casino`, `shop`, `infos`, `quetes` ou `gambling`.
+Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, etc.) ou dans un salon nommé `money`, `casino`, `shop`, `infos`, `quetes` ou `gambling`.
 
 Monnaie : **coins**. Solde de départ : **100**.
 
 ### Panneaux membres
 
-| Panneau | Actions |
-|---------|---------|
-| **Money** | Daily, Work, Balance, Pay, Banque, Profil, Refresh + top 25 live + lien site |
-| **Casino** | Choix du jeu, config, lancer, puis Meme mise, Rejouer, Changer de jeux |
-| **Shop** | Achats par boutons avec confirmation |
-| **Quêtes** | Quête du jour, barre coop serveur, tableau 🟢🟠🔴 par membre, **Claim quête** / **Claim coop** |
-| **Infos** | Guide complet (règles, quêtes, coop, site, Gazette) — embed fixe sans boutons |
+| Panneau | Rôle |
+|---------|------|
+| **Money** | Daily, Work, Balance, Pay, Banque, Profil, Refresh — top 25 + lien site |
+| **Casino** | Jeux, jackpot, Meme mise / Rejouer / Changer de jeux |
+| **Shop** | Achats par boutons + confirmation |
+| **Quêtes** | Hub v1.2.8 : quête du jour, coop, tableau 🟢🟠🔴, Claim quête/coop, **Ma quête**, Refresh |
+| **Infos** | Guide gambling (règles, quêtes, coop, site, Gazette) |
 
-### Quête du jour & objectif commu
+### Hub Quêtes & Commu (v1.2.8)
 
-- **Quête** : tâche aléatoire chaque jour (Daily, Work, parties casino…). Progression automatique. Réclamer avec **Claim quête** sur le panneau Quêtes.
-- **Coop** : si le serveur cumule **30** parties casino dans la journée, bonus **+25** coins pour ceux qui ont joué **avant** le cap. Annonce dans le salon **casino**. Réclamer avec **Claim coop** sur le panneau Quêtes.
-- **Suivi** : le tableau du panneau Quêtes se met à jour (~1 min). Profil Money / `/userinfo` : une ligne résumé.
-- **Rappels** : DM à **20h** si quête terminée non réclamée ou coop claimable.
+**Quête du jour** — une tâche aléatoire (Daily, Work, casino…). Progression automatique. **Claim quête** sur le panneau quand c’est fini.
+
+**Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** coins en plus (ex. J2 +3, J3 +6…).
+
+**Objectif commu (coop)** — **30** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. **Claim coop** sur le panneau Quêtes.
+
+**Ma quête** — bouton éphemère : ton suivi (quête, coop, série).
+
+**Profil** (`/userinfo` ou bouton Profil Money) : une ligne Quête · Coop — détail dans le tableau.
+
+**Rappels** — DM à **20h** si quête terminée non réclamée ou coop claimable. Panneau maj auto ~**10 s**.
 
 ### Site & Gazette
 
-- **aspirateurconnecte.netlify.app** — top coins, XP, casino du jour, graphiques (sync staff : `/dashboard sync`)
-- **La Gazette Du Gamblinnngggg** — recap casino automatique chaque soir **23h59** (salon casino)
+- **aspirateurconnecte.netlify.app** — top coins, XP, casino du jour, graphiques coop
+- **La Gazette Du Gamblinnngggg** — recap casino **23h59** (salon casino)
+- Staff : `/dashboard sync` pour pousser les stats (branche Netlify `site`)
 
 ### Commandes slash
 
@@ -177,8 +186,10 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `GAMBLING_CHANNEL_ID` | Recommandé | Un salon gambling autorisé |
 | `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
 | `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
-| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon du panneau quêtes (`/quests panel`) |
-| `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — annonce auto le jour d’un anniversaire |
+| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon panneau quêtes (`/quests panel`) |
+| `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — anniversaires |
+| `DASHBOARD_SYNC_MINUTES` | Optionnel | Intervalle sync site (prod, min 5) |
+| `DASHBOARD_PUSH` | Optionnel | `0` en local = ne push pas sur Netlify |
 
 Sans variable gambling, fallback par nom de salon (`money/casino/shop/infos/quetes/gambling`).
 
