@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-30T11:31:21.183Z",
+  "updatedAt": "2026-05-30T12:31:21.185Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -11,7 +11,7 @@
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 4105,
+      "balance": 4251,
       "name": "Viktor"
     },
     {
@@ -23,7 +23,7 @@
     {
       "rank": 4,
       "id": "561500178759024640",
-      "balance": 1068,
+      "balance": 703,
       "name": "Lucyy"
     },
     {
@@ -58,60 +58,66 @@
     },
     {
       "rank": 10,
+      "id": "1228698414020300821",
+      "balance": 223,
+      "name": "Clement"
+    },
+    {
+      "rank": 11,
       "id": "644148774544867339",
       "balance": 125,
       "name": "Gab"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "id": "1108365776504754287",
       "balance": 124,
       "name": "Loïc"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "id": "488799849798434826",
       "balance": 110,
       "name": "MynameisEve"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "id": "1291782472803156162",
       "balance": 65,
       "name": "MOMMY 2"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "id": "579966046736482315",
       "balance": 21,
       "name": "Mec de Sacha"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
     },
     {
-      "rank": 19,
+      "rank": 20,
       "id": "908036623856459877",
       "balance": 0,
       "name": "Amnesie"
@@ -129,14 +135,14 @@
       "rank": 2,
       "id": "561500178759024640",
       "level": 4,
-      "totalXp": 829,
+      "totalXp": 877,
       "name": "Lucyy"
     },
     {
       "rank": 3,
       "id": "338058082112241664",
       "level": 3,
-      "totalXp": 695,
+      "totalXp": 717,
       "name": "Viktor"
     },
     {
@@ -226,36 +232,36 @@
   ],
   "coopGoal": {
     "target": 150,
-    "progress": 34,
+    "progress": 281,
     "reward": 25,
-    "goalMet": false
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-05-30",
-    "totalGames": 34,
-    "totalBet": 960,
+    "totalGames": 281,
+    "totalBet": 5335,
     "topWinner": {
-      "id": "338058082112241664",
-      "games": 1,
-      "net": 9,
-      "bet": 10,
+      "id": "476295168950009856",
+      "games": 2,
+      "net": -1,
+      "bet": 20,
       "wins": 1,
-      "name": "Viktor"
+      "name": "MOMMY"
     },
     "topLoser": {
       "id": "561500178759024640",
-      "games": 31,
-      "net": -180,
-      "bet": 930,
-      "wins": 11,
+      "games": 270,
+      "net": -759,
+      "bet": 5120,
+      "wins": 96,
       "name": "Lucyy"
     },
     "mostActive": {
       "id": "561500178759024640",
-      "games": 31,
-      "net": -180,
-      "bet": 930,
-      "wins": 11,
+      "games": 270,
+      "net": -759,
+      "bet": 5120,
+      "wins": 96,
       "name": "Lucyy"
     }
   }
