@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-30T20:05:10.449Z",
+  "updatedAt": "2026-05-30T21:05:10.454Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -28,15 +28,15 @@
     },
     {
       "rank": 5,
-      "id": "1151513409439932486",
-      "balance": 666,
-      "name": "Gatia"
+      "id": "435811716572643338",
+      "balance": 688,
+      "name": "Djalann"
     },
     {
       "rank": 6,
-      "id": "435811716572643338",
-      "balance": 646,
-      "name": "Djalann"
+      "id": "1151513409439932486",
+      "balance": 666,
+      "name": "Gatia"
     },
     {
       "rank": 7,
@@ -147,17 +147,17 @@
     },
     {
       "rank": 4,
+      "id": "571755489952661504",
+      "level": 3,
+      "totalXp": 636,
+      "name": "Dorian ?! Super..."
+    },
+    {
+      "rank": 5,
       "id": "790479407449636885",
       "level": 3,
       "totalXp": 636,
       "name": "Lolaa"
-    },
-    {
-      "rank": 5,
-      "id": "571755489952661504",
-      "level": 3,
-      "totalXp": 620,
-      "name": "Dorian ?! Super..."
     },
     {
       "rank": 6,
