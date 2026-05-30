@@ -1,5 +1,5 @@
 ---
-description: Fin de session — 3g git + docs help/infos/readme/annonce
+description: Fin de session — 3g git + docs help/infos/readme/annonce/botstatus
 alwaysApply: true
 ---
 
@@ -13,10 +13,13 @@ Quand une feature ou version est terminée (ou à la fin d’un prompt de dev si
 |---------|---------|
 | `lib/personality.js` → `helpEmbeds()` | `/help` |
 | `lib/economyPanels.js` → `infosPanelEmbed()` | Panneau `#infos` |
+| `lib/botStatus.js` → `BOT_VERSION` + env/salons/data | `/botstatus` staff |
 | `README.md` | Doc projet (salons, commandes, version) |
-| `docs/annonce-vX.Y.Z-discord.md` | Annonce Discord (blocs copy-paste) |
+| `docs/annonce-vX.Y.Z-discord.md` | Annonce Discord (`/devlog post` ou copy-paste) |
 
-Ne pas laisser help/infos/readme/annonce en retard sur le code.
+Ne pas laisser help, infos, botstatus, readme ou annonce en retard sur le code.
+
+**`/botstatus`** : bump `BOT_VERSION`, `versionFeaturesBlock()`, `ENV_*` si nouvelle variable, `DATA_FILES` si nouveau JSON runtime.
 
 ## 2. Fin de réponse — toujours donner les 3g
 

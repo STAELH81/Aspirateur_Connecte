@@ -346,7 +346,7 @@ Aspirateur_Connecte/
 
 1. Créer `commands/macmd.js`
 2. L’ajouter dans `commands/index.js`
-3. Mettre à jour **`lib/personality.js` → `helpEmbeds()`**, **`lib/economyPanels.js` → `infosPanelEmbed()`**, **`README.md`**, **`docs/annonce-vX.Y.Z-discord.md`**
+3. Mettre à jour **`lib/personality.js` → `helpEmbeds()`**, **`lib/economyPanels.js` → `infosPanelEmbed()`**, **`lib/botStatus.js` → `BOT_VERSION` + checks**, **`README.md`**, **`docs/annonce-vX.Y.Z-discord.md`**
 4. `npm run deploy` puis push / redémarrage
 
 ---
@@ -393,8 +393,9 @@ npm run deploy
 |---------|------|
 | `lib/personality.js` → `helpEmbeds()` | `/help` in-game |
 | `lib/economyPanels.js` → `infosPanelEmbed()` | Panneau **#infos** |
+| `lib/botStatus.js` → `BOT_VERSION`, env, data | `/botstatus` staff |
 | `README.md` | Doc repo / onboarding |
-| `docs/annonce-vX.Y.Z-discord.md` | Messages Discord copy-paste |
+| `docs/annonce-vX.Y.Z-discord.md` | Messages Discord · **`/devlog post`** |
 
 Annonces prêtes v1.2.9 : `docs/annonce-v1.2.9-discord.md` · info temp banque : `docs/annonce-banque-temp-discord.md`.
 
