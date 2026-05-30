@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aspirateur Connecte — Les Girlsss</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root { --bg: #1e1f22; --card: #2b2d31; --text: #f2f3f5; --muted: #b5bac1; --accent: #eb459e; --green: #57f287; --red: #ed4245; }
     * { box-sizing: border-box; }
@@ -14,9 +13,6 @@
     .sub { color: var(--muted); font-size: 14px; margin-top: 6px; }
     h2 { font-size: 1rem; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
     .card { background: var(--card); border-radius: 14px; padding: 18px 20px; margin-bottom: 16px; border: 1px solid #3f4147; }
-    .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-    .chart-box { background: #111; border-radius: 12px; padding: 12px; min-height: 220px; }
-    .chart-box canvas { max-height: 200px; }
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
     td, th { text-align: left; padding: 10px 8px; border-bottom: 1px solid #3f4147; }
     th { color: var(--muted); font-weight: 600; font-size: 12px; }
@@ -52,16 +48,7 @@
   </div>
 
   <div class="card">
-    <h2>Graphiques</h2>
-    <div class="chart-grid">
-      <div class="chart-box"><canvas id="coinsChart"></canvas></div>
-      <div class="chart-box"><canvas id="xpChart"></canvas></div>
-      <div class="chart-box"><canvas id="coopChart"></canvas></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Objectif commu</h2>
+    <h2>Objectif commu (/coop)</h2>
     <p id="coopText" class="sub"></p>
     <div class="bar-wrap"><div class="bar" id="coopBar"></div></div>
   </div>
@@ -78,7 +65,6 @@
 
   <script>
     const REFRESH_MS = 5 * 60 * 1000;
-    const chartInstances = {};
 
     function medal(rank) {
       if (rank === 1) return '<span class="medal-1">#1</span>';
@@ -92,89 +78,6 @@
       return "<table><tr>" + cols.map((c) => `<th>${c.label}</th>`).join("") + "</tr>" +
         rows.map((r) => "<tr>" + cols.map((c) => `<td>${c.render(r)}</td>`).join("") + "</tr>").join("") +
         "</table>";
-    }
-
-    function upsertChart(id, config) {
-      const canvas = document.getElementById(id);
-      if (!canvas || typeof Chart === "undefined") return;
-      if (chartInstances[id]) {
-        chartInstances[id].destroy();
-      }
-      chartInstances[id] = new Chart(canvas, config);
-    }
-
-    function renderCharts(data) {
-      const coins = (data.leaderboard || []).slice(0, 10);
-      upsertChart("coinsChart", {
-        type: "bar",
-        data: {
-          labels: coins.map((r) => r.name || r.id.slice(0, 8)),
-          datasets: [{
-            label: "Coins",
-            data: coins.map((r) => r.balance),
-            backgroundColor: "#eb459e",
-            borderRadius: 6,
-          }],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, title: { display: true, text: "Top 10 coins", color: "#b5bac1" } },
-          scales: {
-            x: { ticks: { color: "#b5bac1", maxRotation: 45, minRotation: 0 } },
-            y: { ticks: { color: "#b5bac1" }, grid: { color: "#3f4147" } },
-          },
-        },
-      });
-
-      const xp = (data.xpTop || []).slice(0, 10);
-      upsertChart("xpChart", {
-        type: "bar",
-        data: {
-          labels: xp.map((r) => r.name || r.id.slice(0, 8)),
-          datasets: [{
-            label: "XP total",
-            data: xp.map((r) => r.totalXp),
-            backgroundColor: "#57f287",
-            borderRadius: 6,
-          }],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, title: { display: true, text: "Top 10 XP", color: "#b5bac1" } },
-          scales: {
-            x: { ticks: { color: "#b5bac1", maxRotation: 45, minRotation: 0 } },
-            y: { ticks: { color: "#b5bac1" }, grid: { color: "#3f4147" } },
-          },
-        },
-      });
-
-      const coop = data.coopGoal || { target: 30, progress: 0, reward: 25 };
-      const remaining = Math.max(0, coop.target - coop.progress);
-      upsertChart("coopChart", {
-        type: "doughnut",
-        data: {
-          labels: ["Parties jouees", "Reste pour l'objectif"],
-          datasets: [{
-            data: [coop.progress, remaining],
-            backgroundColor: ["#57f287", "#3f4147"],
-            borderWidth: 0,
-          }],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: "#b5bac1" } },
-            title: {
-              display: true,
-              text: `Coop ${coop.progress}/${coop.target} (+${coop.reward} coins)`,
-              color: "#b5bac1",
-            },
-          },
-        },
-      });
     }
 
     function render(data) {
@@ -204,11 +107,8 @@
       const coop = data.coopGoal || { target: 30, progress: 0, reward: 25 };
       const pct = Math.min(100, Math.round((coop.progress / coop.target) * 100)) || 0;
       document.getElementById("coopBar").style.width = pct + "%";
-      const metLabel = coop.goalMet ? " — objectif atteint !" : "";
       document.getElementById("coopText").textContent =
-        `${coop.progress} / ${coop.target} parties casino sur le serveur — bonus ${coop.reward} coins si objectif atteint${metLabel}`;
-
-      renderCharts(data);
+        `${coop.progress} / ${coop.target} parties casino sur le serveur — bonus ${coop.reward} coins si objectif atteint`;
 
       document.getElementById("leaderboard").innerHTML = table(data.leaderboard, [
         { label: "#", render: (r) => medal(r.rank) },
