@@ -36,12 +36,23 @@ module.exports = {
       return;
     }
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-    const payload = await buildBoardPayload(interaction.guild);
-    const msg = await interaction.channel.send(payload);
-    registerBoardMessage(msg);
-    await interaction.editReply({
-      content: "Tableau **Quêtes & Coop** poste — maj auto toutes les minutes.",
-    });
+    if (sub === "panel") {
+      const questsChannelId = process.env.QUESTS_BOARD_CHANNEL_ID?.trim();
+      if (questsChannelId && interaction.channelId !== questsChannelId) {
+        await interaction.reply({
+          content: `Poste le panel dans <#${questsChannelId}> (salon quetes configure).`,
+          flags: MessageFlags.Ephemeral,
+        });
+        return;
+      }
+
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+      const payload = await buildBoardPayload(interaction.guild);
+      const msg = await interaction.channel.send(payload);
+      registerBoardMessage(msg);
+      await interaction.editReply({
+        content: "Tableau **Quetes & Coop** poste — maj auto toutes les minutes.",
+      });
+    }
   },
 };
