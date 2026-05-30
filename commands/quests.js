@@ -51,7 +51,7 @@ module.exports = {
       const msg = await interaction.channel.send(payload);
       registerBoardMessage(msg);
       await interaction.editReply({
-        content: "Panneau **Quetes Center** poste — Claim quete / Claim coop / Refresh.",
+        content: "Panneau **Quetes Center** poste — Quetes du jour / Coop du jour / Infos quotidiennes / Refresh.",
       });
     }
   },

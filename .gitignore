@@ -1,5 +1,6 @@
 node_modules/
 .env
+.env local
 dev-bundle/
 data/birthdays.json
 data/giveaways.json

@@ -32,6 +32,7 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Anniversaires de la commu | `/anniv` |
 | Coins & mini-jeux | Panneaux **money / casino / shop / infos / quetes** + `/casino` |
 | Quêtes & commu (v1.2.8) | Panneau **Quêtes Center** — série, coop, site stats |
+| Patch v1.2.8.5 | Tableau membres fix Unicode · coop **100** parties/jour |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
 Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
@@ -83,18 +84,18 @@ Monnaie : **coins**. Solde de départ : **100**.
 | **Money** | Daily, Work, Balance, Pay, Banque, Profil, Refresh — top 25 + lien site |
 | **Casino** | Jeux, jackpot, Meme mise / Rejouer / Changer de jeux |
 | **Shop** | Achats par boutons + confirmation |
-| **Quêtes** | Hub v1.2.8 : quête du jour, coop, tableau 🟢🟠🔴, Claim quête/coop, **Ma quête**, Refresh |
+| **Quêtes** | Hub v1.2.8 : quête du jour, coop, tableau 🟢🟠🔴⚫, **Quêtes du jour** / **Coop du jour** / **Infos quotidiennes**, Refresh |
 | **Infos** | Guide gambling (règles, quêtes, coop, site, Gazette) |
 
 ### Hub Quêtes & Commu (v1.2.8)
 
-**Quête du jour** — une tâche aléatoire (Daily, Work, casino…). Progression automatique. **Claim quête** sur le panneau quand c’est fini.
+**Quête du jour** — une tâche aléatoire (Daily, Work, casino…). Progression automatique. Bouton **Quêtes du jour** sur le panneau quand c’est fini.
 
 **Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** coins en plus (ex. J2 +3, J3 +6…).
 
-**Objectif commu (coop)** — **30** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. **Claim coop** sur le panneau Quêtes.
+**Objectif commu (coop)** — **100** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
 
-**Ma quête** — bouton éphemère : ton suivi (quête, coop, série).
+**Infos quotidiennes** — bouton éphemère : ton suivi (quête, coop, série).
 
 **Profil** (`/userinfo` ou bouton Profil Money) : une ligne Quête · Coop — détail dans le tableau.
 

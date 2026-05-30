@@ -60,6 +60,7 @@ Les fixes techniques → une ligne « stabilité » ou rien.
 | v1.2.6 | `annonce-v1.2.6-discord.md` | Petite MAJ (OK si drop ciblé) |
 | v1.2.7 | `annonce-v1.2.7-discord.md` | Plutôt récap — **ne pas reprendre ce format** |
 | **v1.2.8** | `annonce-v1.2.8-discord.md` | Hub Quêtes & Commu — **prêt, pas push** |
+| **v1.2.8.5** | `annonce-v1.2.8.5-discord.md` | Patch tableau + coop 100 — **après drop .8** |
 
 ---
 
