@@ -1,6 +1,7 @@
 const economy = require("../lib/economy");
 const economyLog = require("../lib/economyLog");
 const shopPurchase = require("../lib/shopPurchase");
+const blackjack = require("../lib/blackjack");
 const { isModerator } = require("../lib/permissions");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
 const {
@@ -79,6 +80,47 @@ module.exports = {
       const lines = Object.entries(stock).map(([id, n]) => `- ${id} : ${n}`);
       await interaction.reply({
         content: `Stock shop reset.\n${lines.length ? lines.join("\n") : "Aucun item avec stock."}`,
+        ephemeral: true,
+      });
+      return;
+    }
+
+    if (sub === "fermer-parties") {
+      const closed = blackjack.closeAllGames();
+      if (!closed.length) {
+        await interaction.reply({
+          content: "Aucune partie ouverte (blackjack en cours).",
+          ephemeral: true,
+        });
+        return;
+      }
+
+      for (const game of closed) {
+        economyLog
+          .logTx(interaction.client, {
+            userId: game.userId,
+            action: "Admin — partie fermee",
+            balanceBefore: economy.getBalance(game.userId),
+            balanceAfter: economy.getBalance(game.userId),
+            details: [
+              `Par <@${interaction.user.id}>`,
+              `Blackjack · mise **${game.bet}**`,
+              "Partie abandonnee — **pas de remboursement**.",
+            ].join("\n"),
+          })
+          .catch(() => {});
+      }
+
+      const lines = closed.map(
+        (g) => `- <@${g.userId}> · blackjack · mise **${g.bet}** coins`
+      );
+      await interaction.reply({
+        content: [
+          `**${closed.length}** partie(s) fermee(s) :`,
+          ...lines,
+          "",
+          "Les mises restent perdues (pas de remboursement). Les boutons Hit/Stand ne marchent plus.",
+        ].join("\n"),
         ephemeral: true,
       });
       return;
