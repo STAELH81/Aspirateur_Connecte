@@ -25,7 +25,7 @@ module.exports = {
 
     if (group !== "admin") {
       await interaction.reply({
-        content: "Utilise les panneaux dans les salons **money**, **shop** et **casino**.",
+        content: "Utilise les panneaux **#bank**, **#money**, **shop** et **casino**.",
         ephemeral: true,
       });
       return;
@@ -45,7 +45,7 @@ module.exports = {
         components: moneyPanelRows(),
       });
       registerMoneyPanelMessage(panel);
-      await interaction.reply({ content: "Panneau money poste.", ephemeral: true });
+      await interaction.reply({ content: "Panneau bank poste.", ephemeral: true });
       return;
     }
 
