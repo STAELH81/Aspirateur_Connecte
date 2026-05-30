@@ -30,9 +30,11 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Tirages au sort, VIP, etc. | `/giveaway` avec attribution de rôle possible |
 | Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
 | Anniversaires de la commu | `/anniv` |
-| Coins & mini-jeux | Panneaux **money / casino / shop / infos / quetes** + `/casino` |
-| Quêtes & commu (v1.2.8) | Panneau **Quêtes Center** — série, coop, site stats |
-| Patch v1.2.8.5 | Tableau membres fix Unicode · coop **100** parties/jour |
+| Coins & mini-jeux | Panneaux **banque / money / casino / shop / infos** + `/casino` · `/duel` |
+| Hub Money (v1.2.9) | Daily · Work · quêtes · coop · **Paliers serie** · top coop · tableau live |
+| Hub Banque (v1.2.9) | Top 25 · Balance · Pay · Profil · **Prêt** |
+| Duels PvP (v1.2.9) | `/duel @joueur` — coinflip, slots, dé (**#casino**) |
+| Coop serveur | **250** parties/jour · MVP **+15/+10/+5** · alerte **80 %** |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
 Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
@@ -71,35 +73,45 @@ Le jour J, le bot poste dans `#general` : *Hey ! On souhaite tous l'anniv de …
 
 ---
 
-## Économie et casino (salons `money` · `casino` · `shop` · `infos` · `quetes`)
+## Économie et casino (salons `banque` · `money` · `casino` · `shop` · `infos`)
 
-Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, etc.) ou dans un salon nommé `money`, `casino`, `shop`, `infos`, `quetes` ou `gambling`.
+Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, etc.) ou dans un salon nommé `banque`, `money`, `casino`, `shop`, `infos` ou `gambling`.
 
 Monnaie : **coins**. Solde de départ : **100**.
 
-### Panneaux membres
+### Panneaux membres (v1.2.9)
 
-| Panneau | Rôle |
-|---------|------|
-| **Money** | Daily, Work, Balance, Pay, Banque, Profil, Refresh — top 25 + lien site |
-| **Casino** | Jeux, jackpot, Meme mise / Rejouer / Changer de jeux |
-| **Shop** | Achats par boutons + confirmation |
-| **Quêtes** | Hub v1.2.8 : quête du jour, coop, tableau 🟢🟠🔴⚫, **Quêtes du jour** / **Coop du jour** / **Infos quotidiennes**, Refresh |
-| **Infos** | Guide gambling (règles, quêtes, coop, site, Gazette) |
+| Panneau | Salon | Rôle |
+|---------|-------|------|
+| **Banque** | `#banque` (ex-money) | Top 25 · Balance · Pay · Profil · **Prêt** · Refresh |
+| **Money** | `#money` (ex-quêtes) | Daily · Work · quêtes · coop · **Paliers serie** · tableau · Refresh |
+| **Casino** | `#casino` | Jeux, jackpot, Meme mise / Rejouer / Changer de jeux · **`/duel`** |
+| **Shop** | `#shop` | Achats par boutons + confirmation |
+| **Infos** | `#infos` | Guide gambling complet (posté par staff) |
 
-### Hub Quêtes & Commu (v1.2.8)
+Msgs bleus sur **#money** : suppression auto ~**5 min**.
 
-**Quête du jour** — une tâche aléatoire (Daily, Work, casino…). Progression automatique. Bouton **Quêtes du jour** sur le panneau quand c’est fini.
+### Hub Money — quêtes & commu
 
-**Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** coins en plus (ex. J2 +3, J3 +6…).
+**Quête du jour** — une tâche aléatoire (Daily, Work, casino…). Progression automatique. Bouton **Quêtes du jour**.
 
-**Objectif commu (coop)** — **250** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
+**Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** au claim quête (+3/j dès J2).
+
+**Paliers série** (bouton **Paliers serie**) — bonus one-shot : **7j +50** · **14j +120** · **21j +250**.
+
+**Objectif commu (coop)** — **250** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. **MVP** top 3 : **+15 / +10 / +5** en plus (`bonus = …` au claim). Alerte **80 %** (200/250) dans **#casino**. Bouton **Coop du jour**. Pastille **⚫** = trop tard.
+
+**Top coop** — 🥇🥈🥉 + parties du jour sur le panneau Money.
 
 **Infos quotidiennes** — bouton éphemère : ton suivi (quête, coop, série).
 
-**Profil** (`/userinfo` ou bouton Profil Money) : une ligne Quête · Coop — détail dans le tableau.
+**Profil** (`/userinfo` ou bouton Profil Banque) : résumé Quête · Coop — détail dans le tableau Money.
 
 **Rappels** — DM à **20h** si quête terminée non réclamée ou coop claimable. Panneau maj auto ~**10 s**.
+
+### Duels (`/duel`)
+
+Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** · manches **1 / 3 / 5** · escrow **mise × manches** · seul le défie accepte (60 s) · taxe **5 %** jackpot.
 
 ### Site & Gazette
 
@@ -112,13 +124,15 @@ Monnaie : **coins**. Solde de départ : **100**.
 | Commande | Qui | Détail |
 |----------|-----|--------|
 | `/casino` | Tout le monde | Ouvre le flow casino interactif |
+| `/duel joueur` | Tout le monde | Duel PvP coinflip / slots / dé (**#casino**) |
 | `/userinfo [membre]` | Tout le monde | Profil enrichi (économie, casino, quête/coop) |
-| `/money admin panel` | Staff | Poste le panneau money |
+| `/money admin panel` | Staff | Poste le panneau **banque** |
 | `/money admin shop-panel` | Staff | Poste le panneau shop |
 | `/money admin infos-panel` | Staff | Poste le panneau infos (guide) |
 | `/money admin casino-panel` | Staff | Poste le panneau casino |
-| `/quests panel` | Staff | Poste le panneau quêtes (salon quêtes) |
-| `/quests refresh` | Staff | Force la maj du panneau quêtes |
+| `/money admin fermer-parties` | Staff | Ferme les blackjack ouverts (sans remboursement) |
+| `/quests panel` | Staff | Poste le panneau **money** (ex-quêtes) |
+| `/quests refresh` | Staff | Force la maj du panneau money |
 | `/gazette test` / `preview` | Staff | Gazette du gambling |
 | `/dashboard sync` | Staff | Met à jour le site Netlify |
 | `/money admin donner` / `retirer` | Staff | Gestion manuelle des coins |
@@ -130,7 +144,7 @@ Monnaie : **coins**. Solde de départ : **100**.
 - Work : **15-45** coins, cooldown **45 min**
 - Mise min : **10** coins
 - Mise max : **75%** du solde, cap **2000**
-- **Banque** (panneau Money) : pret **100–1500** coins (+**20%**), pour jouer au casino. Echeance **7 j**. **Ban casino** si pret en retard jusqu'au remboursement total. Cooldown **48 h** apres solde.
+- **Prêt** (panneau **Banque**) : emprunt **100–1500** coins (+**20%**), pour jouer au casino. Echeance **7 j**. **Ban casino** si pret en retard jusqu'au remboursement total. Cooldown **48 h** apres solde.
 
 ### Jeux disponibles
 
@@ -192,7 +206,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `DASHBOARD_SYNC_MINUTES` | Optionnel | Intervalle sync site (prod, min 5) |
 | `DASHBOARD_PUSH` | Optionnel | `0` en local = ne push pas sur Netlify |
 
-Sans variable gambling, fallback par nom de salon (`money/casino/shop/infos/quetes/gambling`).
+Sans variable gambling, fallback par nom de salon (`banque/money/casino/shop/infos/gambling`).
 
 Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
 
@@ -330,7 +344,7 @@ Aspirateur_Connecte/
 
 1. Créer `commands/macmd.js`
 2. L’ajouter dans `commands/index.js`
-3. Mettre à jour **`lib/personality.js` → `helpEmbeds()`** (obligatoire pour `/help`)
+3. Mettre à jour **`lib/personality.js` → `helpEmbeds()`**, **`lib/economyPanels.js` → `infosPanelEmbed()`**, **`README.md`**, **`docs/annonce-vX.Y.Z-discord.md`**
 4. `npm run deploy` puis push / redémarrage
 
 ---
@@ -371,7 +385,16 @@ npm run deploy
 # 3. Discloud : attendre Online, ou Play si arrêté
 ```
 
-**Checklist `/help` :** à chaque nouvelle feature, éditer `helpEmbeds()` dans `lib/personality.js`.
+**Checklist docs (chaque version) :**
+
+| Fichier | Rôle |
+|---------|------|
+| `lib/personality.js` → `helpEmbeds()` | `/help` in-game |
+| `lib/economyPanels.js` → `infosPanelEmbed()` | Panneau **#infos** |
+| `README.md` | Doc repo / onboarding |
+| `docs/annonce-vX.Y.Z-discord.md` | Messages Discord copy-paste |
+
+Annonces prêtes v1.2.9 : `docs/annonce-v1.2.9-discord.md` · info temp banque : `docs/annonce-banque-temp-discord.md`.
 
 ---
 

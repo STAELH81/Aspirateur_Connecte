@@ -1,0 +1,37 @@
+---
+description: Fin de session — 3g git + docs help/infos/readme/annonce
+alwaysApply: true
+---
+
+# Release docs & fin de prompt
+
+Quand une feature ou version est terminée (ou à la fin d’un prompt de dev significatif) :
+
+## 1. Mettre à jour les docs (même PR / même session)
+
+| Fichier | Contenu |
+|---------|---------|
+| `lib/personality.js` → `helpEmbeds()` | `/help` |
+| `lib/economyPanels.js` → `infosPanelEmbed()` | Panneau `#infos` |
+| `README.md` | Doc projet (salons, commandes, version) |
+| `docs/annonce-vX.Y.Z-discord.md` | Annonce Discord (blocs copy-paste) |
+
+Ne pas laisser help/infos/readme/annonce en retard sur le code.
+
+## 2. Fin de réponse — toujours donner les 3g
+
+Terminer par les commandes git **copier-coller** (PowerShell), adaptées au changement :
+
+```powershell
+git add .
+git commit -m "feat(vX.Y.Z): <resume court>"
+git push
+```
+
+Si nouvelle slash commande ou schema modifié, rappeler aussi :
+
+```powershell
+npm run deploy
+```
+
+Ne pas push sans demande explicite de l’utilisateur (sauf s’il demande les 3g pour drop).
