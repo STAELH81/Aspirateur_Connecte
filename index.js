@@ -61,6 +61,7 @@ const {
   requestBoardRefresh,
   handleQuestsPanelClaimQuest,
   handleQuestsPanelClaimCoop,
+  handleQuestsPanelRefresh,
 } = require("./lib/questsBoard");
 const { scheduleQuestReminders } = require("./lib/questReminders");
 const path = require("path");
@@ -344,6 +345,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton() && interaction.customId === "quests:panel:claim-coop") {
     await handleQuestsPanelClaimCoop(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:refresh") {
+    await handleQuestsPanelRefresh(interaction);
     return;
   }
 
