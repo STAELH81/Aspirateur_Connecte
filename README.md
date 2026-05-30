@@ -187,7 +187,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `GAMBLING_CHANNEL_ID` | Recommandé | Un salon gambling autorisé |
 | `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
 | `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
-| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon panneau quêtes (`/quests panel`) |
+| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon **#money** (ex-quêtes) — `1510077978091061349` |
 | `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — anniversaires |
 | `DASHBOARD_SYNC_MINUTES` | Optionnel | Intervalle sync site (prod, min 5) |
 | `DASHBOARD_PUSH` | Optionnel | `0` en local = ne push pas sur Netlify |
