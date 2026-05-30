@@ -566,4 +566,8 @@ if (!token) {
   process.exit(1);
 }
 
+client.on("error", (err) => {
+  console.error("[client]", err);
+});
+
 client.login(token);
