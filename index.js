@@ -63,6 +63,8 @@ const {
   handleQuestsPanelClaimCoop,
   handleQuestsPanelMyQuest,
   handleQuestsPanelRefresh,
+  handleQuestsPanelDaily,
+  handleQuestsPanelWork,
 } = require("./lib/questsBoard");
 const { scheduleQuestReminders } = require("./lib/questReminders");
 const path = require("path");
@@ -364,6 +366,16 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton() && interaction.customId === "quests:panel:refresh") {
     await handleQuestsPanelRefresh(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:daily") {
+    await handleQuestsPanelDaily(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:work") {
+    await handleQuestsPanelWork(interaction);
     return;
   }
 

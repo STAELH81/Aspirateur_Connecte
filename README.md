@@ -93,7 +93,7 @@ Monnaie : **coins**. Solde de départ : **100**.
 
 **Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** coins en plus (ex. J2 +3, J3 +6…).
 
-**Objectif commu (coop)** — **100** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
+**Objectif commu (coop)** — **250** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
 
 **Infos quotidiennes** — bouton éphemère : ton suivi (quête, coop, série).
 
@@ -187,7 +187,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `GAMBLING_CHANNEL_ID` | Recommandé | Un salon gambling autorisé |
 | `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
 | `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
-| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon panneau quêtes (`/quests panel`) |
+| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon **#money** (ex-quêtes) — `1510077978091061349` |
 | `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — anniversaires |
 | `DASHBOARD_SYNC_MINUTES` | Optionnel | Intervalle sync site (prod, min 5) |
 | `DASHBOARD_PUSH` | Optionnel | `0` en local = ne push pas sur Netlify |
