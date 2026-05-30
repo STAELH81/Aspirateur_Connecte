@@ -11,6 +11,7 @@ data/birthday-remind-state.json
 data/warns.json
 data/*.backup.json
 data/coop-goal.json
+data/duels.json
 data/gambling-progress.json
 data/jackpot.json
 data/quests-board.json

@@ -65,7 +65,10 @@ const {
   handleQuestsPanelRefresh,
   handleQuestsPanelDaily,
   handleQuestsPanelWork,
+  handleQuestsPanelStreakTiers,
+  handleQuestsPanelStreakClaim,
 } = require("./lib/questsBoard");
+const duel = require("./lib/duel");
 const { scheduleQuestReminders } = require("./lib/questReminders");
 const path = require("path");
 
@@ -376,6 +379,51 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton() && interaction.customId === "quests:panel:work") {
     await handleQuestsPanelWork(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:streak-tiers") {
+    await handleQuestsPanelStreakTiers(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("quests:panel:streak-claim:")) {
+    const tierDays = parseInt(interaction.customId.split(":").pop(), 10);
+    await handleQuestsPanelStreakClaim(interaction, tierDays);
+    return;
+  }
+
+  if (interaction.isStringSelectMenu() && interaction.customId === "duel:setup:game") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await duel.handleSetupGameSelect(interaction);
+    return;
+  }
+
+  if (interaction.isModalSubmit() && interaction.customId === "duel:setup:modal") {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await duel.handleSetupModal(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("duel:accept:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await duel.handleAccept(interaction, interaction.customId.slice("duel:accept:".length));
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("duel:refuse:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    await duel.handleRefuse(interaction, interaction.customId.slice("duel:refuse:".length));
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId.startsWith("duel:pick:")) {
+    if (!(await replyIfWrongChannel(interaction))) return;
+    const parts = interaction.customId.split(":");
+    const duelId = parts[2];
+    const slot = parts[3];
+    const value = parts[4];
+    await duel.handlePick(interaction, duelId, slot, value);
     return;
   }
 
