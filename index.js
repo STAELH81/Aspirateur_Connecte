@@ -118,6 +118,10 @@ client.once(Events.ClientReady, (c) => {
   scheduleBoardRefresh(c);
   scheduleQuestReminders(c);
 
+  if (require("./lib/coopGoal").reconcileToday()) {
+    requestBoardRefresh(c);
+  }
+
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),
     { defaultData: {} }

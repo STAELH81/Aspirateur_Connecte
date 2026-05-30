@@ -93,7 +93,7 @@ Monnaie : **coins**. Solde de départ : **100**.
 
 **Série quêtes** — claim plusieurs jours d’affilée → bonus jusqu’à **+21** coins en plus (ex. J2 +3, J3 +6…).
 
-**Objectif commu (coop)** — **100** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
+**Objectif commu (coop)** — **250** parties casino serveur/jour → **+25** coins si tu as joué **avant** le cap. Annonce dans le salon casino. Bouton **Coop du jour** sur le panneau Quêtes. Pastille **⚫** = objectif atteint avant ta participation (trop tard).
 
 **Infos quotidiennes** — bouton éphemère : ton suivi (quête, coop, série).
 
