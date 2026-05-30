@@ -56,6 +56,7 @@ const {
 } = require("./lib/economyPanels");
 const { startCasinoResultCleanup } = require("./lib/casinoResultCleanup");
 const { syncDashboard, syncIntervalMs } = require("./lib/dashboardSnapshot");
+const { scheduleBoardRefresh, requestBoardRefresh } = require("./lib/questsBoard");
 const path = require("path");
 
 function scheduleDashboardSync(client) {
@@ -100,6 +101,7 @@ client.once(Events.ClientReady, (c) => {
   startMoneyPanelsAutoRefresh(client);
   startCasinoResultCleanup(client);
   scheduleDashboardSync(c);
+  scheduleBoardRefresh(c);
 
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),

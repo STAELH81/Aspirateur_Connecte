@@ -23,4 +23,5 @@ module.exports = [
   require("./gazette"),
   require("./dashboard"),
   require("./coop"),
+  require("./quests"),
 ];

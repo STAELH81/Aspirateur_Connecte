@@ -58,6 +58,7 @@ module.exports = {
       await interaction.reply({
         content: `Objectif commu valide ! **+${result.reward}** coins — solde : **${result.balance}** coins.`,
       });
+      require("../lib/questsBoard").requestBoardRefresh(interaction.client);
     }
   },
 };
