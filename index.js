@@ -56,7 +56,13 @@ const {
 } = require("./lib/economyPanels");
 const { startCasinoResultCleanup } = require("./lib/casinoResultCleanup");
 const { syncDashboard, syncIntervalMs } = require("./lib/dashboardSnapshot");
-const { scheduleBoardRefresh, requestBoardRefresh } = require("./lib/questsBoard");
+const {
+  scheduleBoardRefresh,
+  requestBoardRefresh,
+  handleQuestsPanelClaimQuest,
+  handleQuestsPanelClaimCoop,
+} = require("./lib/questsBoard");
+const { scheduleQuestReminders } = require("./lib/questReminders");
 const path = require("path");
 
 function scheduleDashboardSync(client) {
@@ -102,6 +108,7 @@ client.once(Events.ClientReady, (c) => {
   startCasinoResultCleanup(client);
   scheduleDashboardSync(c);
   scheduleBoardRefresh(c);
+  scheduleQuestReminders(c);
 
   const economyStore = createStore(
     path.join(__dirname, "data", "economy.json"),
@@ -295,6 +302,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
         net: (result.win || 0) - result.bet,
         won: Boolean(result.win && result.win > result.bet),
       });
+      require("./lib/coopGoal").afterCasinoRound(interaction.user.id, interaction.client);
       rememberCasinoPlay(interaction.user.id, {
         game: "blackjack",
         choice: "none",
@@ -326,6 +334,16 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isButton() && interaction.customId.startsWith("money:panel:")) {
     if (!(await replyIfWrongChannel(interaction))) return;
     await handleMoneyPanelButton(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:claim-quest") {
+    await handleQuestsPanelClaimQuest(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:claim-coop") {
+    await handleQuestsPanelClaimCoop(interaction);
     return;
   }
 

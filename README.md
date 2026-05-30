@@ -30,7 +30,7 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Tirages au sort, VIP, etc. | `/giveaway` avec attribution de rôle possible |
 | Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
 | Anniversaires de la commu | `/anniv` |
-| Coins & mini-jeux | Panneaux `money/casino/shop/infos` + `/casino` |
+| Coins & mini-jeux | Panneaux `money/casino/shop/infos/quetes` + `/casino` |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
 Sur Discord, tape **`/help`** pour la liste à jour dans le serveur.
@@ -69,9 +69,9 @@ Le jour J, le bot poste dans `#general` : *Hey ! On souhaite tous l'anniv de …
 
 ---
 
-## Économie et casino (salons `money/casino/shop/infos`)
+## Économie et casino (salons `money/casino/shop/infos/quetes`)
 
-Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, `GAMBLING_TEST_CHANNEL_ID`, `GAMBLING_CHANNEL_IDS`) ou dans un salon nommé `money`, `casino`, `shop`, `infos` ou `gambling`.
+Le module gambling fonctionne dans les salons autorisés (`GAMBLING_CHANNEL_ID`, `GAMBLING_TEST_CHANNEL_ID`, `GAMBLING_CHANNEL_IDS`) ou dans un salon nommé `money`, `casino`, `shop`, `infos`, `quetes` ou `gambling`.
 
 Monnaie : **coins**. Solde de départ : **100**.
 
@@ -79,20 +79,38 @@ Monnaie : **coins**. Solde de départ : **100**.
 
 | Panneau | Actions |
 |---------|---------|
-| Money | `Daily`, `Work`, `Balance`, `Pay`, `Refresh` + top 25 live |
-| Casino | Choix du jeu, config, lancer, puis `Meme mise`, `Rejouer`, `Changer de jeux` |
-| Shop | Achats par boutons avec confirmation |
-| Infos | Guide complet des règles et cotes |
+| **Money** | Daily, Work, Balance, Pay, Banque, Profil, Refresh + top 25 live + lien site |
+| **Casino** | Choix du jeu, config, lancer, puis Meme mise, Rejouer, Changer de jeux |
+| **Shop** | Achats par boutons avec confirmation |
+| **Quêtes** | Quête du jour, barre coop serveur, tableau 🟢🟠🔴 par membre, **Claim quête** / **Claim coop** |
+| **Infos** | Guide complet (règles, quêtes, coop, site, Gazette) — embed fixe sans boutons |
+
+### Quête du jour & objectif commu
+
+- **Quête** : tâche aléatoire chaque jour (Daily, Work, parties casino…). Progression automatique. Réclamer avec **Claim quête** sur le panneau Quêtes.
+- **Coop** : si le serveur cumule **30** parties casino dans la journée, bonus **+25** coins pour ceux qui ont joué **avant** le cap. Annonce dans le salon **casino**. Réclamer avec **Claim coop** sur le panneau Quêtes.
+- **Suivi** : le tableau du panneau Quêtes se met à jour (~1 min). Profil Money / `/userinfo` : une ligne résumé.
+- **Rappels** : DM à **20h** si quête terminée non réclamée ou coop claimable.
+
+### Site & Gazette
+
+- **aspirateurconnecte.netlify.app** — top coins, XP, casino du jour, graphiques (sync staff : `/dashboard sync`)
+- **La Gazette Du Gamblinnngggg** — recap casino automatique chaque soir **23h59** (salon casino)
 
 ### Commandes slash
 
 | Commande | Qui | Détail |
 |----------|-----|--------|
 | `/casino` | Tout le monde | Ouvre le flow casino interactif |
+| `/userinfo [membre]` | Tout le monde | Profil enrichi (économie, casino, quête/coop) |
 | `/money admin panel` | Staff | Poste le panneau money |
 | `/money admin shop-panel` | Staff | Poste le panneau shop |
-| `/money admin infos-panel` | Staff | Poste le panneau infos |
+| `/money admin infos-panel` | Staff | Poste le panneau infos (guide) |
 | `/money admin casino-panel` | Staff | Poste le panneau casino |
+| `/quests panel` | Staff | Poste le panneau quêtes (salon quêtes) |
+| `/quests refresh` | Staff | Force la maj du panneau quêtes |
+| `/gazette test` / `preview` | Staff | Gazette du gambling |
+| `/dashboard sync` | Staff | Met à jour le site Netlify |
 | `/money admin donner` / `retirer` | Staff | Gestion manuelle des coins |
 
 ### Gains et limites
@@ -159,9 +177,10 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `GAMBLING_CHANNEL_ID` | Recommandé | Un salon gambling autorisé |
 | `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
 | `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
+| `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon du panneau quêtes (`/quests panel`) |
 | `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — annonce auto le jour d’un anniversaire |
 
-Sans variable gambling, fallback par nom de salon (`money/casino/shop/infos/gambling`).
+Sans variable gambling, fallback par nom de salon (`money/casino/shop/infos/quetes/gambling`).
 
 Changer de PC en dev : [DEV_MIGRATION.md](DEV_MIGRATION.md) (`export-dev.ps1` / `import-dev.ps1`).
 

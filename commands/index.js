@@ -22,6 +22,5 @@ module.exports = [
   require("./botstatus"),
   require("./gazette"),
   require("./dashboard"),
-  require("./coop"),
   require("./quests"),
 ];

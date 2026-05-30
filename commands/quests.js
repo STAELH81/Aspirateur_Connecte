@@ -51,7 +51,7 @@ module.exports = {
       const msg = await interaction.channel.send(payload);
       registerBoardMessage(msg);
       await interaction.editReply({
-        content: "Tableau **Quetes & Coop** poste — maj auto toutes les minutes.",
+        content: "Panneau **Quetes Center** poste — **Claim quete** / **Claim coop** + maj auto.",
       });
     }
   },
