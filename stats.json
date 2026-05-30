@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-30T14:31:21.192Z",
+  "updatedAt": "2026-05-30T14:56:58.090Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -128,7 +128,7 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 6,
-      "totalXp": 2029,
+      "totalXp": 2051,
       "name": "MOMMY"
     },
     {
@@ -231,7 +231,7 @@
     }
   ],
   "coopGoal": {
-    "target": 150,
+    "target": 250,
     "progress": 282,
     "reward": 25,
     "goalMet": true
