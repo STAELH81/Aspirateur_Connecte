@@ -1,4 +1,4 @@
-<!-- MESSAGE 1/1 — info temporaire pre-drop v1.2.9 -->
+<!-- MESSAGE 1/1 — ou `/devlog post fichier:banque-temp` -->
 
 # Aspirateur Connecté — info rapide
 ## #banque temporairement inaccessible

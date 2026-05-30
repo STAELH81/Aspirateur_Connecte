@@ -134,6 +134,7 @@ Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** ·
 | `/quests panel` | Staff | Poste le panneau **money** (ex-quêtes) |
 | `/quests refresh` | Staff | Force la maj du panneau money |
 | `/gazette test` / `preview` | Staff | Gazette du gambling |
+| `/devlog list` / `preview` / `post` | Staff | Annonces devlog en embeds (`docs/annonce-*.md`) |
 | `/dashboard sync` | Staff | Met à jour le site Netlify |
 | `/money admin donner` / `retirer` | Staff | Gestion manuelle des coins |
 
@@ -202,6 +203,7 @@ Le bot peut **attribuer le rôle automatiquement** au gagnant si son rôle est *
 | `GAMBLING_TEST_CHANNEL_ID` | Optionnel | Deuxième salon autorisé (tests) |
 | `GAMBLING_CHANNEL_IDS` | Optionnel | Liste CSV d'IDs autorisés |
 | `QUESTS_BOARD_CHANNEL_ID` | Recommandé | Salon **#money** (ex-quêtes) — `1510077978091061349` |
+| `UPDATES_CHANNEL_ID` | Recommandé | Salon annonces / devlog (`/devlog post`) — sinon `GENERAL_CHANNEL_ID` |
 | `GENERAL_CHANNEL_ID` | Recommandé | Salon **#general** — anniversaires |
 | `DASHBOARD_SYNC_MINUTES` | Optionnel | Intervalle sync site (prod, min 5) |
 | `DASHBOARD_PUSH` | Optionnel | `0` en local = ne push pas sur Netlify |
@@ -395,6 +397,8 @@ npm run deploy
 | `docs/annonce-vX.Y.Z-discord.md` | Messages Discord copy-paste |
 
 Annonces prêtes v1.2.9 : `docs/annonce-v1.2.9-discord.md` · info temp banque : `docs/annonce-banque-temp-discord.md`.
+
+Publication Discord : **`/devlog preview fichier:v1.2.9`** puis **`/devlog post`** (embeds, salon `UPDATES_CHANNEL_ID`).
 
 ---
 

@@ -1,4 +1,4 @@
-<!-- MESSAGE 1/2 — copier tout le bloc ci-dessous -->
+<!-- MESSAGE 1/2 — copier tout le bloc ci-dessous · ou `/devlog post fichier:v1.2.9` -->
 
 # Aspirateur Connecté — v1.2.9 (1/2)
 ## Banque & Money — nouveaux panneaux

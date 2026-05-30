@@ -24,4 +24,5 @@ module.exports = [
   require("./dashboard"),
   require("./quests"),
   require("./duel"),
+  require("./devlog"),
 ];
