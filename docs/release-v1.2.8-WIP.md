@@ -1,35 +1,65 @@
 # v1.2.8 — brouillon (NE PAS poster, NE PAS push)
 
-Fichier perso pour noter ce qui ira **dans le drop**. Quand tu drops, tu transformes ça en annonce thématique (pas copier-coller tel quel).
+Fichier perso pour noter ce qui ira **dans le drop**. Annonce Discord le jour J → `docs/annonce-v1.2.8-discord.md` (nomenclature : `annonce-vX.X.X-discord.md`).
 
-**Salon quêtes :** `1510077978091061349` → `.env` : `QUESTS_BOARD_CHANNEL_ID=1510077978091061349` (Discloud aussi, dimanche)
+**Salon quêtes :** `1510077978091061349` → `QUESTS_BOARD_CHANNEL_ID` (Discloud aussi le jour du drop)
 
 **Drop prévu :** dimanche — annonce rédigée ce jour-là.
 
 ---
 
-## Gros morceaux prévus pour le drop
+## Module drop : Hub Quêtes & Commu
 
-- [ ] **Tableau Quêtes & Coop** — `/quests panel` salon dédié, pastilles 🟢🟠🔴, maj auto
-- [ ] **Objectif commu** `/coop` — 30 parties serveur → bonus
-- [ ] **Site web** — aspirateurconnecte.netlify.app (top coins, XP, casino du jour)
-- [ ] **La Gazette Du Gamblinnnnngggg** — 23h59
-- [ ] *(ajoute ici ce que tu veux inclure dans LE drop)*
+### Panneau Quêtes Center (salon quêtes, staff `/quests panel`)
+
+- [x] Tableau 🟢🟠🔴 par membre (quête + coop)
+- [x] Quête du jour affichée (nom + récompense)
+- [x] Coop serveur (30 parties) + barre visuelle `████░░`
+- [x] **Resume commu** — compteurs 🟢🟠🔴 quête / coop
+- [x] Boutons **Claim quete** / **Claim coop** / **Ma quete** / **Refresh**
+- [x] Affichage compact (pulse du jour + barre coop courte)
+- [x] **Serie quetes** — bonus jusqu'a **+21** coins si claim plusieurs jours d'affilee
+- [x] **Ma quete** — suivi perso ephemere (quete + coop + serie)
+- [x] 🔥 Meilleure serie visible sur le panneau
+
+### Coop (plus de `/coop`)
+
+- [x] Objectif **30** parties casino serveur → **+25** coins
+- [x] Gel éligibilité : joué **avant** le cap seulement
+- [x] Annonce auto salon **casino** quand objectif atteint
+- [x] Claim sur panneau Quêtes uniquement
+
+### Profil & rappels
+
+- [x] Profil / `/userinfo` : une ligne Quête · Coop → détail panneau
+- [x] Rappels DM **20h** si quête ou coop oubliable
+
+### Site (déjà push branche `site`)
+
+- [x] Graphiques Chart.js (top coins, XP, donut coop)
+- [ ] `/dashboard sync` prod après drop pour stats à jour
+
+### Infos / doc
+
+- [x] Panneau **Infos** enrichi (quêtes, coop, site, Gazette)
+- [x] `/help` + README à jour
+
+### Dev / sécurité local
+
+- [x] `.gitignore` data runtime + backups
+- [x] `DASHBOARD_PUSH=0` en local → n'écrase plus Netlify
 
 ---
 
-## Déjà codé en local (à inclure ou pas au drop)
+## Déjà en prod ou hors annonce v1.2.8
 
-- Banque (prêt / remboursement)
-- Quête du jour + profil enrichi
-- Tickets transcript + fermeture auto inactivité
-- Pay plafonds anti-abus
-- `/botstatus`, `/gazette`, `/dashboard sync`
-- Level-up easter egg owner (secret — pas forcément dans l’annonce)
+- Banque, tickets transcript, Pay plafonds, Gazette 23h59, `/botstatus`
+- Level-up easter egg owner (secret)
+- Money : pas de quêtes (tout migré panneau Quêtes)
 
 ---
 
-## Pas dans l’annonce publique
+## Pas dans l'annonce publique
 
 - Liste de bugs fixés un par un
 - Dates « depuis le X mai »
@@ -37,13 +67,22 @@ Fichier perso pour noter ce qui ira **dans le drop**. Quand tu drops, tu transfo
 
 ---
 
-## Checklist drop (cocher le jour J)
+## Checklist drop (jour J)
 
-- [ ] Annonce rédigée → `annonce-v1.2.8-discord.md`
+- [ ] Rédiger **`docs/annonce-v1.2.8-discord.md`** (style v1.2.0, 2–4 msgs)
 - [ ] `git push`
-- [ ] `deploy.ps1` si nouvelles slash
-- [ ] Restart Discloud
-- [ ] `/dashboard sync` si site
-- [ ] `/quests panel` dans le bon salon
-- [ ] Poster Discord (4 msgs max)
-- [ ] Ping role notifs à la main sur le dernier msg
+- [ ] `.\scripts\deploy.ps1` (slash `/coop` retiré, `/quests` présent)
+- [ ] Restart Discloud + `.env` : `QUESTS_BOARD_CHANNEL_ID`, pas `DASHBOARD_PUSH=0` en prod
+- [ ] `/quests panel` dans salon quêtes
+- [ ] `/money admin infos-panel` dans salon infos
+- [ ] `/dashboard sync` (prod)
+- [ ] Poster Discord — ping role notifs **à la main** sur le dernier msg
+
+---
+
+## Test local (sans push)
+
+1. Discloud **Stop**
+2. `.env` local : `DASHBOARD_PUSH=0`
+3. `.\scripts\start.ps1`
+4. Fini → `Ctrl+C` → Discloud **Start**

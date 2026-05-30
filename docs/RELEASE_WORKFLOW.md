@@ -27,7 +27,7 @@ Comme un patch de jeu : les joueurs voient **v1.2.8 — Module Quêtes**, pas «
 ## Le jour du drop
 
 1. Relire `docs/release-vX.Y.Z-WIP.md` → en faire **une annonce thématique** (comme v1.2.0), pas une liste de commits.
-2. Rédiger `docs/annonce-vX.Y.Z-discord.md` (2–4 messages, **sans** `@everyone` dans le texte).
+2. Rédiger **`docs/annonce-vX.Y.Z-discord.md`** (2–4 messages, **sans** `@everyone` dans le texte).
 3. `git push`
 4. `.\scripts\deploy.ps1` si nouvelles commandes slash
 5. Restart Discloud + vérif `.env`
@@ -59,7 +59,7 @@ Les fixes techniques → une ligne « stabilité » ou rien.
 | v1.2.0 | `annonce-v1.2.0-discord.md` | Module Gambling (référence ton) |
 | v1.2.6 | `annonce-v1.2.6-discord.md` | Petite MAJ (OK si drop ciblé) |
 | v1.2.7 | `annonce-v1.2.7-discord.md` | Plutôt récap — **ne pas reprendre ce format** |
-| **v1.2.8** | `release-v1.2.8-WIP.md` → annonce plus tard | **En cours, pas push** |
+| **v1.2.8** | `release-v1.2.8-WIP.md` → **`annonce-v1.2.8-discord.md` le jour J** | **En cours, pas push** |
 
 ---
 
@@ -67,8 +67,12 @@ Les fixes techniques → une ligne « stabilité » ou rien.
 
 ```powershell
 # Pendant le dev — commit sans push
-git add .
+git add lib/ commands/ docs/   # evite git add . (data locales)
 git commit -m "feat: ..."
+
+# Test local sans ecraser le site Netlify
+# .env : DASHBOARD_PUSH=0
+# Discloud Stop → .\scripts\start.ps1
 
 # Jour du drop seulement
 git push

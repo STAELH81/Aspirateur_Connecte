@@ -55,12 +55,13 @@ const {
   startMoneyPanelsAutoRefresh,
 } = require("./lib/economyPanels");
 const { startCasinoResultCleanup } = require("./lib/casinoResultCleanup");
-const { syncDashboard, syncIntervalMs } = require("./lib/dashboardSnapshot");
+const { syncDashboard, syncIntervalMs, pushGitHubEnabled } = require("./lib/dashboardSnapshot");
 const {
   scheduleBoardRefresh,
   requestBoardRefresh,
   handleQuestsPanelClaimQuest,
   handleQuestsPanelClaimCoop,
+  handleQuestsPanelMyQuest,
   handleQuestsPanelRefresh,
 } = require("./lib/questsBoard");
 const { scheduleQuestReminders } = require("./lib/questReminders");
@@ -68,6 +69,10 @@ const path = require("path");
 
 function scheduleDashboardSync(client) {
   if (!process.env.GITHUB_TOKEN?.trim()) return;
+  if (!pushGitHubEnabled()) {
+    console.log("Dashboard : push GitHub desactive (DASHBOARD_PUSH=0) — site Netlify intact en local.");
+    return;
+  }
   const ms = syncIntervalMs();
   const minutes = Math.round(ms / 60_000);
   console.log(`Dashboard : sync auto toutes les ${minutes} min (DASHBOARD_SYNC_MINUTES).`);
@@ -345,6 +350,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton() && interaction.customId === "quests:panel:claim-coop") {
     await handleQuestsPanelClaimCoop(interaction);
+    return;
+  }
+
+  if (interaction.isButton() && interaction.customId === "quests:panel:my-quest") {
+    await handleQuestsPanelMyQuest(interaction);
     return;
   }
 

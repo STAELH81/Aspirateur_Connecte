@@ -8,3 +8,17 @@ data/birthday-announce-state.json
 data/birthday-vip.json
 data/birthday-remind-state.json
 data/warns.json
+data/*.backup.json
+data/coop-goal.json
+data/gambling-progress.json
+data/jackpot.json
+data/quests-board.json
+data/quest-reminders.json
+data/casino-result-cleanup.json
+data/gazette-state.json
+data/xp.json
+data/afk.json
+data/poll-votes.json
+data/tickets-open.json
+data/shop-roles.json
+data/bank-loans.json

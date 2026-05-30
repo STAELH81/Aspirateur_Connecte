@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, MessageFlags, EmbedBuilder } = require("discord.js");
 const { isModerator } = require("../lib/permissions");
-const { syncDashboard } = require("../lib/dashboardSnapshot");
+const { syncDashboard, pushGitHubEnabled } = require("../lib/dashboardSnapshot");
 const { COLOR } = require("../lib/personality");
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
 
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
-    const pushGitHub = Boolean(process.env.GITHUB_TOKEN?.trim());
+    const pushGitHub = Boolean(process.env.GITHUB_TOKEN?.trim()) && pushGitHubEnabled();
     const result = await syncDashboard({
       pushGitHub,
       client: interaction.client,
@@ -41,6 +41,8 @@ module.exports = {
           ? `Branche **${result.github.branch}** mise a jour (${result.github.files?.join(", ")}). Netlify redeploie si branche \`site\` configuree.`
           : `GitHub : ${result.github?.reason || "erreur"}`
       );
+    } else if (!pushGitHubEnabled() && process.env.GITHUB_TOKEN?.trim()) {
+      lines.push("Push GitHub desactive (`DASHBOARD_PUSH=0`) — snapshot local seulement.");
     } else {
       lines.push(
         "Tip : branche **site** + `GITHUB_SITE_BRANCH=site` — voir docs/NETLIFY.md"
