@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-30T12:31:21.185Z",
+  "updatedAt": "2026-05-30T13:31:21.188Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -41,7 +41,7 @@
     {
       "rank": 7,
       "id": "435811716572643338",
-      "balance": 425,
+      "balance": 400,
       "name": "Djalann"
     },
     {
@@ -232,14 +232,14 @@
   ],
   "coopGoal": {
     "target": 150,
-    "progress": 281,
+    "progress": 282,
     "reward": 25,
     "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-05-30",
-    "totalGames": 281,
-    "totalBet": 5335,
+    "totalGames": 282,
+    "totalBet": 5378,
     "topWinner": {
       "id": "476295168950009856",
       "games": 2,
