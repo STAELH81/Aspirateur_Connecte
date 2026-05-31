@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-05-31T19:32:32.936Z",
+  "updatedAt": "2026-05-31T20:32:32.941Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 6215,
+      "balance": 6508,
       "name": "MOMMY"
     },
     {
@@ -70,57 +70,57 @@
     },
     {
       "rank": 12,
-      "id": "1108365776504754287",
-      "balance": 124,
-      "name": "Loïc"
-    },
-    {
-      "rank": 13,
       "id": "488799849798434826",
       "balance": 110,
       "name": "MynameisEve"
     },
     {
-      "rank": 14,
+      "rank": 13,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "id": "1291782472803156162",
       "balance": 65,
-      "name": "MOMMY 2"
+      "name": "1291782472803156162"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "id": "579966046736482315",
       "balance": 21,
       "name": "Mec de Sacha"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "id": "908036623856459877",
       "balance": 3,
       "name": "Amnesie"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
+    },
+    {
+      "rank": 20,
+      "id": "1108365776504754287",
+      "balance": 0,
+      "name": "Loïc"
     }
   ],
   "xpTop": [
@@ -135,7 +135,7 @@
       "rank": 2,
       "id": "561500178759024640",
       "level": 4,
-      "totalXp": 959,
+      "totalXp": 976,
       "name": "Lucyy"
     },
     {
