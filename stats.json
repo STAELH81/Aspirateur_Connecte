@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-31T16:32:32.924Z",
+  "updatedAt": "2026-05-31T17:32:32.930Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -23,7 +23,7 @@
     {
       "rank": 4,
       "id": "561500178759024640",
-      "balance": 995,
+      "balance": 1135,
       "name": "Lucyy"
     },
     {
@@ -112,15 +112,15 @@
     },
     {
       "rank": 19,
-      "id": "571755489952661504",
-      "balance": 0,
-      "name": "Dorian ?! Super..."
+      "id": "908036623856459877",
+      "balance": 3,
+      "name": "Amnesie"
     },
     {
       "rank": 20,
-      "id": "908036623856459877",
+      "id": "571755489952661504",
       "balance": 0,
-      "name": "Amnesie"
+      "name": "Dorian ?! Super..."
     }
   ],
   "xpTop": [
@@ -128,7 +128,7 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 7,
-      "totalXp": 2361,
+      "totalXp": 2378,
       "name": "MOMMY"
     },
     {
@@ -140,17 +140,17 @@
     },
     {
       "rank": 3,
+      "id": "571755489952661504",
+      "level": 4,
+      "totalXp": 862,
+      "name": "Dorian ?! Super..."
+    },
+    {
+      "rank": 4,
       "id": "338058082112241664",
       "level": 4,
       "totalXp": 852,
       "name": "Viktor"
-    },
-    {
-      "rank": 4,
-      "id": "571755489952661504",
-      "level": 4,
-      "totalXp": 801,
-      "name": "Dorian ?! Super..."
     },
     {
       "rank": 5,
@@ -232,20 +232,20 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 109,
+    "progress": 133,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-05-31",
-    "totalGames": 109,
-    "totalBet": 2074,
+    "totalGames": 133,
+    "totalBet": 2534,
     "topWinner": {
       "id": "561500178759024640",
-      "games": 47,
-      "net": 40,
-      "bet": 940,
-      "wins": 23,
+      "games": 69,
+      "net": 160,
+      "bet": 1380,
+      "wins": 37,
       "name": "Lucyy"
     },
     "topLoser": {
@@ -258,10 +258,10 @@
     },
     "mostActive": {
       "id": "561500178759024640",
-      "games": 47,
-      "net": 40,
-      "bet": 940,
-      "wins": 23,
+      "games": 69,
+      "net": 160,
+      "bet": 1380,
+      "wins": 37,
       "name": "Lucyy"
     }
   }
