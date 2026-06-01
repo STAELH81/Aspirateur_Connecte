@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-01T15:32:33.010Z",
+  "updatedAt": "2026-06-01T16:32:33.013Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 6681,
+      "balance": 6709,
       "name": "MOMMY"
     },
     {
@@ -34,15 +34,15 @@
     },
     {
       "rank": 6,
-      "id": "1151513409439932486",
-      "balance": 666,
-      "name": "Gatia"
+      "id": "1270513100596056175",
+      "balance": 781,
+      "name": "DADDY"
     },
     {
       "rank": 7,
-      "id": "1270513100596056175",
-      "balance": 574,
-      "name": "DADDY"
+      "id": "1151513409439932486",
+      "balance": 666,
+      "name": "Gatia"
     },
     {
       "rank": 8,
@@ -142,7 +142,7 @@
       "rank": 3,
       "id": "571755489952661504",
       "level": 4,
-      "totalXp": 926,
+      "totalXp": 948,
       "name": "Dorian ?! Super..."
     },
     {
