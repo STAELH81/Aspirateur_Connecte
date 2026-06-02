@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-02T08:32:33.068Z",
+  "updatedAt": "2026-06-02T09:32:33.068Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -23,7 +23,7 @@
     {
       "rank": 4,
       "id": "561500178759024640",
-      "balance": 1408,
+      "balance": 1557,
       "name": "Lucyy"
     },
     {
@@ -34,15 +34,15 @@
     },
     {
       "rank": 6,
-      "id": "1270513100596056175",
-      "balance": 733,
-      "name": "DADDY"
+      "id": "1151513409439932486",
+      "balance": 834,
+      "name": "Gatia"
     },
     {
       "rank": 7,
-      "id": "1151513409439932486",
-      "balance": 666,
-      "name": "Gatia"
+      "id": "1270513100596056175",
+      "balance": 733,
+      "name": "DADDY"
     },
     {
       "rank": 8,
@@ -156,7 +156,7 @@
       "rank": 5,
       "id": "790479407449636885",
       "level": 3,
-      "totalXp": 726,
+      "totalXp": 765,
       "name": "Lolaa"
     },
     {
@@ -189,17 +189,17 @@
     },
     {
       "rank": 10,
+      "id": "1151513409439932486",
+      "level": 1,
+      "totalXp": 135,
+      "name": "Gatia"
+    },
+    {
+      "rank": 11,
       "id": "756805412413636690",
       "level": 1,
       "totalXp": 121,
       "name": "Midonat"
-    },
-    {
-      "rank": 11,
-      "id": "1151513409439932486",
-      "level": 1,
-      "totalXp": 117,
-      "name": "Gatia"
     },
     {
       "rank": 12,
@@ -232,21 +232,21 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 5,
+    "progress": 78,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-02",
-    "totalGames": 5,
-    "totalBet": 100,
+    "totalGames": 78,
+    "totalBet": 1560,
     "topWinner": {
-      "id": "338058082112241664",
-      "games": 5,
-      "net": -62,
-      "bet": 100,
-      "wins": 1,
-      "name": "Viktor"
+      "id": "561500178759024640",
+      "games": 73,
+      "net": -18,
+      "bet": 1460,
+      "wins": 34,
+      "name": "Lucyy"
     },
     "topLoser": {
       "id": "338058082112241664",
@@ -257,12 +257,12 @@
       "name": "Viktor"
     },
     "mostActive": {
-      "id": "338058082112241664",
-      "games": 5,
-      "net": -62,
-      "bet": 100,
-      "wins": 1,
-      "name": "Viktor"
+      "id": "561500178759024640",
+      "games": 73,
+      "net": -18,
+      "bet": 1460,
+      "wins": 34,
+      "name": "Lucyy"
     }
   }
 }
