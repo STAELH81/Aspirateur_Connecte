@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-02T12:32:33.078Z",
+  "updatedAt": "2026-06-02T13:32:33.081Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 7335,
+      "balance": 7414,
       "name": "MOMMY"
     },
     {
@@ -128,22 +128,22 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 7,
-      "totalXp": 2508,
+      "totalXp": 2531,
       "name": "MOMMY"
     },
     {
       "rank": 2,
+      "id": "561500178759024640",
+      "level": 4,
+      "totalXp": 1037,
+      "name": "Lucyy"
+    },
+    {
+      "rank": 3,
       "id": "571755489952661504",
       "level": 4,
       "totalXp": 1015,
       "name": "Dorian ?! Super..."
-    },
-    {
-      "rank": 3,
-      "id": "561500178759024640",
-      "level": 4,
-      "totalXp": 1000,
-      "name": "Lucyy"
     },
     {
       "rank": 4,
