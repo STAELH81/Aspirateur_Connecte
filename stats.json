@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-06-02T11:32:33.075Z",
+  "updatedAt": "2026-06-02T12:32:33.078Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 7395,
+      "balance": 7335,
       "name": "MOMMY"
     },
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 5485,
+      "balance": 5505,
       "name": "Viktor"
     },
     {
@@ -22,15 +22,15 @@
     },
     {
       "rank": 4,
-      "id": "561500178759024640",
-      "balance": 1451,
-      "name": "Lucyy"
+      "id": "435811716572643338",
+      "balance": 1326,
+      "name": "Djalann"
     },
     {
       "rank": 5,
-      "id": "435811716572643338",
-      "balance": 1099,
-      "name": "Djalann"
+      "id": "561500178759024640",
+      "balance": 1324,
+      "name": "Lucyy"
     },
     {
       "rank": 6,
@@ -41,7 +41,7 @@
     {
       "rank": 7,
       "id": "1270513100596056175",
-      "balance": 733,
+      "balance": 604,
       "name": "DADDY"
     },
     {
@@ -135,14 +135,14 @@
       "rank": 2,
       "id": "571755489952661504",
       "level": 4,
-      "totalXp": 984,
+      "totalXp": 1015,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
       "id": "561500178759024640",
       "level": 4,
-      "totalXp": 976,
+      "totalXp": 1000,
       "name": "Lucyy"
     },
     {
@@ -217,51 +217,51 @@
     },
     {
       "rank": 14,
+      "id": "1228698414020300821",
+      "level": 0,
+      "totalXp": 56,
+      "name": "Clement"
+    },
+    {
+      "rank": 15,
       "id": "441111184129916929",
       "level": 0,
       "totalXp": 44,
       "name": "Dokas"
-    },
-    {
-      "rank": 15,
-      "id": "488799849798434826",
-      "level": 0,
-      "totalXp": 43,
-      "name": "MynameisEve"
     }
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 143,
+    "progress": 326,
     "reward": 25,
-    "goalMet": false
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-06-02",
-    "totalGames": 143,
-    "totalBet": 2320,
+    "totalGames": 326,
+    "totalBet": 5903,
     "topWinner": {
       "id": "476295168950009856",
-      "games": 54,
-      "net": 270,
-      "bet": 540,
-      "wins": 9,
+      "games": 114,
+      "net": 210,
+      "bet": 1140,
+      "wins": 15,
       "name": "MOMMY"
     },
     "topLoser": {
       "id": "561500178759024640",
-      "games": 84,
-      "net": -124,
-      "bet": 1680,
-      "wins": 37,
+      "games": 181,
+      "net": -311,
+      "bet": 4100,
+      "wins": 80,
       "name": "Lucyy"
     },
     "mostActive": {
       "id": "561500178759024640",
-      "games": 84,
-      "net": -124,
-      "bet": 1680,
-      "wins": 37,
+      "games": 181,
+      "net": -311,
+      "bet": 4100,
+      "wins": 80,
       "name": "Lucyy"
     }
   }
