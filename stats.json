@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-03T19:17:11.277Z",
+  "updatedAt": "2026-06-03T20:17:11.283Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 8174,
+      "balance": 9074,
       "name": "MOMMY"
     },
     {
@@ -16,51 +16,51 @@
     },
     {
       "rank": 3,
+      "id": "1251116560983130229",
+      "balance": 1706,
+      "name": "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑"
+    },
+    {
+      "rank": 4,
       "id": "790479407449636885",
       "balance": 1670,
       "name": "Lolaa"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "id": "561500178759024640",
       "balance": 1405,
       "name": "Lucyy"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "id": "435811716572643338",
       "balance": 1383,
       "name": "Djalann"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "id": "1270513100596056175",
       "balance": 921,
       "name": "DADDY"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "id": "1151513409439932486",
       "balance": 834,
       "name": "Gatia"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "id": "441639749925470209",
       "balance": 620,
       "name": "Chad"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "id": "1228698414020300821",
       "balance": 581,
       "name": "Clement"
-    },
-    {
-      "rank": 10,
-      "id": "1251116560983130229",
-      "balance": 346,
-      "name": "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑"
     },
     {
       "rank": 11,
@@ -128,22 +128,22 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 7,
-      "totalXp": 2676,
+      "totalXp": 2720,
       "name": "MOMMY"
     },
     {
       "rank": 2,
+      "id": "571755489952661504",
+      "level": 4,
+      "totalXp": 1039,
+      "name": "Dorian ?! Super..."
+    },
+    {
+      "rank": 3,
       "id": "561500178759024640",
       "level": 4,
       "totalXp": 1037,
       "name": "Lucyy"
-    },
-    {
-      "rank": 3,
-      "id": "571755489952661504",
-      "level": 4,
-      "totalXp": 1015,
-      "name": "Dorian ?! Super..."
     },
     {
       "rank": 4,
@@ -162,8 +162,8 @@
     {
       "rank": 6,
       "id": "441639749925470209",
-      "level": 1,
-      "totalXp": 214,
+      "level": 2,
+      "totalXp": 258,
       "name": "Chad"
     },
     {
@@ -204,8 +204,8 @@
     {
       "rank": 12,
       "id": "653635654873251887",
-      "level": 0,
-      "totalXp": 95,
+      "level": 1,
+      "totalXp": 111,
       "name": "Yannnnis"
     },
     {
