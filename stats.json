@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-03T17:32:33.185Z",
+  "updatedAt": "2026-06-03T18:32:33.187Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 8122,
+      "balance": 8159,
       "name": "MOMMY"
     },
     {
@@ -53,7 +53,7 @@
     {
       "rank": 9,
       "id": "1228698414020300821",
-      "balance": 542,
+      "balance": 581,
       "name": "Clement"
     },
     {
@@ -224,10 +224,10 @@
     },
     {
       "rank": 15,
-      "id": "441111184129916929",
+      "id": "644148774544867339",
       "level": 0,
-      "totalXp": 44,
-      "name": "Dokas"
+      "totalXp": 59,
+      "name": "Gab"
     }
   ],
   "coopGoal": {
