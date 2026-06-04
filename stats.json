@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-04T14:17:11.352Z",
+  "updatedAt": "2026-06-04T15:17:11.356Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 9152,
+      "balance": 9184,
       "name": "MOMMY"
     },
     {
@@ -196,17 +196,17 @@
     },
     {
       "rank": 11,
+      "id": "653635654873251887",
+      "level": 1,
+      "totalXp": 133,
+      "name": "Yannnnnnis"
+    },
+    {
+      "rank": 12,
       "id": "756805412413636690",
       "level": 1,
       "totalXp": 121,
       "name": "Midonat"
-    },
-    {
-      "rank": 12,
-      "id": "653635654873251887",
-      "level": 1,
-      "totalXp": 111,
-      "name": "Yannnnis"
     },
     {
       "rank": 13,
