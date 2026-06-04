@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04T06:17:11.322Z",
+  "updatedAt": "2026-06-04T07:17:11.325Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -11,7 +11,7 @@
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 5885,
+      "balance": 5988,
       "name": "Viktor"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 2,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-04",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 2,
+    "totalBet": 20,
+    "topWinner": {
+      "id": "338058082112241664",
+      "games": 2,
+      "net": -1,
+      "bet": 20,
+      "wins": 1,
+      "name": "Viktor"
+    },
+    "topLoser": {
+      "id": "338058082112241664",
+      "games": 2,
+      "net": -1,
+      "bet": 20,
+      "wins": 1,
+      "name": "Viktor"
+    },
+    "mostActive": {
+      "id": "338058082112241664",
+      "games": 2,
+      "net": -1,
+      "bet": 20,
+      "wins": 1,
+      "name": "Viktor"
+    }
   }
 }
