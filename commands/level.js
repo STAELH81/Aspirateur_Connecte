@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require("discord.js");
 const xp = require("../lib/xp");
 const { COLOR } = require("../lib/personality");
+const profile = require("../lib/serverProfile");
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
@@ -72,7 +73,7 @@ module.exports = {
         embeds: [
           new EmbedBuilder()
             .setColor(COLOR)
-            .setTitle("Classement XP — Les Girlsss")
+            .setTitle(`Classement XP — ${profile.brandName()}`)
             .setDescription(lines.join("\n")),
         ],
       });

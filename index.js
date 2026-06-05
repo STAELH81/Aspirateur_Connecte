@@ -125,7 +125,9 @@ client.once(Events.ClientReady, (c) => {
   scheduleBoardRefresh(c);
   scheduleQuestReminders(c);
   if (profile.feature("music")) {
-    startMusic(c).catch((err) => console.error("[music]", err));
+    setTimeout(() => {
+      startMusic(c).catch((err) => console.error("[music]", err));
+    }, 15_000);
   }
 
   if (require("./lib/coopGoal").reconcileToday()) {
