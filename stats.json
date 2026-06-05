@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-05T10:17:11.436Z",
+  "updatedAt": "2026-06-05T11:17:11.440Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -11,7 +11,7 @@
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 6188,
+      "balance": 6295,
       "name": "Viktor"
     },
     {
@@ -34,15 +34,15 @@
     },
     {
       "rank": 6,
-      "id": "561500178759024640",
-      "balance": 1405,
-      "name": "Lucyy"
+      "id": "435811716572643338",
+      "balance": 1538,
+      "name": "Djalann"
     },
     {
       "rank": 7,
-      "id": "435811716572643338",
-      "balance": 1383,
-      "name": "Djalann"
+      "id": "561500178759024640",
+      "balance": 1405,
+      "name": "Lucyy"
     },
     {
       "rank": 8,
@@ -52,15 +52,15 @@
     },
     {
       "rank": 9,
-      "id": "441639749925470209",
-      "balance": 620,
-      "name": "Chad"
+      "id": "1228698414020300821",
+      "balance": 728,
+      "name": "Clement"
     },
     {
       "rank": 10,
-      "id": "1228698414020300821",
-      "balance": 581,
-      "name": "Clement"
+      "id": "441639749925470209",
+      "balance": 620,
+      "name": "Chad"
     },
     {
       "rank": 11,
@@ -232,14 +232,14 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 17,
+    "progress": 18,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-05",
-    "totalGames": 17,
-    "totalBet": 845,
+    "totalGames": 18,
+    "totalBet": 995,
     "topWinner": {
       "id": "1270513100596056175",
       "games": 15,
