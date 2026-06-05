@@ -1,6 +1,5 @@
 module.exports = [
   require("./ping"),
-  require("./girlsss"),
   require("./help"),
   require("./avatar"),
   require("./userinfo"),
@@ -20,9 +19,10 @@ module.exports = [
   require("./warn"),
   require("./suggest"),
   require("./botstatus"),
-  require("./gazette"),
-  require("./dashboard"),
   require("./quests"),
   require("./duel"),
+  require("./girlsss"),
+  require("./gazette"),
+  require("./dashboard"),
   require("./devlog"),
-];
+].filter((cmd) => require("../lib/serverProfile").isCommandEnabled(cmd.data.name));

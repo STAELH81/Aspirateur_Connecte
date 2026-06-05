@@ -1,4 +1,5 @@
 require("dotenv").config({ quiet: true });
+const profile = require("./lib/serverProfile");
 const {
   Client,
   GatewayIntentBits,
@@ -70,6 +71,8 @@ const {
 } = require("./lib/questsBoard");
 const duel = require("./lib/duel");
 const { scheduleQuestReminders } = require("./lib/questReminders");
+const { startMusic } = require("./lib/musicPlayer");
+const { isDirectBotMention } = require("./lib/mentions");
 const path = require("path");
 
 function scheduleDashboardSync(client) {
@@ -99,6 +102,7 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
   ],
 });
 
@@ -108,18 +112,21 @@ for (const cmd of commandModules) {
 }
 
 client.once(Events.ClientReady, (c) => {
-  console.log(`Aspirateur en ligne : ${c.user.tag} — Les Girlsss`);
+  console.log(`${profile.botDisplayName()} en ligne : ${c.user.tag} — ${profile.brandName()}`);
   scheduleAll(client);
   scheduleBirthdayAnnounce(client);
   scheduleBirthdayVip(client);
-  scheduleShopRoleCleanup(client);
-  scheduleGamblingGazette(client);
+  if (profile.feature("shopCleanup")) scheduleShopRoleCleanup(client);
+  if (profile.feature("gazette")) scheduleGamblingGazette(client);
   tickets.scheduleInactiveTicketSweep(client);
   startMoneyPanelsAutoRefresh(client);
   startCasinoResultCleanup(client);
-  scheduleDashboardSync(c);
+  if (profile.feature("dashboard")) scheduleDashboardSync(c);
   scheduleBoardRefresh(c);
   scheduleQuestReminders(c);
+  if (profile.feature("music")) {
+    startMusic(c).catch((err) => console.error("[music]", err));
+  }
 
   if (require("./lib/coopGoal").reconcileToday()) {
     requestBoardRefresh(c);
@@ -536,18 +543,14 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
-  if (interaction.isButton() && interaction.customId.startsWith("shop:buy:")) {
+  if (interaction.isButton() && interaction.customId.startsWith("shop:")) {
+    if (!profile.feature("shop")) return;
     if (!(await replyIfWrongChannel(interaction))) return;
-    await handleShopBuyButton(interaction);
-    return;
-  }
-  if (
-    interaction.isButton() &&
-    (interaction.customId.startsWith("shop:confirm:") ||
-      interaction.customId.startsWith("shop:cancel:"))
-  ) {
-    if (!(await replyIfWrongChannel(interaction))) return;
-    await handleShopConfirmButton(interaction);
+    if (interaction.customId.startsWith("shop:buy:")) {
+      await handleShopBuyButton(interaction);
+    } else {
+      await handleShopConfirmButton(interaction);
+    }
     return;
   }
 
@@ -619,7 +622,7 @@ client.on(Events.MessageCreate, async (message) => {
       .catch(() => {});
   }
 
-  if (message.mentions.has(client.user) && !levelUpBanterReply) {
+  if (isDirectBotMention(message, client) && !levelUpBanterReply) {
     await message.reply(personality.mentionReply(message.author));
   }
 });

@@ -2,23 +2,12 @@
   "menus": [
     {
       "id": "jeux",
-      "title": "Role Menu: Jeux",
-      "description": "Clique pour ajouter ou retirer un role jeu.",
+      "title": "SALUT !",
+      "description": "Ici tu va pouvoir recuperer d'inombrables roles ! (yen a 3 frr sayer aussi)\n\n**CS2** : Si tu joue a CS quoi\n**Clips** : pour pouvoir voir et poster tes horribles clips Medal\n**Valo** : et oui malheureusement ya des gens qui jouent a Valo ici bon...",
       "roles": [
-        { "id": "1335202569768931345", "label": "Valorant", "emoji": "🔫" },
-        { "id": "1335202569768931343", "label": "Minecraft", "emoji": "⛏️" },
-        { "id": "1335202569768931344", "label": "CS", "emoji": "💣" },
-        { "id": "1335202569768931339", "label": "League of Legends", "emoji": "🗡️" }
-      ]
-    },
-    {
-      "id": "notifs",
-      "title": "Role Menu: Notifs",
-      "description": "Clique pour ajouter ou retirer un role notif.",
-      "roles": [
-        { "id": "1350174049753628713", "label": "Events", "emoji": "🎮" },
-        { "id": "1405962987629711370", "label": "Sorties", "emoji": "🧥" },
-        { "id": "1507316030291312680", "label": "Updates Bot", "emoji": "🤖" }
+        { "id": "1482061390708609127", "label": "CS2", "emoji": "🥔" },
+        { "id": "1490680201103937688", "label": "Clips", "emoji": "🎬" },
+        { "id": "1490680650255171615", "label": "Valo", "emoji": "🎯" }
       ]
     }
   ]

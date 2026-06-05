@@ -6,21 +6,30 @@ const { loadMenus, getMenu } = require("../lib/selfRoles");
 const { buildPanel } = require("../lib/rolePanels");
 const { isModerator } = require("../lib/permissions");
 
-module.exports = {
-  data: new SlashCommandBuilder()
+function buildRolesCommandData() {
+  const menus = loadMenus();
+  const builder = new SlashCommandBuilder()
     .setName("roles")
-    .setDescription("Poster un menu de roles (remplace YAGPDB)")
-    .addStringOption((opt) =>
-      opt
-        .setName("menu")
-        .setDescription("Quel panneau poster")
-        .setRequired(true)
-        .addChoices(
-          { name: "Jeux (Valorant, MC, CS, LoL)", value: "jeux" },
-          { name: "Notifs (Events, Sorties, Updates Bot)", value: "notifs" }
-        )
-    )
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
+    .setDescription("Poster un menu de roles")
+    .addStringOption((opt) => {
+      opt.setName("menu").setDescription("Quel panneau poster").setRequired(true);
+      for (const menu of menus) {
+        const name = (menu.title || menu.id).slice(0, 100);
+        opt.addChoices({ name, value: menu.id });
+      }
+      if (menus.length === 0) {
+        opt.addChoices({ name: "jeux", value: "jeux" });
+      }
+      return opt;
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles);
+  return builder;
+}
+
+module.exports = {
+  get data() {
+    return buildRolesCommandData();
+  },
   async execute(interaction) {
     if (!isModerator(interaction.member)) {
       await interaction.reply({
@@ -51,6 +60,7 @@ module.exports = {
       return;
     }
 
-    await interaction.reply(panel);
+    await interaction.channel.send(panel);
+    await interaction.reply({ content: "Panneau roles poste.", ephemeral: true });
   },
 };

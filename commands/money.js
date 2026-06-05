@@ -4,6 +4,7 @@ const shopPurchase = require("../lib/shopPurchase");
 const blackjack = require("../lib/blackjack");
 const { isModerator } = require("../lib/permissions");
 const { buildMoneyCommandData } = require("../lib/moneyCommand");
+const profile = require("../lib/serverProfile");
 const {
   moneyPanelEmbed,
   moneyPanelRows,
@@ -24,8 +25,11 @@ module.exports = {
     const sub = interaction.options.getSubcommand();
 
     if (group !== "admin") {
+      const panels = profile.isRockAndRoll()
+        ? "banque, money, casino et infos"
+        : "banque, money, shop et casino";
       await interaction.reply({
-        content: "Utilise les panneaux **banque**, **money**, **shop** et **casino**.",
+        content: `Utilise les panneaux **${panels}**.`,
         ephemeral: true,
       });
       return;
@@ -50,6 +54,7 @@ module.exports = {
     }
 
     if (sub === "shop-panel") {
+      if (!profile.feature("shop")) return;
       await interaction.channel.send({
         embeds: [shopPanelEmbed()],
         components: shopPanelRows(),
@@ -76,6 +81,7 @@ module.exports = {
     }
 
     if (sub === "shop-stock-reset") {
+      if (!profile.feature("shop")) return;
       const stock = shopPurchase.resetPersistentStock();
       const lines = Object.entries(stock).map(([id, n]) => `- ${id} : ${n}`);
       await interaction.reply({
