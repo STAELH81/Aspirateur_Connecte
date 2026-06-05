@@ -51,6 +51,18 @@ Ex. objectif **20**, mise **50** → premier à **20** points gagne (même si ç
 
 ---
 
+## Duels → **coop serveur**
+
+Les manches de duel comptent dans l’objectif **250** parties / jour :
+
+- **1 manche jouée = 1 partie coop** (pour les **2** joueurs)
+- Plafond **100 manches / duel** comptabilisées (même si le duel dure plus longtemps)
+- Mise min **20** coins / manche — en dessous, le duel **ne compte pas** pour le coop (anti-farm)
+
+Ex. duel objectif **100**, **120** manches jouées → seules les **100** premières comptent pour le coop.
+
+---
+
 ## Rappels
 
 | Besoin | Où |

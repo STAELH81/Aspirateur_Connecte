@@ -111,7 +111,7 @@ Msgs bleus sur **#money** : suppression auto ~**5 min**.
 
 ### Duels (`/duel`)
 
-Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** · objectif **1–100 victoires** (pas de plafond de manches) · escrow **mise × objectif** · seul le défie accepte (60 s) · taxe **5 %** jackpot.
+Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** · objectif **1–100 victoires** · escrow **mise × objectif** · **coop** : chaque manche jouée compte (max **100**/duel, mise min **20**) · seul le défie accepte (60 s) · taxe **5 %** jackpot.
 
 ### Site & Gazette
 
