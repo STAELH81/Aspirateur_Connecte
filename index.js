@@ -125,6 +125,7 @@ client.once(Events.ClientReady, (c) => {
   scheduleBoardRefresh(c);
   scheduleQuestReminders(c);
   if (profile.feature("music")) {
+    console.log("[music] Radio programmee dans 15 s.");
     setTimeout(() => {
       startMusic(c).catch((err) => console.error("[music]", err));
     }, 15_000);
