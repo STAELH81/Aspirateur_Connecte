@@ -31,9 +31,9 @@ Ce README est écrit pour quelqu’un qui découvre le projet sans connaître l�
 | Sondages, infos membres | `/poll`, `/avatar`, `/userinfo` |
 | Anniversaires de la commu | `/anniv` |
 | Coins & mini-jeux | Panneaux **banque / money / casino / shop / infos** + `/casino` · `/duel` |
-| Hub Money (v1.2.9) | Daily · Work · quêtes · coop · **Paliers serie** · top coop · tableau live |
-| Hub Banque (v1.2.9) | Top 25 · Balance · Pay · Profil · **Prêt** |
-| Duels PvP (v1.2.9) | `/duel @joueur` — coinflip, slots, dé (**#casino**) |
+| Hub Money (v1.2.10) | Daily · Work · quêtes · coop · **Paliers serie** · top coop · tableau live |
+| Hub Banque (v1.2.10) | Top 25 **comptes actifs** · Balance · Pay · Profil · **Prêt** |
+| Duels PvP (v1.2.10) | `/duel @joueur` — objectif **1–100** victoires (**#casino**) |
 | Coop serveur | **250** parties/jour · MVP **+15/+10/+5** · alerte **80 %** |
 | Remplacer d’anciens bots | YAGPDB (rôles), GiveawayBot (giveaways) — optionnel |
 
@@ -83,7 +83,7 @@ Monnaie : **coins**. Solde de départ : **100**.
 
 | Panneau | Salon | Rôle |
 |---------|-------|------|
-| **Banque** | `#banque` (ex-money) | Top 25 · Balance · Pay · Profil · **Prêt** · Refresh |
+| **Banque** | `#banque` (ex-money) | Top 25 **comptes actifs** · Balance · Pay · Profil · **Prêt** · Refresh |
 | **Money** | `#money` (ex-quêtes) | Daily · Work · quêtes · coop · **Paliers serie** · tableau · Refresh |
 | **Casino** | `#casino` | Jeux, jackpot, Meme mise / Rejouer / Changer de jeux · **`/duel`** |
 | **Shop** | `#shop` | Achats par boutons + confirmation |
@@ -111,7 +111,7 @@ Msgs bleus sur **#money** : suppression auto ~**5 min**.
 
 ### Duels (`/duel`)
 
-Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** · manches **1 / 3 / 5** · escrow **mise × manches** · seul le défie accepte (60 s) · taxe **5 %** jackpot.
+Salon **#casino** only. Défie un joueur : **coinflip**, **slots** ou **dé** · objectif **1–100 victoires** (pas de plafond de manches) · escrow **mise × objectif** · seul le défie accepte (60 s) · taxe **5 %** jackpot.
 
 ### Site & Gazette
 
@@ -397,9 +397,9 @@ npm run deploy
 | `README.md` | Doc repo / onboarding |
 | `docs/annonce-vX.Y.Z-discord.md` | Messages Discord · **`/devlog post`** |
 
-Annonces prêtes v1.2.9 : `docs/annonce-v1.2.9-discord.md` · info temp banque : `docs/annonce-banque-temp-discord.md`.
+Annonces prêtes v1.2.10 : `docs/annonce-v1.2.10-discord.md` · v1.2.9 : `docs/annonce-v1.2.9-discord.md` · info temp banque : `docs/annonce-banque-temp-discord.md`.
 
-Publication Discord : **`/devlog preview fichier:v1.2.9`** puis **`/devlog post`** (embeds, salon `UPDATES_CHANNEL_ID`).
+Publication Discord : **`/devlog preview fichier:v1.2.10`** puis **`/devlog post`** (embeds, salon `UPDATES_CHANNEL_ID`).
 
 ---
 
