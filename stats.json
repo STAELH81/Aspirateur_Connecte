@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-05T17:59:48.552Z",
+  "updatedAt": "2026-06-05T18:59:48.557Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -217,17 +217,17 @@
     },
     {
       "rank": 14,
+      "id": "1108365776504754287",
+      "level": 0,
+      "totalXp": 77,
+      "name": "Loïc"
+    },
+    {
+      "rank": 15,
       "id": "1228665148118532119",
       "level": 0,
       "totalXp": 68,
       "name": "Aloïs0409°2"
-    },
-    {
-      "rank": 15,
-      "id": "1507083238441750691",
-      "level": 0,
-      "totalXp": 60,
-      "name": "Esclave de Cha"
     }
   ],
   "coopGoal": {
