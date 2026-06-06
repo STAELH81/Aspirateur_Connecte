@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-06T20:07:30.919Z",
+  "updatedAt": "2026-06-06T21:07:30.926Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 12491,
+      "balance": 12531,
       "name": "MOMMY"
     },
     {
@@ -100,27 +100,27 @@
     },
     {
       "rank": 17,
-      "id": "579966046736482315",
-      "balance": 21,
-      "name": "Mec de Sacha"
-    },
-    {
-      "rank": 18,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
     },
     {
-      "rank": 20,
+      "rank": 19,
       "id": "1108365776504754287",
       "balance": 0,
       "name": "Loïc"
+    },
+    {
+      "rank": 20,
+      "id": "579966046736482315",
+      "balance": 0,
+      "name": "Mec de Sacha"
     }
   ],
   "xpTop": [
@@ -142,7 +142,7 @@
       "rank": 3,
       "id": "561500178759024640",
       "level": 4,
-      "totalXp": 1097,
+      "totalXp": 1117,
       "name": "Lucyy"
     },
     {
@@ -219,7 +219,7 @@
       "rank": 14,
       "id": "1108365776504754287",
       "level": 0,
-      "totalXp": 77,
+      "totalXp": 96,
       "name": "Loïc"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 75,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-06",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 75,
+    "totalBet": 1040,
+    "topWinner": {
+      "id": "579966046736482315",
+      "games": 75,
+      "net": -260,
+      "bet": 1040,
+      "wins": 25,
+      "name": "Mec de Sacha"
+    },
+    "topLoser": {
+      "id": "579966046736482315",
+      "games": 75,
+      "net": -260,
+      "bet": 1040,
+      "wins": 25,
+      "name": "Mec de Sacha"
+    },
+    "mostActive": {
+      "id": "579966046736482315",
+      "games": 75,
+      "net": -260,
+      "bet": 1040,
+      "wins": 25,
+      "name": "Mec de Sacha"
+    }
   }
 }
