@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-07T09:07:30.964Z",
+  "updatedAt": "2026-06-07T10:07:30.968Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 12609,
+      "balance": 12691,
       "name": "MOMMY"
     },
     {
@@ -70,51 +70,51 @@
     },
     {
       "rank": 12,
+      "id": "1108365776504754287",
+      "balance": 152,
+      "name": "Loïc"
+    },
+    {
+      "rank": 13,
       "id": "644148774544867339",
       "balance": 125,
       "name": "Gab"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "488799849798434826",
       "balance": 110,
       "name": "MynameisEve"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "id": "1291782472803156162",
       "balance": 65,
       "name": "1291782472803156162"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
-    },
-    {
-      "rank": 19,
-      "id": "1108365776504754287",
-      "balance": 0,
-      "name": "Loïc"
     },
     {
       "rank": 20,
