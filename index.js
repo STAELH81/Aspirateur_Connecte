@@ -70,6 +70,7 @@ const {
 } = require("./lib/questsBoard");
 const duel = require("./lib/duel");
 const { scheduleQuestReminders } = require("./lib/questReminders");
+const { startVoicePresence } = require("./lib/voicePresence");
 const path = require("path");
 
 function scheduleDashboardSync(client) {
@@ -99,6 +100,7 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
   ],
 });
 
@@ -120,6 +122,13 @@ client.once(Events.ClientReady, (c) => {
   scheduleDashboardSync(c);
   scheduleBoardRefresh(c);
   scheduleQuestReminders(c);
+
+  if (process.env.VOICE_CHANNEL_ID?.trim()) {
+    console.log("[voice] Presence vocale programmee dans 15 s.");
+    setTimeout(() => {
+      startVoicePresence(c).catch((err) => console.error("[voice]", err));
+    }, 15_000);
+  }
 
   if (require("./lib/coopGoal").reconcileToday()) {
     requestBoardRefresh(c);
