@@ -72,6 +72,7 @@ const {
 const duel = require("./lib/duel");
 const { scheduleQuestReminders } = require("./lib/questReminders");
 const { startMusic } = require("./lib/musicPlayer");
+const { startVoicePresence } = require("./lib/voicePresence");
 const { isDirectBotMention } = require("./lib/mentions");
 const path = require("path");
 
@@ -128,6 +129,12 @@ client.once(Events.ClientReady, (c) => {
     console.log("[music] Radio programmee dans 15 s.");
     setTimeout(() => {
       startMusic(c).catch((err) => console.error("[music]", err));
+    }, 15_000);
+  }
+  if (profile.feature("voicePresence")) {
+    console.log("[voice] Presence vocale programmee dans 15 s.");
+    setTimeout(() => {
+      startVoicePresence(c).catch((err) => console.error("[voice]", err));
     }, 15_000);
   }
 
