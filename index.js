@@ -70,7 +70,6 @@ const {
 } = require("./lib/questsBoard");
 const duel = require("./lib/duel");
 const { scheduleQuestReminders } = require("./lib/questReminders");
-const { startVoicePresence } = require("./lib/voicePresence");
 const path = require("path");
 
 function scheduleDashboardSync(client) {
@@ -126,6 +125,7 @@ client.once(Events.ClientReady, (c) => {
   if (process.env.VOICE_CHANNEL_ID?.trim()) {
     console.log("[voice] Presence vocale programmee dans 15 s.");
     setTimeout(() => {
+      const { startVoicePresence } = require("./lib/voicePresence");
       startVoicePresence(c).catch((err) => console.error("[voice]", err));
     }, 15_000);
   }
