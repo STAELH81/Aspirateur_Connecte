@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T11:07:31.051Z",
+  "updatedAt": "2026-06-08T12:07:31.057Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -29,7 +29,7 @@
     {
       "rank": 5,
       "id": "435811716572643338",
-      "balance": 1868,
+      "balance": 1888,
       "name": "Djalann"
     },
     {
@@ -64,63 +64,63 @@
     },
     {
       "rank": 11,
+      "id": "579966046736482315",
+      "balance": 263,
+      "name": "Mec de Sacha"
+    },
+    {
+      "rank": 12,
       "id": "908036623856459877",
       "balance": 206,
       "name": "Amnesie"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "id": "1108365776504754287",
       "balance": 152,
       "name": "Loïc"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "644148774544867339",
       "balance": 125,
       "name": "Gab"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "488799849798434826",
       "balance": 110,
       "name": "MynameisEve"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "id": "1291782472803156162",
       "balance": 65,
       "name": "1291782472803156162"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
-    },
-    {
-      "rank": 20,
-      "id": "579966046736482315",
-      "balance": 0,
-      "name": "Mec de Sacha"
     }
   ],
   "xpTop": [
@@ -163,7 +163,7 @@
       "rank": 6,
       "id": "441639749925470209",
       "level": 2,
-      "totalXp": 331,
+      "totalXp": 346,
       "name": "Chad"
     },
     {
@@ -232,21 +232,21 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 12,
+    "progress": 285,
     "reward": 25,
-    "goalMet": false
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-06-08",
-    "totalGames": 12,
-    "totalBet": 717,
+    "totalGames": 285,
+    "totalBet": 3447,
     "topWinner": {
-      "id": "338058082112241664",
-      "games": 3,
-      "net": -11,
-      "bet": 30,
-      "wins": 1,
-      "name": "Viktor"
+      "id": "579966046736482315",
+      "games": 273,
+      "net": 75,
+      "bet": 2730,
+      "wins": 120,
+      "name": "Mec de Sacha"
     },
     "topLoser": {
       "id": "1270513100596056175",
@@ -257,12 +257,12 @@
       "name": "DADDY"
     },
     "mostActive": {
-      "id": "1270513100596056175",
-      "games": 9,
-      "net": -142,
-      "bet": 687,
-      "wins": 5,
-      "name": "DADDY"
+      "id": "579966046736482315",
+      "games": 273,
+      "net": 75,
+      "bet": 2730,
+      "wins": 120,
+      "name": "Mec de Sacha"
     }
   }
 }
