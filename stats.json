@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-09T13:22:16.195Z",
+  "updatedAt": "2026-06-09T14:22:16.198Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -149,7 +149,7 @@
       "rank": 4,
       "id": "338058082112241664",
       "level": 4,
-      "totalXp": 922,
+      "totalXp": 937,
       "name": "Viktor"
     },
     {
@@ -210,17 +210,17 @@
     },
     {
       "rank": 13,
+      "id": "1108365776504754287",
+      "level": 1,
+      "totalXp": 114,
+      "name": "Loïc"
+    },
+    {
+      "rank": 14,
       "id": "1228698414020300821",
       "level": 1,
       "totalXp": 110,
       "name": "Clement"
-    },
-    {
-      "rank": 14,
-      "id": "1108365776504754287",
-      "level": 0,
-      "totalXp": 96,
-      "name": "Loïc"
     },
     {
       "rank": 15,
