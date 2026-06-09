@@ -8,6 +8,7 @@
     "deploy": "node deploy-commands.js",
     "setup": "npm install",
     "backfill:stats": "node scripts/backfill-gambling-stats.js",
+    "generate:vacuum-sound": "node scripts/generate-vacuum-sound.js",
     "dashboard": "node dashboard/server.js",
     "dashboard:export": "node scripts/export-dashboard.js"
   },
