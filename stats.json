@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T18:43:30.454Z",
+  "updatedAt": "2026-06-10T19:43:30.458Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -17,7 +17,7 @@
     {
       "rank": 3,
       "id": "1270513100596056175",
-      "balance": 2556,
+      "balance": 2734,
       "name": "DADDY"
     },
     {
@@ -135,7 +135,7 @@
       "rank": 2,
       "id": "561500178759024640",
       "level": 5,
-      "totalXp": 1280,
+      "totalXp": 1321,
       "name": "Lucyy"
     },
     {
@@ -149,7 +149,7 @@
       "rank": 4,
       "id": "338058082112241664",
       "level": 4,
-      "totalXp": 937,
+      "totalXp": 956,
       "name": "Viktor"
     },
     {
@@ -182,45 +182,45 @@
     },
     {
       "rank": 9,
+      "id": "1228698414020300821",
+      "level": 1,
+      "totalXp": 145,
+      "name": "Clement"
+    },
+    {
+      "rank": 10,
       "id": "579966046736482315",
       "level": 1,
       "totalXp": 141,
       "name": "Mec de Sacha"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "id": "756805412413636690",
       "level": 1,
       "totalXp": 138,
       "name": "Midonat"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "id": "1151513409439932486",
       "level": 1,
       "totalXp": 135,
       "name": "Gatia"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "id": "653635654873251887",
       "level": 1,
       "totalXp": 133,
       "name": "Yannnnnnis"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "1108365776504754287",
       "level": 1,
       "totalXp": 114,
       "name": "Loïc"
-    },
-    {
-      "rank": 14,
-      "id": "1228698414020300821",
-      "level": 1,
-      "totalXp": 110,
-      "name": "Clement"
     },
     {
       "rank": 15,
