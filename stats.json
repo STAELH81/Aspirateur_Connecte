@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T08:43:30.429Z",
+  "updatedAt": "2026-06-10T09:43:30.430Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -41,7 +41,7 @@
     {
       "rank": 7,
       "id": "561500178759024640",
-      "balance": 1405,
+      "balance": 1648,
       "name": "Lucyy"
     },
     {
@@ -141,8 +141,8 @@
     {
       "rank": 3,
       "id": "561500178759024640",
-      "level": 4,
-      "totalXp": 1142,
+      "level": 5,
+      "totalXp": 1166,
       "name": "Lucyy"
     },
     {
@@ -156,7 +156,7 @@
       "rank": 5,
       "id": "790479407449636885",
       "level": 4,
-      "totalXp": 815,
+      "totalXp": 840,
       "name": "Lolaa"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 8,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-10",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 8,
+    "totalBet": 240,
+    "topWinner": {
+      "id": "561500178759024640",
+      "games": 8,
+      "net": 45,
+      "bet": 240,
+      "wins": 4,
+      "name": "Lucyy"
+    },
+    "topLoser": {
+      "id": "561500178759024640",
+      "games": 8,
+      "net": 45,
+      "bet": 240,
+      "wins": 4,
+      "name": "Lucyy"
+    },
+    "mostActive": {
+      "id": "561500178759024640",
+      "games": 8,
+      "net": 45,
+      "bet": 240,
+      "wins": 4,
+      "name": "Lucyy"
+    }
   }
 }
