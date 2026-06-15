@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-15T19:01:19.823Z",
+  "updatedAt": "2026-06-15T20:01:19.826Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -35,7 +35,7 @@
     {
       "rank": 6,
       "id": "1151513409439932486",
-      "balance": 1752,
+      "balance": 1937,
       "name": "Gatia"
     },
     {
@@ -128,7 +128,7 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 8,
-      "totalXp": 3147,
+      "totalXp": 3171,
       "name": "MOMMY"
     },
     {
@@ -203,24 +203,24 @@
     },
     {
       "rank": 12,
+      "id": "1151513409439932486",
+      "level": 1,
+      "totalXp": 179,
+      "name": "Gatia"
+    },
+    {
+      "rank": 13,
       "id": "579966046736482315",
       "level": 1,
       "totalXp": 141,
       "name": "Mec de Sacha"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "756805412413636690",
       "level": 1,
       "totalXp": 138,
       "name": "Midonat"
-    },
-    {
-      "rank": 14,
-      "id": "1151513409439932486",
-      "level": 1,
-      "totalXp": 135,
-      "name": "Gatia"
     },
     {
       "rank": 15,
