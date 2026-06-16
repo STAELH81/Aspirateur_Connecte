@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-16T17:01:19.880Z",
+  "updatedAt": "2026-06-16T18:01:19.885Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -142,7 +142,7 @@
       "rank": 3,
       "id": "571755489952661504",
       "level": 5,
-      "totalXp": 1325,
+      "totalXp": 1347,
       "name": "Dorian ?! Super..."
     },
     {
@@ -210,17 +210,17 @@
     },
     {
       "rank": 13,
+      "id": "756805412413636690",
+      "level": 1,
+      "totalXp": 153,
+      "name": "Midonat"
+    },
+    {
+      "rank": 14,
       "id": "579966046736482315",
       "level": 1,
       "totalXp": 141,
       "name": "Mec de Sacha"
-    },
-    {
-      "rank": 14,
-      "id": "756805412413636690",
-      "level": 1,
-      "totalXp": 138,
-      "name": "Midonat"
     },
     {
       "rank": 15,
