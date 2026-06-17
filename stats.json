@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-17T17:01:19.964Z",
+  "updatedAt": "2026-06-17T18:01:19.966Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -65,7 +65,7 @@
     {
       "rank": 11,
       "id": "579966046736482315",
-      "balance": 599,
+      "balance": 692,
       "name": "Mec de Sacha"
     },
     {
@@ -196,17 +196,17 @@
     },
     {
       "rank": 11,
+      "id": "1151513409439932486",
+      "level": 1,
+      "totalXp": 201,
+      "name": "Gatia"
+    },
+    {
+      "rank": 12,
       "id": "435811716572643338",
       "level": 1,
       "totalXp": 194,
       "name": "Djalann"
-    },
-    {
-      "rank": 12,
-      "id": "1151513409439932486",
-      "level": 1,
-      "totalXp": 179,
-      "name": "Gatia"
     },
     {
       "rank": 13,
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 50,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-17",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 50,
+    "totalBet": 1000,
+    "topWinner": {
+      "id": "579966046736482315",
+      "games": 50,
+      "net": -110,
+      "bet": 1000,
+      "wins": 21,
+      "name": "Mec de Sacha"
+    },
+    "topLoser": {
+      "id": "579966046736482315",
+      "games": 50,
+      "net": -110,
+      "bet": 1000,
+      "wins": 21,
+      "name": "Mec de Sacha"
+    },
+    "mostActive": {
+      "id": "579966046736482315",
+      "games": 50,
+      "net": -110,
+      "bet": 1000,
+      "wins": 21,
+      "name": "Mec de Sacha"
+    }
   }
 }
