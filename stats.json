@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T15:01:20.024Z",
+  "updatedAt": "2026-06-18T16:01:20.029Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -147,17 +147,17 @@
     },
     {
       "rank": 4,
+      "id": "790479407449636885",
+      "level": 4,
+      "totalXp": 1008,
+      "name": "Lolaa"
+    },
+    {
+      "rank": 5,
       "id": "338058082112241664",
       "level": 4,
       "totalXp": 997,
       "name": "Viktor"
-    },
-    {
-      "rank": 5,
-      "id": "790479407449636885",
-      "level": 4,
-      "totalXp": 986,
-      "name": "Lolaa"
     },
     {
       "rank": 6,
