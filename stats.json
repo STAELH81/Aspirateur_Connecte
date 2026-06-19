@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-06-19T16:01:20.088Z",
+  "updatedAt": "2026-06-19T17:01:20.090Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "476295168950009856",
-      "balance": 14841,
+      "balance": 16034,
       "name": "MOMMY"
     },
     {
       "rank": 2,
       "id": "338058082112241664",
-      "balance": 7503,
+      "balance": 7874,
       "name": "Viktor"
     },
     {
       "rank": 3,
       "id": "1270513100596056175",
-      "balance": 4454,
+      "balance": 4778,
       "name": "DADDY"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 3,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-19",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 3,
+    "totalBet": 1300,
+    "topWinner": {
+      "id": "476295168950009856",
+      "games": 1,
+      "net": 1000,
+      "bet": 1000,
+      "wins": 1,
+      "name": "MOMMY"
+    },
+    "topLoser": {
+      "id": "1270513100596056175",
+      "games": 1,
+      "net": 150,
+      "bet": 150,
+      "wins": 1,
+      "name": "DADDY"
+    },
+    "mostActive": {
+      "id": "1270513100596056175",
+      "games": 1,
+      "net": 150,
+      "bet": 150,
+      "wins": 1,
+      "name": "DADDY"
+    }
   }
 }
