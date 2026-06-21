@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T18:01:20.222Z",
+  "updatedAt": "2026-06-21T19:01:20.226Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -133,23 +133,23 @@
     },
     {
       "rank": 2,
-      "id": "561500178759024640",
-      "level": 5,
-      "totalXp": 1584,
-      "name": "Lucyy"
+      "id": "571755489952661504",
+      "level": 6,
+      "totalXp": 1634,
+      "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
-      "id": "571755489952661504",
+      "id": "561500178759024640",
       "level": 5,
-      "totalXp": 1563,
-      "name": "Dorian ?! Super..."
+      "totalXp": 1603,
+      "name": "Lucyy"
     },
     {
       "rank": 4,
       "id": "790479407449636885",
       "level": 5,
-      "totalXp": 1161,
+      "totalXp": 1182,
       "name": "Lolaa"
     },
     {
@@ -163,7 +163,7 @@
       "rank": 6,
       "id": "441639749925470209",
       "level": 3,
-      "totalXp": 484,
+      "totalXp": 502,
       "name": "Chad"
     },
     {
@@ -175,17 +175,17 @@
     },
     {
       "rank": 8,
+      "id": "1151513409439932486",
+      "level": 2,
+      "totalXp": 315,
+      "name": "Gatia"
+    },
+    {
+      "rank": 9,
       "id": "1228698414020300821",
       "level": 2,
       "totalXp": 308,
       "name": "Clement"
-    },
-    {
-      "rank": 9,
-      "id": "1151513409439932486",
-      "level": 2,
-      "totalXp": 281,
-      "name": "Gatia"
     },
     {
       "rank": 10,
