@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T09:01:20.194Z",
+  "updatedAt": "2026-06-21T10:01:20.196Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -17,7 +17,7 @@
     {
       "rank": 3,
       "id": "1270513100596056175",
-      "balance": 5819,
+      "balance": 6309,
       "name": "DADDY"
     },
     {
@@ -149,7 +149,7 @@
       "rank": 4,
       "id": "790479407449636885",
       "level": 4,
-      "totalXp": 1104,
+      "totalXp": 1122,
       "name": "Lolaa"
     },
     {
@@ -170,7 +170,7 @@
       "rank": 7,
       "id": "1108365776504754287",
       "level": 2,
-      "totalXp": 296,
+      "totalXp": 311,
       "name": "Loïc"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 250,
-    "progress": 0,
+    "progress": 3,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-21",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 3,
+    "totalBet": 900,
+    "topWinner": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": 300,
+      "bet": 900,
+      "wins": 2,
+      "name": "DADDY"
+    },
+    "topLoser": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": 300,
+      "bet": 900,
+      "wins": 2,
+      "name": "DADDY"
+    },
+    "mostActive": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": 300,
+      "bet": 900,
+      "wins": 2,
+      "name": "DADDY"
+    }
   }
 }
