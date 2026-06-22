@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T05:28:30.586Z",
+  "updatedAt": "2026-06-22T05:36:16.023Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -231,7 +231,7 @@
     }
   ],
   "coopGoal": {
-    "target": 250,
+    "target": 50,
     "progress": 0,
     "reward": 25,
     "goalMet": false
