@@ -130,6 +130,14 @@ client.once(Events.ClientReady, (c) => {
     }, 15_000);
   }
 
+  if (process.env.ACTIVITY_ENABLED === "1") {
+    try {
+      require("./lib/activity/server").startActivityServer(c);
+    } catch (err) {
+      console.error("[activity-api] Demarrage impossible :", err.message);
+    }
+  }
+
   if (require("./lib/coopGoal").reconcileToday()) {
     requestBoardRefresh(c);
   }
