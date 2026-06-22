@@ -4,7 +4,7 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 const CLIENT_ID = import.meta.env.VITE_DISCORD_CLIENT_ID;
 const API_BASE = import.meta.env.VITE_API_BASE || "";
 
-const app = document.getElementById("app");
+const app = document.getElementById("app") || ensureMount();
 let sdk;
 let session = null;
 let roomId = null;
@@ -12,6 +12,36 @@ let ws = null;
 let roomState = null;
 let selectedChoice = "rouge";
 let betAmount = 50;
+
+function ensureMount() {
+  const existing = document.getElementById("app");
+  if (existing) return existing;
+  const el = document.createElement("div");
+  el.id = "app";
+  document.body.appendChild(el);
+  return el;
+}
+
+function renderFatal(message, extra = "") {
+  const mount = ensureMount();
+  const details = extra ? `<pre>${String(extra)}</pre>` : "";
+  mount.innerHTML = `
+    <div class="screen center error fatal">
+      <h2>Activity error</h2>
+      <p>${String(message)}</p>
+      ${details}
+    </div>
+  `;
+}
+
+window.addEventListener("error", (event) => {
+  renderFatal(event.message || "Unknown window error");
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  const reason = event.reason;
+  renderFatal(reason?.message || "Unhandled promise rejection", reason?.stack || "");
+});
 
 function $(html) {
   const el = document.createElement("div");
@@ -48,7 +78,7 @@ function renderGame() {
 
   app.innerHTML = "";
 
-  const root = $("`
+  const root = $(`
     <div class="casino">
       <header class="top">
         <div class="brand">
@@ -127,7 +157,7 @@ function renderGame() {
 }
 
 function renderBetPanel() {
-  const panel = $("`<div class="bet-panel"></div>`");
+  const panel = $(`<div class="bet-panel"></div>`);
   panel.innerHTML = `
     <div class="choices">
       <button type="button" data-choice="rouge" class="choice red ${selectedChoice === "rouge" ? "active" : ""}">Rouge x2</button>
@@ -276,5 +306,5 @@ async function boot() {
 
 boot().catch((err) => {
   console.error(err);
-  app.innerHTML = `<div class="screen center error">${err.message}</div>`;
+  renderFatal(err.message || "Boot failed", err.stack || "");
 });

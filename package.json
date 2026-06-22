@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "deploy": "node deploy-commands.js",
+    "activity:entrypoint": "node scripts/register-activity-entrypoint.js",
+    "activity:entrypoint:aspirateur": "node scripts/register-activity-entrypoint.js --aspirateur",
     "setup": "npm install",
     "backfill:stats": "node scripts/backfill-gambling-stats.js",
     "generate:vacuum-sound": "node scripts/generate-vacuum-sound.js",
