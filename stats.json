@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T19:47:32.090Z",
+  "updatedAt": "2026-06-23T20:47:32.094Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -16,39 +16,39 @@
     },
     {
       "rank": 3,
-      "id": "1270513100596056175",
-      "balance": 6309,
-      "name": "DADDY"
-    },
-    {
-      "rank": 4,
       "id": "435811716572643338",
-      "balance": 3146,
+      "balance": 3307,
       "name": "Djalann"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "id": "1251116560983130229",
       "balance": 2307,
       "name": "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "id": "1151513409439932486",
       "balance": 2114,
       "name": "Gatia"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "id": "790479407449636885",
       "balance": 1670,
       "name": "Lolaa"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "id": "561500178759024640",
       "balance": 1648,
       "name": "Lucyy"
+    },
+    {
+      "rank": 8,
+      "id": "1270513100596056175",
+      "balance": 1074,
+      "name": "DADDY"
     },
     {
       "rank": 9,
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 4,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-23",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 4,
+    "totalBet": 6301,
+    "topWinner": {
+      "id": "1270513100596056175",
+      "games": 4,
+      "net": -5381,
+      "bet": 6301,
+      "wins": 1,
+      "name": "DADDY"
+    },
+    "topLoser": {
+      "id": "1270513100596056175",
+      "games": 4,
+      "net": -5381,
+      "bet": 6301,
+      "wins": 1,
+      "name": "DADDY"
+    },
+    "mostActive": {
+      "id": "1270513100596056175",
+      "games": 4,
+      "net": -5381,
+      "bet": 6301,
+      "wins": 1,
+      "name": "DADDY"
+    }
   }
 }
