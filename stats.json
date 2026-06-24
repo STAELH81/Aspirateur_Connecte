@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T09:47:32.128Z",
+  "updatedAt": "2026-06-24T10:47:32.130Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -16,39 +16,39 @@
     },
     {
       "rank": 3,
+      "id": "1270513100596056175",
+      "balance": 6249,
+      "name": "DADDY"
+    },
+    {
+      "rank": 4,
       "id": "435811716572643338",
       "balance": 3307,
       "name": "Djalann"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "id": "1251116560983130229",
       "balance": 2307,
       "name": "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "id": "1151513409439932486",
       "balance": 2114,
       "name": "Gatia"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "id": "790479407449636885",
       "balance": 1670,
       "name": "Lolaa"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "id": "561500178759024640",
       "balance": 1648,
       "name": "Lucyy"
-    },
-    {
-      "rank": 8,
-      "id": "1270513100596056175",
-      "balance": 1074,
-      "name": "DADDY"
     },
     {
       "rank": 9,
@@ -149,7 +149,7 @@
       "rank": 4,
       "id": "790479407449636885",
       "level": 5,
-      "totalXp": 1390,
+      "totalXp": 1405,
       "name": "Lolaa"
     },
     {
@@ -232,13 +232,37 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 3,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-24",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 3,
+    "totalBet": 300,
+    "topWinner": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": -100,
+      "bet": 300,
+      "wins": 1,
+      "name": "DADDY"
+    },
+    "topLoser": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": -100,
+      "bet": 300,
+      "wins": 1,
+      "name": "DADDY"
+    },
+    "mostActive": {
+      "id": "1270513100596056175",
+      "games": 3,
+      "net": -100,
+      "bet": 300,
+      "wins": 1,
+      "name": "DADDY"
+    }
   }
 }
