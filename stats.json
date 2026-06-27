@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T02:47:32.332Z",
+  "updatedAt": "2026-06-27T03:47:32.335Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -232,37 +232,13 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 80,
+    "progress": 0,
     "reward": 25,
-    "goalMet": true
+    "goalMet": false
   },
   "todayCasino": {
-    "dayKey": "2026-06-26",
-    "totalGames": 80,
-    "totalBet": 1600,
-    "topWinner": {
-      "id": "579966046736482315",
-      "games": 80,
-      "net": 360,
-      "bet": 1600,
-      "wins": 44,
-      "name": "Mec de Sacha"
-    },
-    "topLoser": {
-      "id": "579966046736482315",
-      "games": 80,
-      "net": 360,
-      "bet": 1600,
-      "wins": 44,
-      "name": "Mec de Sacha"
-    },
-    "mostActive": {
-      "id": "579966046736482315",
-      "games": 80,
-      "net": 360,
-      "bet": 1600,
-      "wins": 44,
-      "name": "Mec de Sacha"
-    }
+    "dayKey": "2026-06-27",
+    "totalGames": 0,
+    "totalBet": 0
   }
 }
