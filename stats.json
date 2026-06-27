@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T13:47:32.372Z",
+  "updatedAt": "2026-06-27T14:47:32.374Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -35,7 +35,7 @@
     {
       "rank": 6,
       "id": "579966046736482315",
-      "balance": 2191,
+      "balance": 2194,
       "name": "Mec de Sacha"
     },
     {
@@ -232,21 +232,21 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 10,
+    "progress": 66,
     "reward": 25,
-    "goalMet": false
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-06-27",
-    "totalGames": 10,
-    "totalBet": 2000,
+    "totalGames": 66,
+    "totalBet": 3120,
     "topWinner": {
-      "id": "1270513100596056175",
-      "games": 10,
-      "net": -800,
-      "bet": 2000,
-      "wins": 3,
-      "name": "DADDY"
+      "id": "579966046736482315",
+      "games": 56,
+      "net": -110,
+      "bet": 1120,
+      "wins": 22,
+      "name": "Mec de Sacha"
     },
     "topLoser": {
       "id": "1270513100596056175",
@@ -257,12 +257,12 @@
       "name": "DADDY"
     },
     "mostActive": {
-      "id": "1270513100596056175",
-      "games": 10,
-      "net": -800,
-      "bet": 2000,
-      "wins": 3,
-      "name": "DADDY"
+      "id": "579966046736482315",
+      "games": 56,
+      "net": -110,
+      "bet": 1120,
+      "wins": 22,
+      "name": "Mec de Sacha"
     }
   }
 }
