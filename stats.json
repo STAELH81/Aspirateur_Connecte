@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T13:47:32.502Z",
+  "updatedAt": "2026-06-29T14:47:32.504Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -17,7 +17,7 @@
     {
       "rank": 3,
       "id": "1270513100596056175",
-      "balance": 6119,
+      "balance": 6419,
       "name": "DADDY"
     },
     {
@@ -128,21 +128,21 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 8,
-      "totalXp": 3557,
+      "totalXp": 3579,
       "name": "MOMMY"
     },
     {
       "rank": 2,
       "id": "571755489952661504",
       "level": 6,
-      "totalXp": 2089,
+      "totalXp": 2133,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
       "id": "790479407449636885",
       "level": 6,
-      "totalXp": 1710,
+      "totalXp": 1731,
       "name": "Lolaa"
     },
     {
@@ -168,17 +168,17 @@
     },
     {
       "rank": 7,
+      "id": "1270513100596056175",
+      "level": 2,
+      "totalXp": 352,
+      "name": "DADDY"
+    },
+    {
+      "rank": 8,
       "id": "1108365776504754287",
       "level": 2,
       "totalXp": 348,
       "name": "Loïc"
-    },
-    {
-      "rank": 8,
-      "id": "1270513100596056175",
-      "level": 2,
-      "totalXp": 337,
-      "name": "DADDY"
     },
     {
       "rank": 9,
@@ -217,28 +217,52 @@
     },
     {
       "rank": 14,
+      "id": "1228665148118532119",
+      "level": 1,
+      "totalXp": 157,
+      "name": "Aloïs0409°2"
+    },
+    {
+      "rank": 15,
       "id": "488799849798434826",
       "level": 1,
       "totalXp": 146,
       "name": "MynameisEve"
-    },
-    {
-      "rank": 15,
-      "id": "579966046736482315",
-      "level": 1,
-      "totalXp": 141,
-      "name": "Mec de Sacha"
     }
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 6,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-06-29",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 6,
+    "totalBet": 700,
+    "topWinner": {
+      "id": "1270513100596056175",
+      "games": 6,
+      "net": 300,
+      "bet": 700,
+      "wins": 4,
+      "name": "DADDY"
+    },
+    "topLoser": {
+      "id": "1270513100596056175",
+      "games": 6,
+      "net": 300,
+      "bet": 700,
+      "wins": 4,
+      "name": "DADDY"
+    },
+    "mostActive": {
+      "id": "1270513100596056175",
+      "games": 6,
+      "net": 300,
+      "bet": 700,
+      "wins": 4,
+      "name": "DADDY"
+    }
   }
 }
