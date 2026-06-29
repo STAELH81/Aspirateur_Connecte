@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T08:47:32.490Z",
+  "updatedAt": "2026-06-29T09:47:32.492Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -217,17 +217,17 @@
     },
     {
       "rank": 14,
+      "id": "488799849798434826",
+      "level": 1,
+      "totalXp": 146,
+      "name": "MynameisEve"
+    },
+    {
+      "rank": 15,
       "id": "579966046736482315",
       "level": 1,
       "totalXp": 141,
       "name": "Mec de Sacha"
-    },
-    {
-      "rank": 15,
-      "id": "653635654873251887",
-      "level": 1,
-      "totalXp": 133,
-      "name": "Yannnnnnis"
     }
   ],
   "coopGoal": {
