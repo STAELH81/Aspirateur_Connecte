@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T15:47:32.508Z",
+  "updatedAt": "2026-06-29T16:47:32.510Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -134,15 +134,15 @@
     {
       "rank": 2,
       "id": "571755489952661504",
-      "level": 6,
-      "totalXp": 2133,
+      "level": 7,
+      "totalXp": 2223,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
       "id": "790479407449636885",
       "level": 6,
-      "totalXp": 1731,
+      "totalXp": 1748,
       "name": "Lolaa"
     },
     {
@@ -168,38 +168,38 @@
     },
     {
       "rank": 7,
+      "id": "435811716572643338",
+      "level": 2,
+      "totalXp": 363,
+      "name": "Djalann"
+    },
+    {
+      "rank": 8,
       "id": "1270513100596056175",
       "level": 2,
       "totalXp": 352,
       "name": "DADDY"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "id": "1108365776504754287",
       "level": 2,
       "totalXp": 348,
       "name": "Loïc"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "id": "1228698414020300821",
       "level": 2,
       "totalXp": 325,
       "name": "Clement"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "id": "1151513409439932486",
       "level": 2,
       "totalXp": 315,
       "name": "Gatia"
-    },
-    {
-      "rank": 11,
-      "id": "435811716572643338",
-      "level": 2,
-      "totalXp": 289,
-      "name": "Djalann"
     },
     {
       "rank": 12,
