@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T21:47:32.661Z",
+  "updatedAt": "2026-07-01T22:47:32.665Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -23,7 +23,7 @@
     {
       "rank": 4,
       "id": "435811716572643338",
-      "balance": 4322,
+      "balance": 4412,
       "name": "Djalann"
     },
     {
@@ -142,7 +142,7 @@
       "rank": 3,
       "id": "790479407449636885",
       "level": 6,
-      "totalXp": 1783,
+      "totalXp": 1803,
       "name": "Lolaa"
     },
     {
@@ -175,17 +175,17 @@
     },
     {
       "rank": 8,
+      "id": "1270513100596056175",
+      "level": 2,
+      "totalXp": 371,
+      "name": "DADDY"
+    },
+    {
+      "rank": 9,
       "id": "1108365776504754287",
       "level": 2,
       "totalXp": 370,
       "name": "Loïc"
-    },
-    {
-      "rank": 9,
-      "id": "1270513100596056175",
-      "level": 2,
-      "totalXp": 352,
-      "name": "DADDY"
     },
     {
       "rank": 10,
