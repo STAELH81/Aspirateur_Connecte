@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T18:47:32.721Z",
+  "updatedAt": "2026-07-02T19:47:32.723Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -168,17 +168,17 @@
     },
     {
       "rank": 7,
+      "id": "1108365776504754287",
+      "level": 2,
+      "totalXp": 471,
+      "name": "Loïc"
+    },
+    {
+      "rank": 8,
       "id": "435811716572643338",
       "level": 2,
       "totalXp": 444,
       "name": "Djalann"
-    },
-    {
-      "rank": 8,
-      "id": "1108365776504754287",
-      "level": 2,
-      "totalXp": 413,
-      "name": "Loïc"
     },
     {
       "rank": 9,
