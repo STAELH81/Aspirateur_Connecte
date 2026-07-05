@@ -8,6 +8,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("radio")
     .setDescription("Controle DJ de la radio (owner uniquement)")
+    .addSubcommand((sub) => sub.setName("start").setDescription("Demarrer la radio (connecter le salon vocal)"))
     .addSubcommand((sub) => sub.setName("play").setDescription("Reprendre la lecture"))
     .addSubcommand((sub) => sub.setName("pause").setDescription("Mettre en pause"))
     .addSubcommand((sub) => sub.setName("skip").setDescription("Piste suivante"))
