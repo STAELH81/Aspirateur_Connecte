@@ -25,4 +25,5 @@ module.exports = [
   require("./gazette"),
   require("./dashboard"),
   require("./devlog"),
+  require("./radio"),
 ].filter((cmd) => require("../lib/serverProfile").isCommandEnabled(cmd.data.name));

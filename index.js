@@ -297,6 +297,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
+  if (interaction.isButton() && interaction.customId.startsWith("radio:")) {
+    const { handleRadioButton } = require("./lib/musicControl");
+    await handleRadioButton(interaction);
+    return;
+  }
+
   if (interaction.isButton() && interaction.customId === "ticket:close") {
     try {
       const result = await tickets.closeTicket(interaction);
