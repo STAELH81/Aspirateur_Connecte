@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-07-21T01:47:34.023Z",
+  "updatedAt": "2026-07-21T02:47:34.027Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
-      "id": "476295168950009856",
-      "balance": 16034,
-      "name": "MOMMY"
+      "id": "338058082112241664",
+      "balance": 12127,
+      "name": "Viktor"
     },
     {
       "rank": 2,
-      "id": "338058082112241664",
-      "balance": 7874,
-      "name": "Viktor"
+      "id": "476295168950009856",
+      "balance": 11967,
+      "name": "MOMMY"
     },
     {
       "rank": 3,
@@ -28,27 +28,27 @@
     },
     {
       "rank": 5,
+      "id": "561500178759024640",
+      "balance": 2464,
+      "name": "Stanislas"
+    },
+    {
+      "rank": 6,
       "id": "1251116560983130229",
       "balance": 2307,
       "name": "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "id": "579966046736482315",
       "balance": 2194,
       "name": "Mec de Sacha"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "id": "1151513409439932486",
       "balance": 2114,
       "name": "Gatia"
-    },
-    {
-      "rank": 8,
-      "id": "561500178759024640",
-      "balance": 1820,
-      "name": "Stanislas"
     },
     {
       "rank": 9,
@@ -112,12 +112,18 @@
     },
     {
       "rank": 19,
+      "id": "441111184129916929",
+      "balance": 8,
+      "name": "Dokas"
+    },
+    {
+      "rank": 20,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
@@ -128,7 +134,7 @@
       "rank": 1,
       "id": "476295168950009856",
       "level": 9,
-      "totalXp": 3754,
+      "totalXp": 3800,
       "name": "MOMMY"
     },
     {
@@ -163,7 +169,7 @@
       "rank": 6,
       "id": "338058082112241664",
       "level": 5,
-      "totalXp": 1304,
+      "totalXp": 1328,
       "name": "Viktor"
     },
     {
@@ -232,13 +238,37 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 121,
     "reward": 25,
-    "goalMet": false
+    "goalMet": true
   },
   "todayCasino": {
     "dayKey": "2026-07-20",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 121,
+    "totalBet": 46079,
+    "topWinner": {
+      "id": "338058082112241664",
+      "games": 3,
+      "net": 2000,
+      "bet": 6000,
+      "wins": 2,
+      "name": "Viktor"
+    },
+    "topLoser": {
+      "id": "476295168950009856",
+      "games": 25,
+      "net": -9359,
+      "bet": 21700,
+      "wins": 7,
+      "name": "MOMMY"
+    },
+    "mostActive": {
+      "id": "561500178759024640",
+      "games": 66,
+      "net": -570,
+      "bet": 3540,
+      "wins": 14,
+      "name": "Stanislas"
+    }
   }
 }
