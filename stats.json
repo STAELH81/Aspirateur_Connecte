@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T02:47:34.246Z",
+  "updatedAt": "2026-07-24T03:47:34.250Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -211,7 +211,7 @@
       "rank": 12,
       "id": "756805412413636690",
       "level": 2,
-      "totalXp": 264,
+      "totalXp": 283,
       "name": "Midonat"
     },
     {
@@ -243,7 +243,7 @@
     "goalMet": false
   },
   "todayCasino": {
-    "dayKey": "2026-07-23",
+    "dayKey": "2026-07-24",
     "totalGames": 0,
     "totalBet": 0
   }
