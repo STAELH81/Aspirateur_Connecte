@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-27T00:47:34.471Z",
+  "updatedAt": "2026-07-27T01:47:34.476Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -58,63 +58,63 @@
     },
     {
       "rank": 10,
+      "id": "441111184129916929",
+      "balance": 1008,
+      "name": "Dokas"
+    },
+    {
+      "rank": 11,
       "id": "1228698414020300821",
       "balance": 911,
       "name": "Clement"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "id": "441639749925470209",
       "balance": 786,
       "name": "Chad"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "id": "908036623856459877",
       "balance": 206,
       "name": "Amnesie"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "1108365776504754287",
       "balance": 152,
       "name": "Loïc"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "644148774544867339",
       "balance": 125,
       "name": "Gab"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "id": "488799849798434826",
       "balance": 110,
       "name": "MynameisEve"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "1291782472803156162",
       "balance": 65,
       "name": "1291782472803156162"
-    },
-    {
-      "rank": 19,
-      "id": "441111184129916929",
-      "balance": 8,
-      "name": "Dokas"
     },
     {
       "rank": 20,
