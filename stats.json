@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T15:47:34.634Z",
+  "updatedAt": "2026-07-29T16:47:34.639Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -141,7 +141,7 @@
       "rank": 2,
       "id": "571755489952661504",
       "level": 9,
-      "totalXp": 3924,
+      "totalXp": 3940,
       "name": "Dorian ?! Super..."
     },
     {
@@ -162,7 +162,7 @@
       "rank": 5,
       "id": "441639749925470209",
       "level": 6,
-      "totalXp": 2131,
+      "totalXp": 2155,
       "name": "Chad"
     },
     {
@@ -195,17 +195,17 @@
     },
     {
       "rank": 10,
+      "id": "756805412413636690",
+      "level": 2,
+      "totalXp": 359,
+      "name": "Midonat"
+    },
+    {
+      "rank": 11,
       "id": "1151513409439932486",
       "level": 2,
       "totalXp": 354,
       "name": "Gatia"
-    },
-    {
-      "rank": 11,
-      "id": "756805412413636690",
-      "level": 2,
-      "totalXp": 342,
-      "name": "Midonat"
     },
     {
       "rank": 12,
