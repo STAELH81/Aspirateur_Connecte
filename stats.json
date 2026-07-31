@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T21:47:34.766Z",
+  "updatedAt": "2026-07-31T22:47:34.768Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -58,21 +58,21 @@
     },
     {
       "rank": 10,
-      "id": "441111184129916929",
-      "balance": 1008,
-      "name": "Dokas"
-    },
-    {
-      "rank": 11,
       "id": "1228698414020300821",
       "balance": 911,
       "name": "Clement"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "id": "441639749925470209",
       "balance": 786,
       "name": "Chad"
+    },
+    {
+      "rank": 12,
+      "id": "441111184129916929",
+      "balance": 209,
+      "name": "Dokas"
     },
     {
       "rank": 13,
