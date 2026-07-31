@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T18:47:34.761Z",
+  "updatedAt": "2026-07-31T19:47:34.762Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -134,7 +134,7 @@
       "rank": 1,
       "id": "571755489952661504",
       "level": 9,
-      "totalXp": 4489,
+      "totalXp": 4504,
       "name": "Dorian ?! Super..."
     },
     {
@@ -146,17 +146,17 @@
     },
     {
       "rank": 3,
+      "id": "338058082112241664",
+      "level": 8,
+      "totalXp": 3037,
+      "name": "Viktor"
+    },
+    {
+      "rank": 4,
       "id": "790479407449636885",
       "level": 8,
       "totalXp": 2961,
       "name": "Lolaa"
-    },
-    {
-      "rank": 4,
-      "id": "338058082112241664",
-      "level": 7,
-      "totalXp": 2866,
-      "name": "Viktor"
     },
     {
       "rank": 5,
