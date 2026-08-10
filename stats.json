@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T16:47:35.405Z",
+  "updatedAt": "2026-08-10T17:47:35.409Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -100,30 +100,36 @@
     },
     {
       "rank": 17,
+      "id": "187645580661620737",
+      "balance": 110,
+      "name": "GodCptT"
+    },
+    {
+      "rank": 18,
       "id": "1507083238441750691",
       "balance": 100,
       "name": "Esclave de Cha"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "756805412413636690",
       "balance": 77,
       "name": "Midonat"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "id": "1291782472803156162",
       "balance": 65,
       "name": "1291782472803156162"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "id": "1082217777038901310",
       "balance": 3,
       "name": "NeauLLâne"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "id": "571755489952661504",
       "balance": 0,
       "name": "Dorian ?! Super..."
@@ -169,7 +175,7 @@
       "rank": 6,
       "id": "561500178759024640",
       "level": 7,
-      "totalXp": 2832,
+      "totalXp": 2849,
       "name": "Stanislas"
     },
     {
@@ -238,13 +244,37 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 1,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-08-10",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 1,
+    "totalBet": 10,
+    "topWinner": {
+      "id": "187645580661620737",
+      "games": 1,
+      "net": 10,
+      "bet": 10,
+      "wins": 1,
+      "name": "GodCptT"
+    },
+    "topLoser": {
+      "id": "187645580661620737",
+      "games": 1,
+      "net": 10,
+      "bet": 10,
+      "wins": 1,
+      "name": "GodCptT"
+    },
+    "mostActive": {
+      "id": "187645580661620737",
+      "games": 1,
+      "net": 10,
+      "bet": 10,
+      "wins": 1,
+      "name": "GodCptT"
+    }
   }
 }
