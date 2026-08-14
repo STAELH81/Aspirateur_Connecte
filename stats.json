@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-14T00:47:35.699Z",
+  "updatedAt": "2026-08-14T01:47:35.704Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -154,14 +154,14 @@
       "rank": 3,
       "id": "476295168950009856",
       "level": 9,
-      "totalXp": 4545,
+      "totalXp": 4586,
       "name": "MOMMY"
     },
     {
       "rank": 4,
       "id": "338058082112241664",
       "level": 8,
-      "totalXp": 3665,
+      "totalXp": 3707,
       "name": "Viktor"
     },
     {
@@ -222,24 +222,24 @@
     },
     {
       "rank": 13,
+      "id": "488799849798434826",
+      "level": 2,
+      "totalXp": 278,
+      "name": "MynameisEve"
+    },
+    {
+      "rank": 14,
       "id": "1399919044399726714",
       "level": 1,
       "totalXp": 209,
       "name": "❀ ✰"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "1228665148118532119",
       "level": 1,
       "totalXp": 200,
       "name": "Alois0409°2"
-    },
-    {
-      "rank": 15,
-      "id": "488799849798434826",
-      "level": 1,
-      "totalXp": 164,
-      "name": "MynameisEve"
     }
   ],
   "coopGoal": {
