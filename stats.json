@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T18:47:36.157Z",
+  "updatedAt": "2026-08-19T19:47:36.160Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -140,21 +140,21 @@
       "rank": 1,
       "id": "790479407449636885",
       "level": 12,
-      "totalXp": 7544,
+      "totalXp": 7605,
       "name": "Lolaa"
     },
     {
       "rank": 2,
       "id": "571755489952661504",
       "level": 11,
-      "totalXp": 6821,
+      "totalXp": 6903,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
       "id": "476295168950009856",
       "level": 10,
-      "totalXp": 4772,
+      "totalXp": 4941,
       "name": "MOMMY"
     },
     {
@@ -166,17 +166,17 @@
     },
     {
       "rank": 5,
+      "id": "561500178759024640",
+      "level": 9,
+      "totalXp": 3769,
+      "name": "Stanislas"
+    },
+    {
+      "rank": 6,
       "id": "338058082112241664",
       "level": 9,
       "totalXp": 3763,
       "name": "Viktor"
-    },
-    {
-      "rank": 6,
-      "id": "561500178759024640",
-      "level": 8,
-      "totalXp": 3586,
-      "name": "Stanislas"
     },
     {
       "rank": 7,
@@ -189,7 +189,7 @@
       "rank": 8,
       "id": "1108365776504754287",
       "level": 4,
-      "totalXp": 810,
+      "totalXp": 856,
       "name": "Loïc"
     },
     {
@@ -229,17 +229,17 @@
     },
     {
       "rank": 14,
+      "id": "1228665148118532119",
+      "level": 1,
+      "totalXp": 252,
+      "name": "Alois0409°2"
+    },
+    {
+      "rank": 15,
       "id": "1399919044399726714",
       "level": 1,
       "totalXp": 209,
       "name": "❀ ✰"
-    },
-    {
-      "rank": 15,
-      "id": "1228665148118532119",
-      "level": 1,
-      "totalXp": 200,
-      "name": "Alois0409°2"
     }
   ],
   "coopGoal": {
