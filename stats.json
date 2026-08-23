@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T21:47:36.465Z",
+  "updatedAt": "2026-08-23T22:47:36.468Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -215,17 +215,17 @@
     },
     {
       "rank": 12,
+      "id": "1228698414020300821",
+      "level": 2,
+      "totalXp": 359,
+      "name": "Clement"
+    },
+    {
+      "rank": 13,
       "id": "1151513409439932486",
       "level": 2,
       "totalXp": 354,
       "name": "Gatia"
-    },
-    {
-      "rank": 13,
-      "id": "1228698414020300821",
-      "level": 2,
-      "totalXp": 342,
-      "name": "Clement"
     },
     {
       "rank": 14,
