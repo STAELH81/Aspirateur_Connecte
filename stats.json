@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T13:47:36.446Z",
+  "updatedAt": "2026-08-23T14:47:36.449Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -58,21 +58,21 @@
     },
     {
       "rank": 10,
-      "id": "1228698414020300821",
-      "balance": 911,
-      "name": "Clement"
-    },
-    {
-      "rank": 11,
       "id": "441639749925470209",
       "balance": 786,
       "name": "Chad"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "id": "441111184129916929",
       "balance": 527,
       "name": "Dokas"
+    },
+    {
+      "rank": 12,
+      "id": "1228698414020300821",
+      "balance": 457,
+      "name": "Clement"
     },
     {
       "rank": 13,
@@ -147,7 +147,7 @@
       "rank": 2,
       "id": "571755489952661504",
       "level": 12,
-      "totalXp": 7272,
+      "totalXp": 7288,
       "name": "Dorian ?! Super..."
     },
     {
@@ -168,7 +168,7 @@
       "rank": 5,
       "id": "561500178759024640",
       "level": 9,
-      "totalXp": 3877,
+      "totalXp": 3912,
       "name": "Stanislas"
     },
     {
@@ -244,13 +244,37 @@
   ],
   "coopGoal": {
     "target": 50,
-    "progress": 0,
+    "progress": 3,
     "reward": 25,
     "goalMet": false
   },
   "todayCasino": {
     "dayKey": "2026-08-23",
-    "totalGames": 0,
-    "totalBet": 0
+    "totalGames": 3,
+    "totalBet": 800,
+    "topWinner": {
+      "id": "1228698414020300821",
+      "games": 3,
+      "net": -628,
+      "bet": 800,
+      "wins": 1,
+      "name": "Clement"
+    },
+    "topLoser": {
+      "id": "1228698414020300821",
+      "games": 3,
+      "net": -628,
+      "bet": 800,
+      "wins": 1,
+      "name": "Clement"
+    },
+    "mostActive": {
+      "id": "1228698414020300821",
+      "games": 3,
+      "net": -628,
+      "bet": 800,
+      "wins": 1,
+      "name": "Clement"
+    }
   }
 }
