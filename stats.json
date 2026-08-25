@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T23:47:36.551Z",
+  "updatedAt": "2026-08-25T03:47:36.567Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -35,7 +35,7 @@
     {
       "rank": 6,
       "id": "579966046736482315",
-      "balance": 2327,
+      "balance": 2466,
       "name": "Mec de Sacha"
     },
     {
@@ -249,7 +249,7 @@
     "goalMet": false
   },
   "todayCasino": {
-    "dayKey": "2026-08-24",
+    "dayKey": "2026-08-25",
     "totalGames": 0,
     "totalBet": 0
   }
