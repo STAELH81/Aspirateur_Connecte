@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-14T12:47:38.118Z",
+  "updatedAt": "2026-09-14T13:47:38.121Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -17,7 +17,7 @@
     {
       "rank": 3,
       "id": "435811716572643338",
-      "balance": 10240,
+      "balance": 10373,
       "name": "Djalann"
     },
     {
@@ -180,17 +180,17 @@
     },
     {
       "rank": 7,
+      "id": "1108365776504754287",
+      "level": 4,
+      "totalXp": 1064,
+      "name": "Loïc"
+    },
+    {
+      "rank": 8,
       "id": "435811716572643338",
       "level": 4,
       "totalXp": 1044,
       "name": "Djalann"
-    },
-    {
-      "rank": 8,
-      "id": "1108365776504754287",
-      "level": 4,
-      "totalXp": 1040,
-      "name": "Loïc"
     },
     {
       "rank": 9,
