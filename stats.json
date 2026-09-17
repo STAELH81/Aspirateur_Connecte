@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17T18:47:38.384Z",
+  "updatedAt": "2026-09-17T19:47:38.386Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -140,28 +140,28 @@
       "rank": 1,
       "id": "790479407449636885",
       "level": 13,
-      "totalXp": 9011,
+      "totalXp": 9140,
       "name": "La gooneuse prime"
     },
     {
       "rank": 2,
       "id": "571755489952661504",
       "level": 13,
-      "totalXp": 8879,
+      "totalXp": 8990,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
       "id": "476295168950009856",
       "level": 11,
-      "totalXp": 5899,
+      "totalXp": 5917,
       "name": "MOMMY"
     },
     {
       "rank": 4,
       "id": "441639749925470209",
       "level": 10,
-      "totalXp": 5474,
+      "totalXp": 5575,
       "name": "Chad"
     },
     {
@@ -175,14 +175,14 @@
       "rank": 6,
       "id": "338058082112241664",
       "level": 9,
-      "totalXp": 4169,
+      "totalXp": 4187,
       "name": "Viktor"
     },
     {
       "rank": 7,
       "id": "1108365776504754287",
-      "level": 4,
-      "totalXp": 1143,
+      "level": 5,
+      "totalXp": 1183,
       "name": "Loïc le goat"
     },
     {
@@ -215,17 +215,17 @@
     },
     {
       "rank": 12,
+      "id": "1151513409439932486",
+      "level": 3,
+      "totalXp": 513,
+      "name": "Gatia"
+    },
+    {
+      "rank": 13,
       "id": "1228698414020300821",
       "level": 2,
       "totalXp": 440,
       "name": "Clement"
-    },
-    {
-      "rank": 13,
-      "id": "1151513409439932486",
-      "level": 2,
-      "totalXp": 387,
-      "name": "Gatia"
     },
     {
       "rank": 14,
