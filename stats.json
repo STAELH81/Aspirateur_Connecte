@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T19:47:38.907Z",
+  "updatedAt": "2026-09-23T20:47:38.909Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -140,7 +140,7 @@
       "rank": 1,
       "id": "790479407449636885",
       "level": 13,
-      "totalXp": 9564,
+      "totalXp": 9589,
       "name": "La gooneuse prime"
     },
     {
@@ -154,7 +154,7 @@
       "rank": 3,
       "id": "476295168950009856",
       "level": 11,
-      "totalXp": 6049,
+      "totalXp": 6064,
       "name": "MOMMY"
     },
     {
@@ -168,14 +168,14 @@
       "rank": 5,
       "id": "561500178759024640",
       "level": 10,
-      "totalXp": 4798,
+      "totalXp": 4819,
       "name": "Stanislas"
     },
     {
       "rank": 6,
       "id": "338058082112241664",
       "level": 9,
-      "totalXp": 4357,
+      "totalXp": 4378,
       "name": "Viktor"
     },
     {
@@ -208,17 +208,17 @@
     },
     {
       "rank": 11,
+      "id": "1151513409439932486",
+      "level": 3,
+      "totalXp": 648,
+      "name": "Gatia"
+    },
+    {
+      "rank": 12,
       "id": "756805412413636690",
       "level": 3,
       "totalXp": 633,
       "name": "Midonat"
-    },
-    {
-      "rank": 12,
-      "id": "1151513409439932486",
-      "level": 3,
-      "totalXp": 595,
-      "name": "Gatia"
     },
     {
       "rank": 13,
