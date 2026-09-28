@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T17:47:39.402Z",
+  "updatedAt": "2026-09-28T18:47:39.413Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -138,17 +138,17 @@
   "xpTop": [
     {
       "rank": 1,
+      "id": "571755489952661504",
+      "level": 13,
+      "totalXp": 9919,
+      "name": "Dorian ?! Super..."
+    },
+    {
+      "rank": 2,
       "id": "790479407449636885",
       "level": 13,
       "totalXp": 9914,
       "name": "La gooneuse prime"
-    },
-    {
-      "rank": 2,
-      "id": "571755489952661504",
-      "level": 13,
-      "totalXp": 9872,
-      "name": "Dorian ?! Super..."
     },
     {
       "rank": 3,
@@ -161,14 +161,14 @@
       "rank": 4,
       "id": "476295168950009856",
       "level": 11,
-      "totalXp": 6238,
+      "totalXp": 6358,
       "name": "MOMMY"
     },
     {
       "rank": 5,
       "id": "441639749925470209",
       "level": 11,
-      "totalXp": 6112,
+      "totalXp": 6128,
       "name": "Chad"
     },
     {
