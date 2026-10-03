@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T09:47:39.805Z",
+  "updatedAt": "2026-10-03T10:47:39.810Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -138,23 +138,23 @@
   "xpTop": [
     {
       "rank": 1,
+      "id": "790479407449636885",
+      "level": 14,
+      "totalXp": 10209,
+      "name": "La gooneuse prime"
+    },
+    {
+      "rank": 2,
       "id": "571755489952661504",
       "level": 14,
       "totalXp": 10191,
       "name": "Dorian ?! Super..."
     },
     {
-      "rank": 2,
-      "id": "790479407449636885",
-      "level": 14,
-      "totalXp": 10191,
-      "name": "La gooneuse prime"
-    },
-    {
       "rank": 3,
       "id": "338058082112241664",
       "level": 13,
-      "totalXp": 9872,
+      "totalXp": 9893,
       "name": "Viktor"
     },
     {
