@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T15:47:40.093Z",
+  "updatedAt": "2026-10-06T16:47:40.096Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -140,7 +140,7 @@
       "rank": 1,
       "id": "790479407449636885",
       "level": 14,
-      "totalXp": 10340,
+      "totalXp": 10365,
       "name": "La gooneuse prime"
     },
     {
@@ -161,7 +161,7 @@
       "rank": 4,
       "id": "476295168950009856",
       "level": 11,
-      "totalXp": 6688,
+      "totalXp": 6707,
       "name": "MOMMY"
     },
     {
@@ -175,7 +175,7 @@
       "rank": 6,
       "id": "561500178759024640",
       "level": 10,
-      "totalXp": 5083,
+      "totalXp": 5099,
       "name": "Stanislas"
     },
     {
@@ -194,17 +194,17 @@
     },
     {
       "rank": 9,
+      "id": "1151513409439932486",
+      "level": 4,
+      "totalXp": 896,
+      "name": "Gatia"
+    },
+    {
+      "rank": 10,
       "id": "488799849798434826",
       "level": 4,
       "totalXp": 896,
       "name": "La Folle du bus"
-    },
-    {
-      "rank": 10,
-      "id": "1151513409439932486",
-      "level": 4,
-      "totalXp": 875,
-      "name": "Gatia"
     },
     {
       "rank": 11,
