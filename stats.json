@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T20:47:40.389Z",
+  "updatedAt": "2026-10-09T21:47:40.393Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -154,14 +154,14 @@
       "rank": 3,
       "id": "338058082112241664",
       "level": 14,
-      "totalXp": 10152,
+      "totalXp": 10172,
       "name": "Viktor"
     },
     {
       "rank": 4,
       "id": "441639749925470209",
       "level": 11,
-      "totalXp": 6994,
+      "totalXp": 7016,
       "name": "Chad"
     },
     {
@@ -208,17 +208,17 @@
     },
     {
       "rank": 11,
+      "id": "756805412413636690",
+      "level": 4,
+      "totalXp": 847,
+      "name": "Midonat"
+    },
+    {
+      "rank": 12,
       "id": "1270513100596056175",
       "level": 4,
       "totalXp": 833,
       "name": "DADDY Steph"
-    },
-    {
-      "rank": 12,
-      "id": "756805412413636690",
-      "level": 4,
-      "totalXp": 831,
-      "name": "Midonat"
     },
     {
       "rank": 13,
