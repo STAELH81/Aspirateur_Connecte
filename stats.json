@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-10-15T06:47:40.828Z",
+  "updatedAt": "2026-10-15T07:47:40.832Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
+      "id": "435811716572643338",
+      "balance": 12187,
+      "name": "Djalann"
+    },
+    {
+      "rank": 2,
       "id": "476295168950009856",
       "balance": 12153,
       "name": "MOMMY"
     },
     {
-      "rank": 2,
+      "rank": 3,
       "id": "338058082112241664",
       "balance": 12127,
       "name": "Viktor"
-    },
-    {
-      "rank": 3,
-      "id": "435811716572643338",
-      "balance": 12028,
-      "name": "Djalann"
     },
     {
       "rank": 4,
@@ -140,14 +140,14 @@
       "rank": 1,
       "id": "571755489952661504",
       "level": 14,
-      "totalXp": 10964,
+      "totalXp": 10989,
       "name": "Dorian ?! Super..."
     },
     {
       "rank": 2,
       "id": "790479407449636885",
       "level": 14,
-      "totalXp": 10905,
+      "totalXp": 10945,
       "name": "La gooneuse prime"
     },
     {
@@ -168,7 +168,7 @@
       "rank": 5,
       "id": "476295168950009856",
       "level": 11,
-      "totalXp": 6830,
+      "totalXp": 6866,
       "name": "MOMMY"
     },
     {
