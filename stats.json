@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T11:47:41.011Z",
+  "updatedAt": "2026-10-17T12:47:41.013Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
@@ -140,14 +140,14 @@
       "rank": 1,
       "id": "790479407449636885",
       "level": 14,
-      "totalXp": 11309,
+      "totalXp": 11345,
       "name": "La gooneuse prime"
     },
     {
       "rank": 2,
       "id": "571755489952661504",
       "level": 14,
-      "totalXp": 11236,
+      "totalXp": 11269,
       "name": "Dorian ?! Super..."
     },
     {
@@ -201,17 +201,17 @@
     },
     {
       "rank": 10,
+      "id": "756805412413636690",
+      "level": 4,
+      "totalXp": 911,
+      "name": "Midonat"
+    },
+    {
+      "rank": 11,
       "id": "488799849798434826",
       "level": 4,
       "totalXp": 896,
       "name": "La Folle du bus"
-    },
-    {
-      "rank": 11,
-      "id": "756805412413636690",
-      "level": 4,
-      "totalXp": 889,
-      "name": "Midonat"
     },
     {
       "rank": 12,
