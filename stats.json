@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-22T11:47:41.418Z",
+  "updatedAt": "2026-10-22T12:47:41.420Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "435811716572643338",
-      "balance": 12846,
+      "balance": 13000,
       "name": "Djalann"
     },
     {
@@ -146,8 +146,8 @@
     {
       "rank": 2,
       "id": "790479407449636885",
-      "level": 14,
-      "totalXp": 11801,
+      "level": 15,
+      "totalXp": 11826,
       "name": "La gooneuse prime"
     },
     {
