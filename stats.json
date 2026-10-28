@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-28T16:47:41.964Z",
+  "updatedAt": "2026-10-28T17:47:41.970Z",
   "server": "Les Girlsss",
   "leaderboard": [
     {
       "rank": 1,
       "id": "435811716572643338",
-      "balance": 13369,
+      "balance": 13533,
       "name": "Djalann"
     },
     {
@@ -138,17 +138,17 @@
   "xpTop": [
     {
       "rank": 1,
-      "id": "790479407449636885",
+      "id": "571755489952661504",
       "level": 15,
-      "totalXp": 12710,
-      "name": "La gooneuse prime"
+      "totalXp": 12793,
+      "name": "Dorian ?! Super..."
     },
     {
       "rank": 2,
-      "id": "571755489952661504",
+      "id": "790479407449636885",
       "level": 15,
-      "totalXp": 12592,
-      "name": "Dorian ?! Super..."
+      "totalXp": 12769,
+      "name": "La gooneuse prime"
     },
     {
       "rank": 3,
@@ -168,7 +168,7 @@
       "rank": 5,
       "id": "476295168950009856",
       "level": 12,
-      "totalXp": 7351,
+      "totalXp": 7393,
       "name": "MOMMY"
     },
     {
@@ -180,17 +180,17 @@
     },
     {
       "rank": 7,
+      "id": "435811716572643338",
+      "level": 6,
+      "totalXp": 1757,
+      "name": "Djalann"
+    },
+    {
+      "rank": 8,
       "id": "1108365776504754287",
       "level": 6,
       "totalXp": 1706,
       "name": "Loïc le goat"
-    },
-    {
-      "rank": 8,
-      "id": "435811716572643338",
-      "level": 5,
-      "totalXp": 1579,
-      "name": "Djalann"
     },
     {
       "rank": 9,
